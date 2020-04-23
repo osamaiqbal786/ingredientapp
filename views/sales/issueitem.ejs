@@ -1,0 +1,96 @@
+<%- include ('../partials/header')%>
+    <% var d=new Date()%>
+    <%let today = new Date().toLocaleDateString()%>
+    <%var month= d.toLocaleString('default', { month: 'long' })%>
+    <% var year=new Date().getFullYear()%>
+<div class="container">
+    <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">Issue Item</h2>
+            
+            <form action="/sales/issueitem" method="post">
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="item[voucher]" placeholder="voucher number" required>
+                    </div>
+            </div>
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="item[name]" placeholder="sales man name" required>
+                    </div>
+            </div>
+             <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="item[date]" value="<%=today%>" required>
+                    </div>
+            </div>
+               <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="item[month]">
+                    <option selected><%=month.toUpperCase()%></option>
+                    <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="item[year]">
+                    <option selected><%=year%></option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    </select>
+                    </div>
+                </div>    
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[peice200ml]" placeholder="200ml peices" required>
+             </div>
+             </div>
+              
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">330ML</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[peice330ml]" placeholder="330ml peices" required>
+             </div>
+             </div>
+
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">600ML</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[peice600ml]" placeholder="600ml peices" required>
+             </div>
+             </div>
+                           
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">1.5L</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[peice1500ml]" placeholder="1.5L peices" required>
+             </div>
+             </div>
+                           
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">5l</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[peice5000ml]" placeholder="5L peices" required>
+             </div>
+             </div>
+                         
+             <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+            <p><a href="/home">Go Back</a></p>
+        </form>
+</div>
+</div>
+</div>
+    
+<%- include ('../partials/footer')%>

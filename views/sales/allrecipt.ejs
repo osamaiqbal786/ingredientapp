@@ -1,0 +1,56 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(recipt.length<1){%>
+  <h1> No recipt found</h1>
+  
+  <% }else{ %>
+  <% gd=0%>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong><%=recipt[0].name.toUpperCase()%></strong></p>
+  </div>
+    <div class="row border">
+        
+      <div class="col-2 border">
+      <P><strong>voucher no</strong></P>
+    </div>
+    <div class="col-5 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-5 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    <% recipt.forEach(function(recipt){ %>
+    <div class="row border">
+        
+        <div class="col-2 border">
+      <P><%=recipt.voucher%></P>
+    </div>
+    <div class="col-5 border">
+      <P><%=recipt.date%></P>
+    </div>
+    <div class="col-5 border">
+      <P><%=recipt.amount%></P>
+    </div> 
+    </div>
+    <%gd=gd+parseFloat(recipt.amount)%>
+    
+    <% }) %>
+    <div class="row border">
+      <div class="col-7 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=gd.toFixed(2)%></strong></P>
+      </div>
+    </div>
+</div>
+ <% } %>       
+        
+        
+<%- include ('../partials/footer')%>

@@ -1,0 +1,72 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(car.length<1){%>
+  <h1> No salary found</h1>
+  
+  <% }else{ %>
+  <%var gd=0%>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Salary and Commision</strong></p>
+  </div>
+    <div class="row border">
+       <div class="col-1 border">
+      <P><strong>voucher no</strong></P>
+    </div> 
+      <div class="col-2 border">
+      <P><strong>Name</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>plate no</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-5 border">
+      <P><strong>Description</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    <% car.forEach(function(car){ %>
+    <div class="row border">
+         <div class="col-1 border">
+      <P><%=car.voucherno%></P>
+    </div>
+        <div class="col-2 border">
+      <P><%=car.name%></P>
+    </div>
+     <div class="col-1 border">
+      <P><%=car.plate%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=car.date%></P>
+    </div>
+     <div class="col-5 border">
+      <P><%=car.desc%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=car.amount%></P>
+    </div>
+    </div>
+    <%gd=gd+parseFloat(car.amount)%>
+    
+    <% }) %>
+    <div class="row border">
+      <div class="col-10 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-2 border">
+        <P><strong><%=gd.toFixed(2)%></strong></P>
+      </div>
+    </div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

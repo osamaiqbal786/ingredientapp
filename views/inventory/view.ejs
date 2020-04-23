@@ -1,0 +1,243 @@
+<%- include ('../partials/header')%>
+<% var tot2=0;var tot3=0;var tot6=0;var tot15=0;var tot50=0;%>
+<% var totl2=0;var totl3=0;var totl6=0;var totl15=0;var totl50=0;%>
+
+<div class="container" style="margin-bottom:40px;">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Inventory stock till date <%=invt[0].dateupdated%></strong></p>
+  </div>
+    <div class="row border">
+    
+    <div class="col-2 border">
+      <P><strong>Last Updated<br>Date</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>200ml</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>330ml</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>600ml</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>1500ml</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>5000ml</strong></P>
+    </div>
+        
+    </div>
+   
+   
+   <div class="row border">
+    
+    <div class="col-2 border">
+      <P><%=invt[0].dateupdated%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=invt[0].peice200ml%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=invt[0].peice330ml%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=invt[0].peice600ml%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=invt[0].peice1500ml%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=invt[0].peice5000ml%></P>
+    </div>
+        
+    </div>
+   
+   
+</div>
+
+
+
+
+
+
+<div class="container" style="margin-bottom:40px;">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Stocks added to inventory</strong></p>
+  </div>
+    <div class="row border">
+    
+    <div class="col-4 border">
+      <P><strong>Name</strong></P>
+    </div>
+    <div class="col-3 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>200ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>330ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>600ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>1500ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>5000ml</strong></P>
+    </div>
+        
+    </div>
+   
+   <% uinvt.forEach(function(uinvt){%>
+    <%if(uinvt.type==="ADDED"){%>   
+  
+   <div class="row border">
+     <div class="col-4 border">
+      <P><%=uinvt.name%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=uinvt.date%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice200ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice330ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice600ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice1500ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice5000ml%></P>
+    </div>
+        
+    </div>
+    <% tot2=tot2+parseInt(uinvt.peice200ml)%>
+    <% tot3=tot3+parseInt(uinvt.peice330ml)%>
+    <% tot6=tot6+parseInt(uinvt.peice600ml)%>
+    <% tot15=tot15+parseInt(uinvt.peice1500ml)%>
+    <% tot50=tot50+parseInt(uinvt.peice5000ml)%>
+    
+    <% } %>
+   <% }) %>
+   
+      <div class="row border">
+     <div class="col-7">
+       <P><strong>Grand total</strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=tot2%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=tot3%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=tot6%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=tot15%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=tot50%>l</strong></P>
+     </div>
+   </div>
+   
+</div>
+      
+      
+      
+      <div class="container" style="margin-bottom:40px;">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Stocks issued from inventory</strong></p>
+  </div>
+    <div class="row border">
+    
+    <div class="col-4 border">
+      <P><strong>Name</strong></P>
+    </div>
+    <div class="col-3 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>200ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>330ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>600ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>1500ml</strong></P>
+    </div>
+    <div class="col-1 border">
+      <P><strong>5000ml</strong></P>
+    </div>
+        
+    </div>
+   
+   <% uinvt.forEach(function(uinvt){%>
+    <%if(uinvt.type==="ISSUED"){%>   
+  
+   <div class="row border">
+     <div class="col-4 border">
+      <P><%=uinvt.name%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=uinvt.date%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice200ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice330ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice600ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice1500ml%></P>
+    </div>
+    <div class="col-1 border">
+      <P><%=uinvt.peice5000ml%></P>
+    </div>
+        
+    </div>
+    <% totl2=totl2+parseInt(uinvt.peice200ml)%>
+    <% totl3=totl3+parseInt(uinvt.peice330ml)%>
+    <% totl6=totl6+parseInt(uinvt.peice600ml)%>
+    <% totl15=totl15+parseInt(uinvt.peice1500ml)%>
+    <% totl50=totl50+parseInt(uinvt.peice5000ml)%>
+    <% } %>
+   <% }) %>
+   <div class="row border">
+     <div class="col-7">
+       <P><strong>Grand total</strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=totl2%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=totl3%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=totl6%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=totl15%></strong></P>
+     </div>
+     <div class="col-1 border">
+       <P><strong><%=totl50%>l</strong></P>
+     </div>
+   </div>
+   
+</div>  
+        
+        
+<%- include ('../partials/footer')%>

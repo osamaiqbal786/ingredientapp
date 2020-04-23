@@ -1,0 +1,54 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(bank.length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+  <%var gd=0%>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Money deposited to bank</strong></p>
+  </div>
+      <div class="row border">
+    <div class="col-2 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-8 border">
+      <P><strong>Description</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    <% bank.forEach(function(bank){ %>
+    <div class="row border">
+    <div class="col-2 border">
+      <P><%=bank.date%></P>
+    </div>
+     <div class="col-8 border">
+      <P><%=bank.desc%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=bank.amount%></P>
+    </div>
+    </div>
+    <%gd=gd+parseFloat(bank.amount)%>
+    
+    <% }) %>
+    <div class="row border">
+      <div class="col-10 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-2 border">
+        <P><strong><%=gd.toFixed(2)%></strong></P>
+      </div>
+    </div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

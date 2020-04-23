@@ -1,0 +1,112 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(salary.length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+
+</div>
+  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;%>
+
+<% salary.forEach(function(salary){ %>
+    <%st=st+parseFloat(salary.amount)%>
+    <% }) %>
+    
+    <% govt.forEach(function(govt){ %>
+    <%gt=gt+parseFloat(govt.amount)%>
+    <% }) %>
+    
+    <% car.forEach(function(car){ %>
+    <%ct=ct+parseFloat(car.amount)%>
+    <% }) %>
+    
+    <% rent.forEach(function(rent){ %>
+    <%trt=trt+parseFloat(rent.amount)%>
+    <% }) %>
+    
+    <% extra.forEach(function(extra){ %>
+    <%et=et+parseFloat(extra.amount)%>
+    <% }) %>
+
+
+
+
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>All expensesk</strong></p>
+  </div>
+      <div class="row border">
+    
+    <div class="col-9 border">
+      <P class="text-center"><strong>Description</strong></P>
+    </div>
+    <div class="col-3 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    
+    
+     <div class="row border">
+     <div class="col-9 border">
+      <P>Total Expenses on salary of-<%=salary[0].month%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=st%></P>
+    </div>
+    </div>
+    
+         <div class="row border">
+     <div class="col-9 border">
+      <P>Total Expenses on car deisel and maintainance of-<%=salary[0].month%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=ct%></P>
+    </div>
+    </div>
+    
+    
+             <div class="row border">
+     <div class="col-9 border">
+      <P>Total Expenses on government fees of-<%=salary[0].month%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=gt%></P>
+    </div>
+    </div>
+    
+                 <div class="row border">
+     <div class="col-9 border">
+      <P>Total Expenses on trailor rent of-<%=salary[0].month%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=trt%></P>
+    </div>
+    </div>
+    
+                 <div class="row border">
+     <div class="col-9 border">
+      <P>Total office and extra Expenses of-<%=salary[0].month%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=et%></P>
+    </div>
+    </div>
+    
+    
+    
+    <div class="row border">
+      <div class="col-9 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-3 border">
+        <P><strong><%=st+ct+gt+trt+et%></strong></P>
+      </div>
+    </div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

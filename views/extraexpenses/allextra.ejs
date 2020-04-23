@@ -1,0 +1,60 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(extra.length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+  <%var gd=0%>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>All office and extra expenses</strong></p>
+  </div>
+    <div class="row border">
+       <div class="col-1 border">
+      <P><strong>voucher no</strong></P>
+    </div> 
+    <div class="col-2 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="col-7 border">
+      <P><strong>Description</strong></P>
+    </div>
+    <div class="col-2 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    <% extra.forEach(function(extra){ %>
+    <div class="row border">
+         <div class="col-1 border">
+      <P><%=extra.voucherno%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=extra.date%></P>
+    </div>
+     <div class="col-7 border">
+      <P><%=extra.desc%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=extra.amount%></P>
+    </div>
+    </div>
+    <%gd=gd+parseFloat(extra.amount)%>
+    
+    <% }) %>
+    <div class="row border">
+      <div class="col-10 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-2 border">
+        <P><strong><%=gd.toFixed(2)%></strong></P>
+      </div>
+    </div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

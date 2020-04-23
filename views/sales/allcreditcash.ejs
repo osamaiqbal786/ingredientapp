@@ -1,0 +1,109 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(recipt.length<1){%>
+  <h1> No recipt found</h1>
+  
+  <% }else{ %>
+  <%var gd=0;var sal=0;%>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong><%=sales[0].name.toUpperCase()%></strong></p>
+  </div>
+    <div class="row border">
+    
+    <div class="col-8 border">
+      <P><strong>Description</strong></P>
+    </div>
+    <div class="col-4 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+    <% recipt.forEach(function(recipt){ %>
+    
+    <%gd=gd+parseFloat(recipt.amount)%>
+    
+    <% }) %>
+    
+     
+    <% sales.forEach(function(sales){ %>
+    <%sal=sal+parseFloat(sales.total)%>
+    
+    <% }) %>
+    <% sal=(sal+(sal*sales[0].vat/100)).toFixed(2)%>
+    <div class="row border">
+      <div class="col-8 border">
+        <p class="text-center"><strong>Total credit-<%=credit[0].month%> <%=credit[0].year%></strong></p>
+      </div>
+      <div class="col-4 border">
+        <P><strong><%=credit[0].amount%></strong></P>
+      </div>
+    </div>
+    
+    <div class="row border">
+      <div class="col-8 border">
+        <p class="text-center"><strong> Total sale amount-<%=sales[0].month%> <%=sales[0].year%></strong></p>
+      </div>
+      <div class="col-4 border">
+        <P><strong><%=sal%></strong></P>
+      </div>
+    </div>
+     <div class="row border">
+      <div class="col-8 border">
+        <p class="text-center"><strong>Grand total sale amount</strong></p>
+      </div>
+      <div class="col-4 border">
+        <P><strong><%=(parseFloat(sal)+parseFloat(credit[0].amount))%></strong></P>
+      </div>
+    </div>
+    <div class="row border">
+      <div class="col-8 border">
+        <p class="text-center"><strong>Total cash recived-<%=recipt[0].month%> <%=recipt[0].year%> </strong></p>
+      </div>
+      <div class="col-4 border">
+        <P><strong><%=gd%></strong></P>
+      </div>
+    </div>
+    <div class="row border">
+      <div class="col-8 border">
+        <p class="text-center"><strong>total credit amount-<%=recipt[0].month%> <%=recipt[0].year%></strong></p>
+      </div>
+      <div class="col-4 border">
+        <P><strong><%=(parseFloat(sal)+parseFloat(credit[0].amount))-gd%></strong></P>
+      </div>
+    </div>
+  
+  
+  <div class="container">
+    <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">update credited amount for this month</h2>
+            
+            <form action="/sales/updatecreditcash/<%=sales[0].name%>/<%=sales[0].month%>/<%=sales[0].year%>" method="post">
+           
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">amount</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="item[amount]" value="<%=(parseFloat(sal)+parseFloat(credit[0].amount))-gd%>" required>
+             </div>
+             </div>
+                         
+             <div class="form-group">
+            <button class="btn btn-sm btn-primary btn-block">Submit</button>
+            </div>
+            <p><a href="/home">Go Back</a></p>
+        </form>
+</div>
+</div>
+</div>
+  
+    
+</div>
+ <% } %>       
+        
+<%- include ('../partials/footer')%>
