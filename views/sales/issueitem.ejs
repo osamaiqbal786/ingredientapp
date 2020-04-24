@@ -11,24 +11,35 @@
             <h2 class="text-center">Issue Item</h2>
             
             <form action="/sales/issueitem" method="post">
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="item[date]" value="<%=today%>" required>
+                    </div>
+            </div>
+            
+            
+             <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="item[name]" required>
+                    <option value="">Select salesman</option>
+                    <%employee.forEach(function(employee){%>
+                        <option><%=employee.name%></option>
+                  <%  }) %>
+                    
+                    
+                    </select>
+                    </div>
+                </div>
             <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
                     <div class="col-sm-10">
                     <input class="form-control" type="text" name="item[voucher]" placeholder="voucher number" required>
                     </div>
             </div>
-            <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="item[name]" placeholder="sales man name" required>
-                    </div>
-            </div>
-             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="item[date]" value="<%=today%>" required>
-                    </div>
-            </div>
+            
+             
                <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
                     <div class="col-sm-10">

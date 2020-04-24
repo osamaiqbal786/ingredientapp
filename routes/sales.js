@@ -9,7 +9,7 @@ var inventory= require("../models/inventory");
 var creditsale= require("../models/creditsale");
 var creditcash= require("../models/creditcash");
 var updateinventory= require("../models/updateinventory");
-
+var ctcprice=require("../models/ctcprice")
 
 
 
@@ -26,14 +26,22 @@ router.get("/home",function(req,res){
 });
 
 router.get("/sales/addsales",function(req,res){
-    price.find({},function(err, price) {
+   employee.find({},function(err, employee) {
+       if(err){
+           console.log(err)
+       }else{
+          
+          price.find({},function(err, price) {
         if(err){
             console.log(err)
         }else{
-           res.render("sales/sales",{price:price}) 
+           res.render("sales/sales",{price:price,employee:employee}) 
         }
         
-    })
+        }) 
+       }
+   }) 
+    
     
 });
 
@@ -67,7 +75,15 @@ router.post("/sales/addsales",function(req, res){
 });
 
 router.get("/sales/viewsales",function(req,res){
-    res.render("sales/viewsales")
+    employee.find({},function(err, employee) {
+        if(err){
+            console.log(err)
+        }else{
+             res.render("sales/viewsales",{employee:employee})
+        }
+       
+    })
+    
 });
 
 router.get("/sales/allsales/:name/:month/:year",function(req,res){
@@ -91,14 +107,33 @@ router.post("/sales/setprice",function(req,res){
        if(err){
            console.log(err)
        }else{
-           req.flash("success","price updated");
+           req.flash("success","sale price updated");
+           res.redirect("/home")
+       }
+    });
+});
+
+
+router.post("/sales/setctcprice",function(req,res){
+    ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
+       if(err){
+           console.log(err)
+       }else{
+           req.flash("success","cost to company price updated");
            res.redirect("/home")
        }
     });
 });
 
 router.get("/sales/salerecipt",function(req,res){
-    res.render("sales/recipt")
+    employee.find({},function(err, employee) {
+      if(err){
+          console.log(err)
+      }else{
+         res.render("sales/recipt",{employee:employee}) 
+      }  
+    })
+    
 });
 
 router.post("/sales/addsalerecipt",function(req, res){
@@ -114,7 +149,13 @@ router.post("/sales/addsalerecipt",function(req, res){
 });
 
 router.get("/sales/viewallrecipt",function(req,res){
-    res.render("sales/viewrecipt")
+     employee.find({},function(err, employee) {
+      if(err){
+          console.log(err)
+      }else{
+         res.render("sales/viewrecipt",{employee:employee}) 
+      }  
+    });
 });
 
 router.get("/sales/viewallsalerecipt/:name/:month/:year",function(req,res){
@@ -137,8 +178,13 @@ router.post("/sales/viewallsalerecipt",function(req,res){
 });
 
 router.get("/sales/issueitem",function(req, res) {
-   
-   res.render("sales/issueitem");
+       employee.find({},function(err, employee) {
+      if(err){
+          console.log(err)
+      }else{
+         res.render("sales/issueitem",{employee:employee}) 
+      }  
+    });
     
 });
 
@@ -187,7 +233,13 @@ router.post("/sales/issueitem",function(req, res) {
 });
 
 router.get("/sales/viewissued",function(req,res){
-    res.render("sales/viewissueditem")
+           employee.find({},function(err, employee) {
+      if(err){
+          console.log(err)
+      }else{
+         res.render("sales/viewissueditem",{employee:employee}) 
+      }  
+    });
 });
 
 router.get("/sales/viewallissueditem/:name/:month/:year",function(req,res){
@@ -276,7 +328,14 @@ router.post("/sales/updatecreditcash/:name/:month/:year",function(req, res) {
 
 
 router.get("/sales/creditcash",function(req, res) {
-   res.render("sales/creditcash") 
+    employee.find({},function(err, employee) {
+       if(err){
+           console.log(err)
+       }else{
+           res.render("sales/creditcash",{employee:employee}) 
+       } 
+    })
+   
 });
 
 router.get("/sales/allcreditcash/:name/:month/:year",function(req, res) {

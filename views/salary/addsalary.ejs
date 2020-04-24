@@ -12,13 +12,25 @@
             <h2 class="text-center">Add salary and commision</h2>
             
             <form action="/expenses/addsalary" method="post">
-            
-             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+               <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                    <input class="form-control" type="text" name="salary[name]" placeholder="sales man name" required>
+                    <input class="form-control" type="text" name="salary[date]" value="<%=today%>" required>
                     </div>
             </div>
+                <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="salary[name]" required>
+                    <option value="">Select employee</option>
+                    <%employee.forEach(function(employee){%>
+                        <option><%=employee.name%></option>
+                  <%  }) %>
+                    
+                    
+                    </select>
+                    </div>
+                </div>
                 
                 <div class="form-group row">
                     <label for="d" class="col-sm-2 col-form-label">Designation</label>
@@ -35,12 +47,7 @@
             </div>
             
             
-             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="salary[date]" value="<%=today%>" required>
-                    </div>
-            </div>
+          
                <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
                     <div class="col-sm-10">

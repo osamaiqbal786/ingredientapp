@@ -7,16 +7,19 @@
         
         <div style="width:50%; margin:0 auto;">
             
-            <h2 class="text-center">view your sales</h2>
+            <h2 class="text-center">view your salerecipt</h2>
             
             <form action="/sales/viewallsalerecipt" method="post">
             <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="salerecipt[name]">
-                    <option selected>Select Name</option>
-                    <option>ram suresh</option>
-                    <option>jawed</option>
+                    <select id="inputState" class="form-control" name="salerecipt[name]" required>
+                    <option value="">Select salesman</option>
+                    <%employee.forEach(function(employee){%>
+                        <option><%=employee.name%></option>
+                  <%  }) %>
+                    
+                    
                     </select>
                     </div>
                 </div>

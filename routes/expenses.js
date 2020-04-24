@@ -6,14 +6,20 @@ var trailorrent=require("../models/trailorrent");
 var extraexpense=require("../models/extraexpense");
 var bank=require("../models/bank");
 var salary= require("../models/salary");
-
+var employee=require("../models/employee");
 
 
 
 
 
 router.get("/expenses/addsalary",function(req,res){
-    res.render("salary/addsalary")
+    employee.find({},function(err, employee){
+        if(err){
+            console.log(err)
+        }else{
+           res.render("salary/addsalary",{employee:employee}) 
+        }
+    });
 });
 
 router.post("/expenses/addsalary",function(req, res){
@@ -62,7 +68,13 @@ router.post("/expenses/allsalary",function(req,res){
 
 
 router.get("/expenses/addcaranddeisel",function(req,res){
-    res.render("caranddeisel/adddeisel")
+        employee.find({},function(err, employee){
+        if(err){
+            console.log(err)
+        }else{
+           res.render("caranddeisel/adddeisel",{employee:employee}) 
+        }
+    });
 });
 
 router.post("/expenses/addcaranddeisel",function(req, res){

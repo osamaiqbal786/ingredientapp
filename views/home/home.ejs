@@ -4,7 +4,7 @@
 <header class="jumbotron">
       <div class="container">
           <h1>Fahad Al-Jeneede Est For Trading</h1>
-    <p>A Water Company</p>
+    <p>A Water Trading Company</p>
     <p>
         <a class="btn btn-primary btn-large" href="/addemployee">Add new employee</a>
         </p>
@@ -59,14 +59,14 @@
   <div class="dropdown-menu">
     <a class="dropdown-item" href="/expenses/addsalary">Add salary</a>
     <a class="dropdown-item" href="/expenses/viewsalary">view salary</a>
-    <a class="dropdown-item" href="/expenses/addcaranddeisel">Add car deisel and maintainance</a>
-     <a class="dropdown-item" href="/expenses/viewcaranddeisel">view car deisel and maintainance</a>
+    <a class="dropdown-item" href="/expenses/addcaranddeisel">Add car maintainance and deisel</a>
+     <a class="dropdown-item" href="/expenses/viewcaranddeisel">view car maintainance and deisel</a>
         <a class="dropdown-item" href="/expenses/addgovtfees">Add govt fees</a>
         <a class="dropdown-item" href="/expenses/viewgovtfees">view govt fees</a>
             <a class="dropdown-item" href="/expenses/addtrailorrent">Add trailor rent</a>
             <a class="dropdown-item" href="/expenses/viewtrailorrent">View trailor rent</a>
-                <a class="dropdown-item" href="/expenses/addextra">Add miscellaneous expenses</a>
-                <a class="dropdown-item" href="/expenses/viewextra">View miscellaneous expenses</a>
+                <a class="dropdown-item" href="/expenses/addextra">Add office miscellaneous expenses</a>
+                <a class="dropdown-item" href="/expenses/viewextra">View office miscellaneous expenses</a>
   </div>
 </div>
  </li>       
@@ -84,10 +84,10 @@
                 <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    set price
+    set sale price
   </a>
   <div class="dropdown-menu">
-      <form action="/setprice" method="post">
+      <form action="/sales/setprice" method="post">
         <input class="form-control dropdown-item" type="text" name="price[price200ml]" placeholder="200ml price" required>
         <input class="form-control dropdown-item" type="text" name="price[price330ml]" placeholder="330ml price" required>
         <input class="form-control dropdown-item" type="text" name="price[price600ml]" placeholder="600ml price" required>
@@ -103,39 +103,35 @@
  </li>             
  
  
+ 
+ <li class="list-group-item"> 
+                <div class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    set bottle cost to company
+  </a>
+  <div class="dropdown-menu">
+      <form action="/sales/setctcprice" method="post">
+        <input class="form-control dropdown-item" type="text" name="price[price200ml]" placeholder="200ml price" required>
+        <input class="form-control dropdown-item" type="text" name="price[price330ml]" placeholder="330ml price" required>
+        <input class="form-control dropdown-item" type="text" name="price[price600ml]" placeholder="600ml price" required>
+        <input class="form-control dropdown-item" type="text" name="price[price1500ml]" placeholder="1.5l price" required>
+        <input class="form-control dropdown-item" type="text" name="price[price5000ml]" placeholder="5l price" required>
+     <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Update</button>
+            </div>
+    </form>
+  </div>
+</div>
+ </li>             
+ 
+ 
             </div>
             
             
             
         </div>
         
-        <div class="col-md-8">
-           
-                
-               <div class="row" style="display:flex; flex-wrap: wrap; padding:10px 0">
-   <% employee.forEach(function(employee){%>
-    <div class="col-md-3 col-sm-6">
-        <div class="img-fluid img-thumbnail">
-            <img  src="<%=employee.image%>"class="img-fluid" alt="Responsive image">
-            <div class="caption">
-            <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
-            <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
-            <h6><a href="#" class="text-muted">salary=<%=employee.salary%></a></h6>
-            
-            <form id="deleteform" action="/employee/<%=employee._id%>?_method=DELETE" method="post">
-                         <button class="btn btn-sm btn-outline-danger">Delete</button>
-                     </form>
-           <!--<p class="text-center"><a href="/employee/<%= employee._id %>" class="text-danger">DELETE</a></p> -->
-            
-            </div>
-        </div>
-        
-        
-    </div>
-<% }); %> 
-</div> 
-            
-        </div>
+
         
         
         

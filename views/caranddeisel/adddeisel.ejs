@@ -12,50 +12,62 @@
             <h2 class="text-center">Add car and deisel expenses</h2>
             
             <form action="/expenses/addcaranddeisel" method="post">
+                
+                             <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="car[name]" required>
+                    <option value="">Select employee</option>
+                    <%employee.forEach(function(employee){%>
+                        <option><%=employee.name%></option>
+                  <%  }) %>
+                    
+                    
+                    </select>
+                    </div>
+                </div>
             
             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">voucher No</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="car[voucherno]" placeholder="voucher number" required>
-                    </div>
-            </div>
-             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">plate no</label>
-                    <div class="col-sm-10">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">vachile type & plate no</label>
+                    <div class="col-sm-9">
                     <input class="form-control" type="text" name="car[plate]" placeholder="plate no" required>
                     </div>
             </div>
              <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="car[name]" placeholder="sales man name" required>
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Date</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" name="car[date]" value="<%=today%>" required>
                     </div>
             </div>
+            
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">voucher No</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" name="car[voucherno]" placeholder="voucher number" required>
+                    </div>
+            </div>
+             
+
                 
                 <div class="form-group row">
-                    <label for="d" class="col-sm-2 col-form-label">Description</label>
-                    <div class="col-sm-10">
+                    <label for="d" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-9">
                     <input id="d" class="form-control" type="text" name="car[desc]" placeholder="description" required>
                     </div>
             </div>
                 
             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
-                    <div class="col-sm-10">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Amount</label>
+                    <div class="col-sm-9">
                     <input class="form-control" type="text" name="car[amount]" placeholder="amount" required>
                     </div>
             </div>
             
             
-             <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="car[date]" value="<%=today%>" required>
-                    </div>
-            </div>
+            
                <div class="form-group row">
-                   <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
-                    <div class="col-sm-10">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Month</label>
+                    <div class="col-sm-9">
                     <select id="inputState" class="form-control" name="car[month]">
                     <option selected><%=month.toUpperCase()%></option>
                     <option>JANUARY</option>
@@ -64,8 +76,8 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
-                    <div class="col-sm-10">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Year</label>
+                    <div class="col-sm-9">
                     <select id="inputState" class="form-control" name="car[year]">
                     <option selected><%=year%></option>
                     <option>2020</option>

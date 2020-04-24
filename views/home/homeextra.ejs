@@ -1,0 +1,27 @@
+        <div class="col-md-8">
+           
+                
+               <div class="row" style="display:flex; flex-wrap: wrap; padding:10px 0">
+   <% employee.forEach(function(employee){%>
+    <div class="col-md-3 col-sm-6">
+        <div class="img-fluid img-thumbnail">
+            <img  src="<%=employee.image%>"class="img-fluid" alt="Responsive image">
+            <div class="caption">
+            <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
+            <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
+            <h6><a href="#" class="text-muted">salary=<%=employee.salary%></a></h6>
+            
+            <form id="deleteform" action="/employee/<%=employee._id%>?_method=DELETE" method="post">
+                         <button class="btn btn-sm btn-outline-danger">Delete</button>
+                     </form>
+           <p class="text-center"><a href="/employee/<%= employee._id %>" class="text-danger">DELETE</a></p> 
+            
+            </div>
+        </div>
+        
+        
+    </div>
+<% }); %> 
+</div> 
+            
+        </div>
