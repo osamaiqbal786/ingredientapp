@@ -432,7 +432,7 @@ router.get("/expenses/salaryslip",function(req,res){
 
 
 router.get("/expenses/viewsalaryslip/:name/:month/:year",function(req,res){
-salary.find({month:req.params.name,month:req.params.month,year:req.params.year}, function(err, slip){
+salary.find({name:req.params.name,month:req.params.month,year:req.params.year}, function(err, slip){
     if(err){
         console.log(err)
     }else{
