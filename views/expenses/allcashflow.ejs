@@ -1,0 +1,162 @@
+<%- include ('../partials/header')%>
+
+<div class="container">
+  <%if(salary.length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+
+</div>
+  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var tt=0;var grt=0;%>
+
+<% salary.forEach(function(salary){ %>
+    <%st=st+parseFloat(salary.amount)%>
+    <% }) %>
+    
+    <% govt.forEach(function(govt){ %>
+    <%gt=gt+parseFloat(govt.amount)%>
+    <% }) %>
+    
+    <% car.forEach(function(car){ %>
+    <%ct=ct+parseFloat(car.amount)%>
+    <% }) %>
+    
+    <% rent.forEach(function(rent){ %>
+    <%trt=trt+parseFloat(rent.amount)%>
+    <% }) %>
+    
+    <% extra.forEach(function(extra){ %>
+    <%et=et+parseFloat(extra.amount)%>
+    <% }) %>
+    
+    <% recipt.forEach(function(recipt){ %>
+    <%rt=rt+parseFloat(recipt.amount)%>
+    <% }) %>
+    
+    <% bank.forEach(function(bank){ %>
+    <%bt=bt+parseFloat(bank.amount)%>
+    <% }) %>
+
+
+
+
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>All cash flow</strong></p>
+  </div>
+      <div class="row border">
+    
+    <div class="col-7 border">
+      <P class="text-center"><strong>Description</strong></P>
+    </div>
+    <div class="col-5 border">
+      <P><strong>Amount</strong></P>
+    </div>
+    </div>
+    
+     <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total money in hand of-<%=credit[0].month%></strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><%=credit[0].amount%></P>
+      </div>
+    </div>
+    
+        <% employee.forEach(function(employee){ %>
+    
+      <% recipt.forEach(function(recipt){ %>
+       <%if (employee.name===recipt.name){ %>
+       <% tt=tt+parseFloat(recipt.amount)%>
+       <% }else{ %>
+       <% tt=0;%>
+      <% } %>
+      
+    <% }) %>
+    <%grt=grt+tt%>
+    <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>total cash received from-<%=employee.name%></strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><%=tt%></P>
+      </div>
+    </div>
+    
+    <% }) %>
+     <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total cash collected</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=grt+parseFloat(credit[0].amount)%></strong></P>
+      </div>
+    </div>
+    
+    
+    <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total expenses</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=st+ct+gt+trt+et%></strong></P>
+      </div>
+    </div>
+    
+    <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total balance after expenses</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=(grt+parseFloat(credit[0].amount))-(st+ct+gt+trt+et)%></strong></P>
+      </div>
+    </div>
+    <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total cash deposited to bank</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=bt%></strong></P>
+      </div>
+    </div>
+        <div class="row border">
+      <div class="col-7 border">
+        <p class="text-left"><strong>Total cash left in hand</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=((grt+parseFloat(credit[0].amount))-(st+ct+gt+trt+et))-bt%></strong></P>
+      </div>
+    </div>
+    
+    
+</div>
+
+<div class="container">
+    <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">Update cash in hand</h2>
+            
+            <form action="/expenses/updatecresittotalcash/<%=bank[0].month%>/<%=bank[0].year%>" method="post">
+           
+             <div class="form-group row">
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">amount</label>
+                    <div class="col-sm-10">
+             <input class="form-control" type="text" name="flow[amount]" placeholder="amount" required>
+             </div>
+             </div>
+                         
+             <div class="form-group">
+            <button class="btn btn-sm btn-primary btn-block">Submit</button>
+            </div>
+            <p><a href="/home">Go Back</a></p>
+        </form>
+</div>
+</div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

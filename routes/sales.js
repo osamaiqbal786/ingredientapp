@@ -303,7 +303,8 @@ router.post("/sales/updatecreditsale/:name/:month/:year",function(req, res) {
           credit.month=req.params.month;
           credit.year=req.params.year;
           credit.save()
-          res.redirect("/home")
+          req.flash("success","credit for this month added");
+          res.redirect("/sales/viewallissueditem/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
        
       } 
    }); 
@@ -319,7 +320,8 @@ router.post("/sales/updatecreditcash/:name/:month/:year",function(req, res) {
           credit.month=req.params.month;
           credit.year=req.params.year;
           credit.save()
-          res.redirect("/home")
+          req.flash("success","cash credit for this month added");
+          res.redirect("/sales/allcreditcash/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
        
       } 
    }); 

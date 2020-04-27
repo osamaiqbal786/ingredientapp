@@ -1,0 +1,96 @@
+<%- include ('../partials/header')%>
+<% var tot=0;var com=0;%>
+<div class="container">
+  <%if(slip[0].length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+</div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <div class="col-6 border">
+        <p><strong>Salary of-<%=slip[0].month%> </strong></p>
+    </div>
+    <div class="col-6 border">
+        <p><strong>Salary of-<%=slip[0].date%> </strong></p>
+    </div>
+  </div>
+
+    <% slip.forEach(function(salary){ %>
+    <%if(salary.type==="Salary"){ %>
+    <div class="row border">
+         <div class="col-6 border">
+      <P><strong>Name</strong></P>
+    </div>
+        <div class="col-6 border">
+      <P><%=salary.name%></P>
+    </div>
+    </div>
+    
+<div class="row border">
+    <div class="col-6 border">
+      <P><strong>Designation</strong></P>
+    </div>
+     <div class="col-6 border">
+      <P><%=salary.designation%></P>
+    </div>
+    </div>
+    
+    <div class="row border">
+        <div class="col-6 border">
+      <P><strong>Basic salary</strong></P>
+    </div>
+    <div class="col-6 border">
+      <P><%=salary.bsalary%></P>
+    </div>
+    </div>
+    <div class="row border">
+        <div class="col-6 border">
+      <P><strong>Food allownce</strong></P>
+    </div>
+    <div class="col-6 border">
+      <P><%=salary.food%></P>
+    </div>
+    </div>
+<% tot=salary.amount;%>
+    <% } %>
+    <% }) %>
+    
+     <% slip.forEach(function(salary1){ %>
+     <%if (salary1.type==="Commision"){%>
+     
+     <div class="row border">
+        <div class="col-6 border">
+      <P><strong>commision</strong></P>
+    </div>
+    <div class="col-6 border">
+      <P><%=salary1.amount%></P>
+    </div>
+    </div>
+    <% com=salary1.amount;%>
+     <% } %>
+ <% }) %>
+ 
+  <div class="row border">
+        <div class="col-6 border">
+      <P><strong>Total salary</strong></P>
+    </div>
+    <div class="col-6 border">
+      <P><%=parseFloat(tot)+parseFloat(com)%></P>
+    </div>
+    </div>
+ 
+ <div class="row"style="padding:80px 0;">
+     <div class="col-6">
+         <P style="text-decoration:underline"><strong>Accountant Signature</strong></P>
+     </div>
+     <div class="col-6">
+         <P class="text-right"style="text-decoration:underline"><strong>Employee Signature</strong></P>
+     </div>
+ </div>
+</div>
+        
+<% } %>        
+        
+<%- include ('../partials/footer')%>

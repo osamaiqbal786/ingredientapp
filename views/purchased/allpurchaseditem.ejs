@@ -1,0 +1,157 @@
+<%- include ('../partials/header')%>
+<div class="container">
+  <%if(pitem.length<1){%>
+  <h1> No record found</h1>
+  
+  <% }else{ %>
+  <%var gd=0%>
+</div>
+<div style="padding:0 30px">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>Purchased history</strong></p>
+  </div>
+    <div class="row border">
+  
+    <div class="column4 border">
+      <P><strong>Date</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>200<br>ml</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>Rate</strong></P>
+    </div>
+    <div class="column2 border">
+      <P><strong>Total</strong></P>
+    </div>
+    <div class="column border">
+     <P><strong>300<br>ml</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>Rate</strong></P>
+    </div>
+    <div class="column2 border">
+      <P><strong>Total</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>600<br>ml</strong></P>
+    </div>
+    <div class="column border">
+    <P><strong>Rate</strong></P>
+    </div>
+    <div class="column2 border">
+      <P><strong>Total</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>1.5L</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>Rate</strong></P>
+    </div>
+    <div class="column2 border">
+     <P><strong>Total</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>5L</strong></P>
+    </div>
+    <div class="column border">
+      <P><strong>Rate</strong></P>
+    </div>
+    <div class="column2 border">
+      <P><strong>Total</strong></P>
+    </div>
+   
+    <div class="column4 border">
+      <P><strong>Grand Total</strong></P>
+    </div>
+        <div class="column3 border">
+      <P><strong>Vat-<%=pitem[0].vat%>%</strong></P>
+    </div>
+     <div class="column4 border">
+      <P><strong>Grand Total</strong></P>
+    </div>
+  </div>
+  
+    <% pitem.forEach(function(pitem){ %>
+     <div class="row border"> 
+     
+    <div class="column4 border">
+      <P><%=pitem.date%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.peice200ml%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.price200ml%></P>
+    </div>
+    <div class="column2 border">
+      <P><%=parseFloat(pitem.peice200ml)*parseFloat(pitem.price200ml)%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.peice330ml%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.price330ml%></P>
+    </div>
+    <div class="column2 border">
+      <P><%=parseFloat(pitem.peice330ml)*parseFloat(pitem.price330ml)%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.peice600ml%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.price600ml%></P>
+    </div>
+    <div class="column2 border">
+      <P><%=parseFloat(pitem.peice600ml)*parseFloat(pitem.price600ml)%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.peice1500ml%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.price1500ml%></P>
+    </div>
+    <div class="column2 border">
+      <P><%=parseFloat(pitem.peice1500ml)*parseFloat(pitem.price1500ml)%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.peice5000ml%></P>
+    </div>
+    <div class="column border">
+      <P><%=pitem.price5000ml%></P>
+    </div>
+    <div class="column2 border">
+      <P><%=parseFloat(pitem.peice5000ml)*parseFloat(pitem.price5000ml)%></P>
+    </div>
+    
+
+    <div class="column4 border">
+      <P><%=pitem.total%></P>
+    </div>
+    <div class="column3 border">
+      
+      <P><%=(parseFloat(pitem.total)*(parseFloat(pitem.vat)/100)).toFixed(2)%></P>
+    </div>
+    <div class="column4 border">
+      <P><%=(parseFloat(pitem.total)+(parseFloat(pitem.total)*(parseFloat(pitem.vat)/100))).toFixed(2)%></P>
+    </div>
+    </div>
+<%gd=gd+parseFloat(pitem.total)+(parseFloat(pitem.total)*(parseFloat(pitem.vat)/100))%>
+<% }) %>
+
+<div class="row border justify-content-center">
+  <div class=" col-10 border" style="width:85%;height:60px">
+    <p class="text-right"><strong>Grand total</strong></p>
+  </div>
+  <div class="col-2 border"style="width:15%">
+    <p><strong><%=gd.toFixed(2)%></strong></p>
+    </div>
+  </div>
+  
+</div>
+ 
+<% } %>
+
+
+
+<%- include ('../partials/footer')%>
