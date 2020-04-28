@@ -568,6 +568,7 @@ router.post("/expenses/updatecredittotalcash/:month/:year",function(req,res){
             cash.year=req.params.year;
             cash.date=today;
             cash.save();
+            req.flash("success","cash left in hand updated");
            res.redirect("/home"); 
         }
     })
