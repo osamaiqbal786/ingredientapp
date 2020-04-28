@@ -392,7 +392,7 @@ router.post("/expenses/addpurchaseditem",function(req, res){
           pitem.total=total.toFixed(2);
           pitem.save()
           req.flash("success","purchased successfully updated");
-          res.redirect("/home");
+          res.redirect("/order/"+req.body.pitem.peice200ml+"/"+req.body.pitem.peice330ml+"/"+req.body.pitem.peice600ml+"/"+req.body.pitem.peice1500ml+"/"+req.body.pitem.peice5000ml);
       }
     });
 });
@@ -554,6 +554,24 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
 
 router.post("/expenses/allcashflow",function(req,res){
    res.redirect("/expenses/allcashflow/"+req.body.cash.month+"/"+req.body.cash.year);
+    
+});
+
+
+router.post("/expenses/updatecredittotalcash/:month/:year",function(req,res){
+    let today = new Date().toLocaleDateString()
+    credittotalcash.create(req.body.flow,function(err, cash) {
+        if(err){
+            console.log(err)
+        }else{
+            cash.month=req.params.month;
+            cash.year=req.params.year;
+            cash.date=today;
+            cash.save();
+           res.redirect("/home"); 
+        }
+    })
+   
     
 });
 

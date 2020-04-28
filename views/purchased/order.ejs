@@ -1,0 +1,117 @@
+<%- include ('./partials/header')%>
+<%let today = new Date().toLocaleDateString()%>
+<%var tot2=parseFloat(p200)*parseFloat(price[0].price200ml)%> 
+<%var tot3=parseFloat(p330)*parseFloat(price[0].price330ml)%>
+<%var tot6=parseFloat(p600)*parseFloat(price[0].price600ml)%>
+<%var tot15=parseFloat(p1500)*parseFloat(price[0].price1500ml)%>
+<%var tot50=parseFloat(p5000)*parseFloat(price[0].price5000ml)%>
+<%var gt=tot2+tot3+tot6+tot15+tot50%>
+<%var plt2=parseInt(parseInt(p200)/108) %>
+<%var plt3=parseInt(parseInt(p330)/81) %>
+<%var plt6=parseInt(parseInt(p600)/63) %>
+<%var plt15=parseInt(parseInt(p1500)/55) %>
+<%var plt50=parseInt(parseInt(p5000)/60) %>
+<%var t2=((parseInt(parseInt(p200)/108))/22).toFixed(1) %>
+<%var t3=((parseInt(parseInt(p330)/81))/24).toFixed(1) %>
+<%var t6=((parseInt(parseInt(p600)/63))/24).toFixed(1) %>
+<%var t15=((parseInt(parseInt(p1500)/55))/24).toFixed(1) %>
+<%var t50=((parseInt(parseInt(p5000)/60))/22).toFixed(1) %>
+
+
+
+
+<img src="https://res.cloudinary.com/djweoyvdx/image/upload/v1588074420/CamScanner_04-28-2020_13.27.16_2-1_hzuuch.jpg" class="img-fluid" alt="Responsive image">
+<div class="container">
+    <p>
+        <br>
+        <br>
+        <br>
+        <br>
+<%=today%><br>
+<br>
+Attn:	Mr. Saraf<br>
+Support service Manager<br>
+ Abar Hail Water Factory, Hail<br>
+ <br>
+Sir,<br>
+<br>
+Please arrange to deliver the following items to Al Jeneede Trading Establishment, Khafji as early as possible.<br>
+</p>
+<div class="row">
+    <div class="col-2">
+     1.	200 mlx48<br>
+     2.	330 mlx40<br>
+     3.	600 mlx30<br>
+     4.	1.5Ltr x12<br>
+     5.	5 Ltr x4
+    </div>
+    <div class="col-4">
+       <%=p200%>Cartons/108x<%=plt2%> pallet<br> 
+       <%=p330%>Cartons/81x<%=plt3%> pallets<br>
+       <%=p600%>Cartons/63x<%=plt6%> Pallets<br>
+       <%=p1500%>Cartons/55x<%=plt15%> Pallets<br>
+       <%=p5000%>Cartons/60x<%=plt50%> pallet
+    </div>
+    <div class="col-2">
+       <%=t2%> trailer<br> 
+       <%=t3%> trailer<br>
+       <%=t6%> trailer<br>
+       <%=t15%> trailer<br>
+       <%=t50%> trailer
+    </div>
+    <div class="col-2">
+        @SR<%=price[0].price200ml%><br>
+        @SR<%=price[0].price330ml%><br>
+        @SR<%=price[0].price600ml%><br>
+        @SR<%=price[0].price1500ml%><br>
+        @SR<%=price[0].price5000ml%>
+    </div>
+    <div class="col-2">
+       SR <%=parseFloat(p200)*parseFloat(price[0].price200ml)%><br> 
+       SR <%=parseFloat(p330)*parseFloat(price[0].price330ml)%><br>
+       SR <%=parseFloat(p600)*parseFloat(price[0].price600ml)%><br>
+       SR <%=parseFloat(p1500)*parseFloat(price[0].price1500ml)%><br>
+       SR <%=parseFloat(p5000)*parseFloat(price[0].price5000ml)%><br>
+    </div>
+
+</div>
+
+<p>
+==========================================================================================  <br> 
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Total&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@5%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt*(5/100)%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=gt+(gt*(5/100))%><br>
+	 			 
+We are arranging the payment for the above items through bank transfer. Once it is complete I will send you the bank slip.<br>
+Yours truly<br>
+<br>
+<br>
+<br>
+Al Jeneede Trading Est.<br>
+Khafji<br>
+<br>
+<br>
+<br>
+PS: If possible please send 20 empty cartons of 1.5Ltr<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    </p>
+</div>
+
+<div id="footer">
+    <img src="https://res.cloudinary.com/djweoyvdx/image/upload/v1588076686/CamScanner_04-28-2020_13.27.16_2-1_copy_wjfsqi.jpg" class="img-fluid" alt="Responsive image">
+    
+</div>
+<%- include ('./partials/footer')%>

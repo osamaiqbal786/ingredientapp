@@ -1,6 +1,5 @@
 var mongoose= require("mongoose");
 var credittotalcashschema = new mongoose.Schema({
-    name: String,
     date:String,
     month:String,
     year:String,

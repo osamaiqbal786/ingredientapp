@@ -9,7 +9,7 @@ var localstrategy= require("passport-local");
 var employeeroute=require("./routes/employee");
 var salesroute=require("./routes/sales");
 var expensesroute=require("./routes/expenses");
-
+var ctcprice=require("./models/ctcprice");
 
 
 
@@ -59,7 +59,16 @@ app.get("/",function(req,res){
     res.redirect("/home");
 });
 
-
+app.get("/order/:p200/:p330/:p600/:p1500/:p5000",function(req,res){
+    ctcprice.find({},function(err,price){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("purchased/order",{p200:req.params.p200,p330:req.params.p330,p600:req.params.p600,p1500:req.params.p1500,p5000:req.params.p5000,price:price});
+        }
+    });
+    
+});
 
 
 

@@ -1,14 +1,15 @@
 <%- include ('../partials/header')%>
 
 
-<header class="jumbotron">
-      <div class="container">
-          <h1>Fahad Al-Jeneede Est For Trading</h1>
-    <p>A Water Trading Company</p>
-    <p>
-        <a class="btn btn-primary btn-large" href="/addemployee">Add new employee</a>
-        </p>
-      </div>
+<header class="jumbotron"style="background-image:url(https://res.cloudinary.com/djweoyvdx/image/upload/v1588074420/CamScanner_04-28-2020_13.27.16_2-1_hzuuch.jpg); background-size:100%;background-repeat:no-repeat;height:240px;">
+    <!--  <div class="container">-->
+          
+    <!--      <h1>Fahad Al-Jeneede Est For Trading</h1>-->
+    <!--<p>A Water Trading Company</p>-->
+    <!--<p>-->
+    <!--    <a class="btn btn-primary btn-large" href="/addemployee">Add new employee</a>-->
+    <!--    </p>-->
+    <!--  </div>-->
     
 </header>
 
@@ -22,15 +23,15 @@
                <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    sales
+    Sales
   </a>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="/sales/addsales">Add sale</a>
-     <a class="dropdown-item" href="/sales/viewsales">view sales</a>
+     <a class="dropdown-item" href="/sales/viewsales">View sales</a>
     <a class="dropdown-item" href="/sales/salerecipt">Add sale reciept</a>
-    <a class="dropdown-item" href="/sales/viewallrecipt">view reciept</a>
-    <a class="dropdown-item" href="/sales/issueitem">issue item</a>
-    <a class="dropdown-item" href="/sales/viewissued">view issued item</a>
+    <a class="dropdown-item" href="/sales/viewallrecipt">View reciept</a>
+    <a class="dropdown-item" href="/sales/issueitem">Issue item</a>
+    <a class="dropdown-item" href="/sales/viewissued">View issued item</a>
     <a class="dropdown-item" href="/sales/creditcash">Credit/cash detail</a>
   </div>
 </div>
@@ -43,8 +44,8 @@
     Inventory
   </a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="/inventory/update">update inventory</a>
-    <a class="dropdown-item" href="/inventory/viewinventory">view inventory</a>
+    <a class="dropdown-item" href="/inventory/update">Update inventory</a>
+    <a class="dropdown-item" href="/inventory/viewinventory">View inventory</a>
   </div>
 </div>
  </li>
@@ -58,11 +59,11 @@
   </a>
   <div class="dropdown-menu">
     <a class="dropdown-item" href="/expenses/addsalary">Add salary</a>
-    <a class="dropdown-item" href="/expenses/viewsalary">view salary</a>
+    <a class="dropdown-item" href="/expenses/viewsalary">View salary</a>
     <a class="dropdown-item" href="/expenses/addcaranddeisel">Add car maintainance and deisel</a>
-     <a class="dropdown-item" href="/expenses/viewcaranddeisel">view car maintainance and deisel</a>
+     <a class="dropdown-item" href="/expenses/viewcaranddeisel">View car maintainance and deisel</a>
         <a class="dropdown-item" href="/expenses/addgovtfees">Add govt fees</a>
-        <a class="dropdown-item" href="/expenses/viewgovtfees">view govt fees</a>
+        <a class="dropdown-item" href="/expenses/viewgovtfees">View govt fees</a>
             <a class="dropdown-item" href="/expenses/addtrailorrent">Add trailor rent</a>
             <a class="dropdown-item" href="/expenses/viewtrailorrent">View trailor rent</a>
                 <a class="dropdown-item" href="/expenses/addextra">Add office miscellaneous expenses</a>
@@ -74,11 +75,11 @@
             <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    money to bank
+    Money to bank
   </a>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="/expenses/addtobank">deposit money</a>
-    <a class="dropdown-item" href="/expenses/viewtobank">view deposited money</a>
+    <a class="dropdown-item" href="/expenses/addtobank">Deposit money</a>
+    <a class="dropdown-item" href="/expenses/viewtobank">View deposited money</a>
   </div>
 </div>
  </li>
@@ -87,20 +88,20 @@
  <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    office work
+    Office work
   </a>
   <div class="dropdown-menu">
-       <a class="dropdown-item" href="/expenses/salaryslip">generate salary slip</a>
-       <a class="dropdown-item" href="/expenses/viewcashflow">view cash flow</a>
-    <a class="dropdown-item" href="/expenses/addpurchaseditem">update purchased order</a>
-    <a class="dropdown-item" href="/expenses/viewpurchaseditem">view purchased order</a>
+       <a class="dropdown-item" href="/expenses/salaryslip">Generate salary slip</a>
+       <a class="dropdown-item" href="/expenses/viewcashflow">View cash flow</a>
+    <a class="dropdown-item" href="/expenses/addpurchaseditem">Update purchased order</a>
+    <a class="dropdown-item" href="/expenses/viewpurchaseditem">View purchased order</a>
   </div>
 </div>
  </li> 
                 <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    set sale price
+    Set sale price
   </a>
   <div class="dropdown-menu">
       <form action="/sales/setprice" method="post">
@@ -123,7 +124,7 @@
  <li class="list-group-item"> 
                 <div class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    set purchased ctc
+    Set purchased ctc
   </a>
   <div class="dropdown-menu">
       <form action="/sales/setctcprice" method="post">
