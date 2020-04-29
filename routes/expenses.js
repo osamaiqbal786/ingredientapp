@@ -270,7 +270,7 @@ router.post("/expenses/addtobank",middleware.isloggedin,function(req, res){
       if(err){
           console.log(err);
       } else{
-          req.flash("success","expenses successfully added");
+          req.flash("success","successfully added to bank");
           res.redirect("/home");
       }
     });

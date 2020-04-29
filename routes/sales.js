@@ -224,6 +224,7 @@ router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
                  invto.type="ISSUED"
                  invto.name="Issued to-"+req.body.item.name;
                  invto.save();
+                 req.flash("success","Item successfully issued");
                  res.redirect("/home")
              } 
           });
@@ -435,6 +436,7 @@ router.post("/inventory/update",middleware.isloggedin,function(req, res) {
                 invto[0].dateupdated=req.body.sales.date;
                 
                 invto[0].save();
+                req.flash("success","successfully added to inventory");
                 res.redirect("/home")
                 } 
             });
