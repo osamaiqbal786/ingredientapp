@@ -83,6 +83,7 @@
   </div>
   
     <% sales.forEach(function(sales){ %>
+
      <div class="row border"> 
      <div class="column2 border">
       <P><%=sales.voucher%></P>
@@ -136,14 +137,18 @@
       <P><%=parseFloat(sales.peice5000ml)*parseFloat(sales.price5000ml)%></P>
     </div>
     
-    <% free2=parseInt(parseInt(sales.peice200ml)/20);%>
     
+   <% if(sales.shop!="home"){ %>
+  <% free2=parseInt(parseInt(sales.peice200ml)/20);%>
+  <% free3=parseInt(parseInt(sales.peice330ml)/20);%>
+  <% }else{ %>
+  <%free2=0;%>
+  <% free3=0;%>
+  <% } %>
+  
     <div class="column6 border">
       <P><%=free2%></P>
     </div>
-    
-     <% free3=parseInt(parseInt(sales.peice330ml)/20);%>
-     
     <div class="column6 border">
       <P><%=free3%></P>
     </div>

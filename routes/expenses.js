@@ -11,9 +11,11 @@ var purchased=require("../models/purchased");
 var ctcprice=require("../models/ctcprice");
 var salerecipt= require("../models/salerecipt");
 var credittotalcash= require("../models/credittotalcash");
+var sale= require("../models/sale");
+var middleware= require("../middleware");
 
 
-router.get("/expenses/addsalary",function(req,res){
+router.get("/expenses/addsalary",middleware.isloggedin,function(req,res){
     employee.find({},function(err, employee){
         if(err){
             console.log(err)
@@ -23,7 +25,7 @@ router.get("/expenses/addsalary",function(req,res){
     });
 });
 
-router.post("/expenses/addsalary",function(req, res){
+router.post("/expenses/addsalary",middleware.isloggedin,function(req, res){
     
     salary.create(req.body.salary, function(err,salerecpt){
       if(err){
@@ -35,11 +37,11 @@ router.post("/expenses/addsalary",function(req, res){
     });
 });
 
-router.get("/expenses/viewsalary",function(req,res){
+router.get("/expenses/viewsalary",middleware.isloggedin,function(req,res){
     res.render("salary/viewsalary")
 });
 
-router.get("/expenses/allsalary/:month/:year",function(req,res){
+router.get("/expenses/allsalary/:month/:year",middleware.isloggedin,function(req,res){
 salary.find({month:req.params.month,year:req.params.year}, function(err, salary){
     if(err){
         console.log(err)
@@ -52,7 +54,7 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
 });
 
 
-router.post("/expenses/allsalary",function(req,res){
+router.post("/expenses/allsalary",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allsalary/"+req.body.salary.month+"/"+req.body.salary.year);
     
 });
@@ -68,7 +70,7 @@ router.post("/expenses/allsalary",function(req,res){
 
 
 
-router.get("/expenses/addcaranddeisel",function(req,res){
+router.get("/expenses/addcaranddeisel",middleware.isloggedin,function(req,res){
         employee.find({},function(err, employee){
         if(err){
             console.log(err)
@@ -78,7 +80,7 @@ router.get("/expenses/addcaranddeisel",function(req,res){
     });
 });
 
-router.post("/expenses/addcaranddeisel",function(req, res){
+router.post("/expenses/addcaranddeisel",middleware.isloggedin,function(req, res){
     
     caranddeisel.create(req.body.car, function(err,caranddeisel){
       if(err){
@@ -90,11 +92,11 @@ router.post("/expenses/addcaranddeisel",function(req, res){
     });
 });
 
-router.get("/expenses/viewcaranddeisel",function(req,res){
+router.get("/expenses/viewcaranddeisel",middleware.isloggedin,function(req,res){
     res.render("caranddeisel/viewcaranddeisel")
 });
 
-router.get("/expenses/allcaranddeisel/:plate/:month/:year",function(req,res){
+router.get("/expenses/allcaranddeisel/:plate/:month/:year",middleware.isloggedin,function(req,res){
 caranddeisel.find({plate:req.params.plate,month:req.params.month,year:req.params.year}, function(err, car){
     if(err){
         console.log(err)
@@ -107,7 +109,7 @@ caranddeisel.find({plate:req.params.plate,month:req.params.month,year:req.params
 });
 
 
-router.post("/expenses/allcaranddeisel",function(req,res){
+router.post("/expenses/allcaranddeisel",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allcaranddeisel/"+req.body.deisel.plate+"/"+req.body.deisel.month+"/"+req.body.deisel.year);
     
 });
@@ -121,11 +123,11 @@ router.post("/expenses/allcaranddeisel",function(req,res){
 
 
 
-router.get("/expenses/addgovtfees",function(req,res){
+router.get("/expenses/addgovtfees",middleware.isloggedin,function(req,res){
     res.render("govtfees/addgovtfees")
 });
 
-router.post("/expenses/addgovtfees",function(req, res){
+router.post("/expenses/addgovtfees",middleware.isloggedin,function(req, res){
     
     govtfee.create(req.body.fees, function(err,govtfees){
       if(err){
@@ -137,11 +139,11 @@ router.post("/expenses/addgovtfees",function(req, res){
     });
 });
 
-router.get("/expenses/viewgovtfees",function(req,res){
+router.get("/expenses/viewgovtfees",middleware.isloggedin,function(req,res){
     res.render("govtfees/viewgovtfees")
 });
 
-router.get("/expenses/allgovtfees/:month/:year",function(req,res){
+router.get("/expenses/allgovtfees/:month/:year",middleware.isloggedin,function(req,res){
 govtfee.find({month:req.params.month,year:req.params.year}, function(err, fees){
     if(err){
         console.log(err)
@@ -154,7 +156,7 @@ govtfee.find({month:req.params.month,year:req.params.year}, function(err, fees){
 });
 
 
-router.post("/expenses/allgovtfees",function(req,res){
+router.post("/expenses/allgovtfees",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allgovtfees/"+req.body.fees.month+"/"+req.body.fees.year);
     
 });
@@ -168,11 +170,11 @@ router.post("/expenses/allgovtfees",function(req,res){
 
 
 
-router.get("/expenses/addtrailorrent",function(req,res){
+router.get("/expenses/addtrailorrent",middleware.isloggedin,function(req,res){
     res.render("trailorrent/addtrailorrent")
 });
 
-router.post("/expenses/addtrailorrent",function(req, res){
+router.post("/expenses/addtrailorrent",middleware.isloggedin,function(req, res){
     
     trailorrent.create(req.body.trailor, function(err,trailorrent){
       if(err){
@@ -184,11 +186,11 @@ router.post("/expenses/addtrailorrent",function(req, res){
     });
 });
 
-router.get("/expenses/viewtrailorrent",function(req,res){
+router.get("/expenses/viewtrailorrent",middleware.isloggedin,function(req,res){
     res.render("trailorrent/viewtrailorrent")
 });
 
-router.get("/expenses/alltrailorrent/:month/:year",function(req,res){
+router.get("/expenses/alltrailorrent/:month/:year",middleware.isloggedin,function(req,res){
 trailorrent.find({month:req.params.month,year:req.params.year}, function(err, trailor){
     if(err){
         console.log(err)
@@ -201,7 +203,7 @@ trailorrent.find({month:req.params.month,year:req.params.year}, function(err, tr
 });
 
 
-router.post("/expenses/alltrailorrent",function(req,res){
+router.post("/expenses/alltrailorrent",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/alltrailorrent/"+req.body.trailor.month+"/"+req.body.trailor.year);
     
 });
@@ -213,11 +215,11 @@ router.post("/expenses/alltrailorrent",function(req,res){
 
 
 
-router.get("/expenses/addextra",function(req,res){
+router.get("/expenses/addextra",middleware.isloggedin,function(req,res){
     res.render("extraexpenses/addextra")
 });
 
-router.post("/expenses/addextra",function(req, res){
+router.post("/expenses/addextra",middleware.isloggedin,function(req, res){
     
     extraexpense.create(req.body.extra, function(err,extra){
       if(err){
@@ -229,11 +231,11 @@ router.post("/expenses/addextra",function(req, res){
     });
 });
 
-router.get("/expenses/viewextra",function(req,res){
+router.get("/expenses/viewextra",middleware.isloggedin,function(req,res){
     res.render("extraexpenses/viewextra")
 });
 
-router.get("/expenses/allextra/:month/:year",function(req,res){
+router.get("/expenses/allextra/:month/:year",middleware.isloggedin,function(req,res){
 extraexpense.find({month:req.params.month,year:req.params.year}, function(err, extra){
     if(err){
         console.log(err)
@@ -246,7 +248,7 @@ extraexpense.find({month:req.params.month,year:req.params.year}, function(err, e
 });
 
 
-router.post("/expenses/allextra",function(req,res){
+router.post("/expenses/allextra",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allextra/"+req.body.extra.month+"/"+req.body.extra.year);
     
 });
@@ -258,11 +260,11 @@ router.post("/expenses/allextra",function(req,res){
 
 
 
-router.get("/expenses/addtobank",function(req,res){
+router.get("/expenses/addtobank",middleware.isloggedin,function(req,res){
     res.render("bank/addtobank")
 });
 
-router.post("/expenses/addtobank",function(req, res){
+router.post("/expenses/addtobank",middleware.isloggedin,function(req, res){
     
     bank.create(req.body.bank, function(err,bank){
       if(err){
@@ -274,11 +276,11 @@ router.post("/expenses/addtobank",function(req, res){
     });
 });
 
-router.get("/expenses/viewtobank",function(req,res){
+router.get("/expenses/viewtobank",middleware.isloggedin,function(req,res){
     res.render("bank/viewtobank")
 });
 
-router.get("/expenses/alltobank/:month/:year",function(req,res){
+router.get("/expenses/alltobank/:month/:year",middleware.isloggedin,function(req,res){
 bank.find({month:req.params.month,year:req.params.year}, function(err, bank){
     if(err){
         console.log(err)
@@ -291,7 +293,7 @@ bank.find({month:req.params.month,year:req.params.year}, function(err, bank){
 });
 
 
-router.post("/expenses/alltobank",function(req,res){
+router.post("/expenses/alltobank",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/alltobank/"+req.body.bank.month+"/"+req.body.bank.year);
     
 });
@@ -302,11 +304,11 @@ router.post("/expenses/alltobank",function(req,res){
 
 
 
-router.get("/expenses/viewexpenses",function(req,res){
+router.get("/expenses/viewexpenses",middleware.isloggedin,function(req,res){
     res.render("expenses/viewexpenses")
 });
 
-router.get("/expenses/allexpenses/:month/:year",function(req,res){
+router.get("/expenses/allexpenses/:month/:year",middleware.isloggedin,function(req,res){
 salary.find({month:req.params.month,year:req.params.year}, function(err, salary){
     if(err){
         console.log(err)
@@ -348,7 +350,7 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
 });
 
 
-router.post("/expenses/allexpenses",function(req,res){
+router.post("/expenses/allexpenses",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allexpenses/"+req.body.expenses.month+"/"+req.body.expenses.year);
     
 });
@@ -362,7 +364,7 @@ router.post("/expenses/allexpenses",function(req,res){
 
 
 
-router.get("/expenses/addpurchaseditem",function(req,res){
+router.get("/expenses/addpurchaseditem",middleware.isloggedin,function(req,res){
     ctcprice.find({},function(err, price) {
       if(err){
           console.log(err)
@@ -372,7 +374,19 @@ router.get("/expenses/addpurchaseditem",function(req,res){
     })
 });
 
-router.post("/expenses/addpurchaseditem",function(req, res){
+router.get("/order/:p200/:p330/:p600/:p1500/:p5000",middleware.isloggedin,function(req,res){
+    ctcprice.find({},function(err,price){
+        if(err){
+            console.log(err);
+        }else{
+            res.render("purchased/order",{p200:req.params.p200,p330:req.params.p330,p600:req.params.p600,p1500:req.params.p1500,p5000:req.params.p5000,price:price});
+        }
+    });
+    
+});
+
+
+router.post("/expenses/addpurchaseditem",middleware.isloggedin,function(req, res){
     var pm2=parseFloat(req.body.pitem.peice200ml);
     var pm3=parseFloat(req.body.pitem.peice330ml);
     var pm6=parseFloat(req.body.pitem.peice600ml);
@@ -390,18 +404,17 @@ router.post("/expenses/addpurchaseditem",function(req, res){
           console.log(err);
       } else{
           pitem.total=total.toFixed(2);
-          pitem.save()
-          req.flash("success","purchased successfully updated");
+          pitem.save();
           res.redirect("/order/"+req.body.pitem.peice200ml+"/"+req.body.pitem.peice330ml+"/"+req.body.pitem.peice600ml+"/"+req.body.pitem.peice1500ml+"/"+req.body.pitem.peice5000ml);
       }
     });
 });
 
-router.get("/expenses/viewpurchaseditem",function(req,res){
+router.get("/expenses/viewpurchaseditem",middleware.isloggedin,function(req,res){
     res.render("purchased/viewpurchaseditem")
 });
 
-router.get("/expenses/allpurchaseditem/:month/:year",function(req,res){
+router.get("/expenses/allpurchaseditem/:month/:year",middleware.isloggedin,function(req,res){
 purchased.find({month:req.params.month,year:req.params.year}, function(err, pitem){
     if(err){
         console.log(err)
@@ -413,13 +426,13 @@ purchased.find({month:req.params.month,year:req.params.year}, function(err, pite
 });
 
 
-router.post("/expenses/allpurchaseditem",function(req,res){
+router.post("/expenses/allpurchaseditem",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allpurchaseditem/"+req.body.pitem.month+"/"+req.body.pitem.year);
     
 });
 
 
-router.get("/expenses/salaryslip",function(req,res){
+router.get("/expenses/salaryslip",middleware.isloggedin,function(req,res){
         employee.find({},function(err, employee){
         if(err){
             console.log(err)
@@ -431,7 +444,7 @@ router.get("/expenses/salaryslip",function(req,res){
 
 
 
-router.get("/expenses/viewsalaryslip/:name/:month/:year",function(req,res){
+router.get("/expenses/viewsalaryslip/:name/:month/:year",middleware.isloggedin,function(req,res){
 salary.find({name:req.params.name,month:req.params.month,year:req.params.year}, function(err, slip){
     if(err){
         console.log(err)
@@ -442,7 +455,7 @@ salary.find({name:req.params.name,month:req.params.month,year:req.params.year}, 
 });
 });
 
-router.post("/expenses/viewsalaryslip",function(req,res){
+router.post("/expenses/viewsalaryslip",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/viewsalaryslip/"+req.body.slip.name+"/"+req.body.slip.month+"/"+req.body.slip.year);
     
 });
@@ -459,11 +472,11 @@ router.post("/expenses/viewsalaryslip",function(req,res){
 
 
 
-router.get("/expenses/viewcashflow",function(req,res){
+router.get("/expenses/viewcashflow",middleware.isloggedin,function(req,res){
     res.render("expenses/viewcashflow")
 });
 
-router.get("/expenses/allcashflow/:month/:year",function(req,res){
+router.get("/expenses/allcashflow/:month/:year",middleware.isloggedin,function(req,res){
         var month;
     var year;
     if(req.params.month==="JANUARY"){
@@ -552,13 +565,13 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
 });
 
 
-router.post("/expenses/allcashflow",function(req,res){
+router.post("/expenses/allcashflow",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allcashflow/"+req.body.cash.month+"/"+req.body.cash.year);
     
 });
 
 
-router.post("/expenses/updatecredittotalcash/:month/:year",function(req,res){
+router.post("/expenses/updatecredittotalcash/:month/:year",middleware.isloggedin,function(req,res){
     let today = new Date().toLocaleDateString()
     credittotalcash.create(req.body.flow,function(err, cash) {
         if(err){
@@ -573,6 +586,86 @@ router.post("/expenses/updatecredittotalcash/:month/:year",function(req,res){
         }
     })
    
+    
+});
+
+
+
+
+
+
+
+router.get("/balancesheet",middleware.isloggedin,function(req,res){
+    res.render("expenses/viewbalancesheet")
+});
+
+router.get("/viewbalancesheet/:month/:year",function(req,res){
+
+salary.find({month:req.params.month,year:req.params.year}, function(err, salary){
+    if(err){
+        console.log(err)
+    }else{
+        caranddeisel.find({month:req.params.month,year:req.params.year}, function(err, car){
+             if(err){
+                console.log(err)
+            }else{
+             govtfee.find({month:req.params.month,year:req.params.year},function(err, govt) {
+                 if(err){
+                     console.log(err)
+                 }else{
+                     trailorrent.find({month:req.params.month,year:req.params.year},function(err, rent) {
+                         if(err){
+                             console.log(err)
+                         }else{
+                             extraexpense.find({month:req.params.month,year:req.params.year},function(err, extra) {
+                                if(err){
+                                    console.log(err)
+                                }else{
+                                    sale.find({month:req.params.month,year:req.params.year},function(err, sale) {
+                                        if(err){
+                                            console.log(err)
+                                        }else{
+                                            purchased.find({month:req.params.month,year:req.params.year},function(err,item) {
+                                                if(err){
+                                                    console.log(err)
+                                                }else{
+                                                          employee.find({designation:"salesman"},function(err, employee) {
+                                                              if(err){
+                                                                  console.log(err)
+                                                              }else{
+                                                                  
+                                                                  res.render("expenses/allbalancesheet",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,sale:sale,item:item,employee:employee})
+                                                                  
+                                                                   
+                                                              }
+                                                          }) 
+                                                            
+                                                    }  
+                                            })
+                                        }
+                                    })
+                                     
+                                } 
+                             })
+                             
+                         }
+                     })
+                     
+                 }
+             })   
+        
+        
+            }
+      }) 
+       
+    }
+});
+
+});
+
+
+router.post("/viewbalancesheet",middleware.isloggedin,function(req,res){
+   res.redirect("/viewbalancesheet/"+req.body.sheet.month+"/"+req.body.sheet.year);
     
 });
 

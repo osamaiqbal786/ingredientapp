@@ -7,26 +7,13 @@
         
         <div style="width:50%; margin:0 auto;">
             
-            <h2 class="text-center">View Issued Item</h2>
+            <h2 class="text-center">View balance sheet</h2>
             
-            <form action="/sales/viewallissueditem" method="post">
-            <div class="form-group row">
-                   <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
-                    <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="item[name]" required>
-                    <option value="">Select salesman</option>
-                    <%employee.forEach(function(employee){%>
-                        <option><%=employee.name%></option>
-                  <%  }) %>
-                    
-                    
-                    </select>
-                    </div>
-                </div>
+            <form action="/viewbalancesheet" method="post">
                <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
                     <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="item[month]">
+                    <select id="inputState" class="form-control" name="sheet[month]">
                     <option selected>Select month</option>
                     <option>JANUARY</option>
                     <option>FEBRUARY</option>
@@ -46,7 +33,7 @@
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
                     <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="item[year]">
+                    <select id="inputState" class="form-control" name="sheet[year]">
                     <option selected>Select year</option>
                     <option>2020</option>
                     <option>2021</option>

@@ -9,7 +9,8 @@ var inventory= require("../models/inventory");
 var creditsale= require("../models/creditsale");
 var creditcash= require("../models/creditcash");
 var updateinventory= require("../models/updateinventory");
-var ctcprice=require("../models/ctcprice")
+var ctcprice=require("../models/ctcprice");
+var middleware= require("../middleware");
 
 
 
@@ -25,7 +26,7 @@ router.get("/home",function(req,res){
     
 });
 
-router.get("/sales/addsales",function(req,res){
+router.get("/sales/addsales",middleware.isloggedin,function(req,res){
    employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -46,7 +47,7 @@ router.get("/sales/addsales",function(req,res){
 });
 
 
-router.post("/sales/addsales",function(req, res){
+router.post("/sales/addsales",middleware.isloggedin,function(req, res){
     
     var pm2=parseFloat(req.body.sales.peice200ml);
     var pm3=parseFloat(req.body.sales.peice330ml);
@@ -74,7 +75,7 @@ router.post("/sales/addsales",function(req, res){
     });
 });
 
-router.get("/sales/viewsales",function(req,res){
+router.get("/sales/viewsales",middleware.isloggedin,function(req,res){
     employee.find({},function(err, employee) {
         if(err){
             console.log(err)
@@ -86,7 +87,7 @@ router.get("/sales/viewsales",function(req,res){
     
 });
 
-router.get("/sales/allsales/:name/:month/:year",function(req,res){
+router.get("/sales/allsales/:name/:month/:year",middleware.isloggedin,function(req,res){
 sale.find({name:req.params.name,month:req.params.month,year:req.params.year}, function(err, sales){
     if(err){
         console.log(err)
@@ -97,12 +98,12 @@ sale.find({name:req.params.name,month:req.params.month,year:req.params.year}, fu
     // res.render("sales/viewsales")
 });
 
-router.post("/sales/allsales",function(req,res){
+router.post("/sales/allsales",middleware.isloggedin,function(req,res){
    res.redirect("/sales/allsales/"+req.body.sales.name+"/"+req.body.sales.month+"/"+req.body.sales.year);
     
 });
 
-router.post("/sales/setprice",function(req,res){
+router.post("/sales/setprice",middleware.isloggedin,function(req,res){
     price.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
        if(err){
            console.log(err)
@@ -114,7 +115,7 @@ router.post("/sales/setprice",function(req,res){
 });
 
 
-router.post("/sales/setctcprice",function(req,res){
+router.post("/sales/setctcprice",middleware.isloggedin,function(req,res){
     ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
        if(err){
            console.log(err)
@@ -125,7 +126,7 @@ router.post("/sales/setctcprice",function(req,res){
     });
 });
 
-router.get("/sales/salerecipt",function(req,res){
+router.get("/sales/salerecipt",middleware.isloggedin,function(req,res){
     employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -136,7 +137,7 @@ router.get("/sales/salerecipt",function(req,res){
     
 });
 
-router.post("/sales/addsalerecipt",function(req, res){
+router.post("/sales/addsalerecipt",middleware.isloggedin,function(req, res){
     
     salerecipt.create(req.body.salerecipt, function(err,salerecpt){
       if(err){
@@ -148,7 +149,7 @@ router.post("/sales/addsalerecipt",function(req, res){
     });
 });
 
-router.get("/sales/viewallrecipt",function(req,res){
+router.get("/sales/viewallrecipt",middleware.isloggedin,function(req,res){
      employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -158,7 +159,7 @@ router.get("/sales/viewallrecipt",function(req,res){
     });
 });
 
-router.get("/sales/viewallsalerecipt/:name/:month/:year",function(req,res){
+router.get("/sales/viewallsalerecipt/:name/:month/:year",middleware.isloggedin,function(req,res){
 salerecipt.find({name:req.params.name,month:req.params.month,year:req.params.year}, function(err, recipt){
     if(err){
         console.log(err)
@@ -172,12 +173,12 @@ salerecipt.find({name:req.params.name,month:req.params.month,year:req.params.yea
 
 
 
-router.post("/sales/viewallsalerecipt",function(req,res){
+router.post("/sales/viewallsalerecipt",middleware.isloggedin,function(req,res){
    res.redirect("/sales/viewallsalerecipt/"+req.body.salerecipt.name+"/"+req.body.salerecipt.month+"/"+req.body.salerecipt.year);
     
 });
 
-router.get("/sales/issueitem",function(req, res) {
+router.get("/sales/issueitem",middleware.isloggedin,function(req, res) {
        employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -188,7 +189,7 @@ router.get("/sales/issueitem",function(req, res) {
     
 });
 
-router.post("/sales/issueitem",function(req, res) {
+router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
    var pm2=parseFloat(req.body.item.peice200ml);
     var pm3=parseFloat(req.body.item.peice330ml);
     var pm6=parseFloat(req.body.item.peice600ml);
@@ -232,7 +233,7 @@ router.post("/sales/issueitem",function(req, res) {
     });
 });
 
-router.get("/sales/viewissued",function(req,res){
+router.get("/sales/viewissued",middleware.isloggedin,function(req,res){
            employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -242,7 +243,7 @@ router.get("/sales/viewissued",function(req,res){
     });
 });
 
-router.get("/sales/viewallissueditem/:name/:month/:year",function(req,res){
+router.get("/sales/viewallissueditem/:name/:month/:year",middleware.isloggedin,function(req,res){
     var month;
     var year;
     if(req.params.month==="JANUARY"){
@@ -288,12 +289,12 @@ issueditem.find({name:req.params.name,month:req.params.month,year:req.params.yea
 
 
 
-router.post("/sales/viewallissueditem",function(req,res){
+router.post("/sales/viewallissueditem",middleware.isloggedin,function(req,res){
    res.redirect("/sales/viewallissueditem/"+req.body.item.name+"/"+req.body.item.month+"/"+req.body.item.year);
     
 });
 
-router.post("/sales/updatecreditsale/:name/:month/:year",function(req, res) {
+router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isloggedin,function(req, res) {
  
    creditsale.create(req.body.item,function(err,credit){
       if(err){
@@ -310,7 +311,7 @@ router.post("/sales/updatecreditsale/:name/:month/:year",function(req, res) {
    }); 
 });
 
-router.post("/sales/updatecreditcash/:name/:month/:year",function(req, res) {
+router.post("/sales/updatecreditcash/:name/:month/:year",middleware.isloggedin,function(req, res) {
  
    creditcash.create(req.body.item,function(err,credit){
       if(err){
@@ -329,7 +330,7 @@ router.post("/sales/updatecreditcash/:name/:month/:year",function(req, res) {
 
 
 
-router.get("/sales/creditcash",function(req, res) {
+router.get("/sales/creditcash",middleware.isloggedin,function(req, res) {
     employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -340,7 +341,7 @@ router.get("/sales/creditcash",function(req, res) {
    
 });
 
-router.get("/sales/allcreditcash/:name/:month/:year",function(req, res) {
+router.get("/sales/allcreditcash/:name/:month/:year",middleware.isloggedin,function(req, res) {
     var month;
     var year;
     if(req.params.month==="JANUARY"){
@@ -384,19 +385,19 @@ router.get("/sales/allcreditcash/:name/:month/:year",function(req, res) {
 
 
 
-router.post("/sales/allcreditcash",function(req, res) {
+router.post("/sales/allcreditcash",middleware.isloggedin,function(req, res) {
    res.redirect("/sales/allcreditcash/"+req.body.item.name+"/"+req.body.item.month+"/"+req.body.item.year); 
 });
 
-router.get("/inventory/update",function(req, res) {
+router.get("/inventory/update",middleware.isloggedin,function(req, res) {
    res.render("inventory/inventory") 
 });
 
-router.get("/inventory/viewinventory",function(req, res) {
+router.get("/inventory/viewinventory",middleware.isloggedin,function(req, res) {
    res.render("inventory/viewinventory") 
 });
 
-router.get("/inventory/view/:month/:year",function(req, res) {
+router.get("/inventory/view/:month/:year",middleware.isloggedin,function(req, res) {
     inventory.find({},function(err, invt) {
         if(err){
             console.log(err)
@@ -411,11 +412,11 @@ router.get("/inventory/view/:month/:year",function(req, res) {
         }
     })
 });
-router.post("/inventory/viewinventory",function(req, res) {
+router.post("/inventory/viewinventory",middleware.isloggedin,function(req, res) {
    res.redirect("/inventory/view/"+req.body.invt.month+"/"+req.body.invt.year); 
 });
 
-router.post("/inventory/update",function(req, res) {
+router.post("/inventory/update",middleware.isloggedin,function(req, res) {
    updateinventory.create(req.body.sales,function(err,invt){
       if(err){
           console.log(err)
