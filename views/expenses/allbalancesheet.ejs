@@ -1,7 +1,7 @@
 <%- include ('../partials/header')%>
 
 <div class="container">
-  <%if(item.length<1){%>
+  <%if(sale.length<1){%>
   <h1> No record found</h1>
   
   <% }else{ %>
@@ -58,7 +58,7 @@
     
      <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total money spend in purchasing in -<%=item[0].month%></strong></p>
+        <p class="text-left"><strong>Total money spend in purchasing in -<%=sale[0].month%></strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=x%></strong></P>

@@ -11,12 +11,7 @@
             <h2 class="text-center">Add your sales</h2>
             
             <form action="/sales/addsales" method="post">
-            <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="sales[voucher]" placeholder="voucher number" required>
-                    </div>
-            </div>
+            
                            <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
@@ -76,7 +71,13 @@
                     <option>2021</option>
                     </select>
                     </div>
-                </div>    
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="sales[voucher]" placeholder="voucher number" required>
+                    </div>
+            </div>
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>
                     <div class="col-sm-10">

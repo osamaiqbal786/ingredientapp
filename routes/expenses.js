@@ -374,12 +374,12 @@ router.get("/expenses/addpurchaseditem",middleware.isloggedin,function(req,res){
     })
 });
 
-router.get("/order/:p200/:p330/:p600/:p1500/:p5000",middleware.isloggedin,function(req,res){
+router.get("/order/:p200/:p330/:p600/:p1500/:p5000/:desc",middleware.isloggedin,function(req,res){
     ctcprice.find({},function(err,price){
         if(err){
             console.log(err);
         }else{
-            res.render("purchased/order",{p200:req.params.p200,p330:req.params.p330,p600:req.params.p600,p1500:req.params.p1500,p5000:req.params.p5000,price:price});
+            res.render("purchased/order",{p200:req.params.p200,p330:req.params.p330,p600:req.params.p600,p1500:req.params.p1500,p5000:req.params.p5000,price:price,desc:req.params.desc});
         }
     });
     
@@ -405,7 +405,7 @@ router.post("/expenses/addpurchaseditem",middleware.isloggedin,function(req, res
       } else{
           pitem.total=total.toFixed(2);
           pitem.save();
-          res.redirect("/order/"+req.body.pitem.peice200ml+"/"+req.body.pitem.peice330ml+"/"+req.body.pitem.peice600ml+"/"+req.body.pitem.peice1500ml+"/"+req.body.pitem.peice5000ml);
+          res.redirect("/order/"+req.body.pitem.peice200ml+"/"+req.body.pitem.peice330ml+"/"+req.body.pitem.peice600ml+"/"+req.body.pitem.peice1500ml+"/"+req.body.pitem.peice5000ml+"/"+req.body.pitem.desc);
       }
     });
 });

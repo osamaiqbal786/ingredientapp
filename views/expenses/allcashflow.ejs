@@ -40,7 +40,7 @@
 
 
 
-
+<%if(credit.length>0){%>
 <div class="container">
   <div class="row border justify-content-center text-white"style="background:blue;">
     <p><strong>All cash flow</strong></p>
@@ -131,7 +131,9 @@
     
     
 </div>
+<% } %>
 
+<%if(recipt.length>0){%>
 <div class="container">
     <div class="row">
         
@@ -139,7 +141,7 @@
             
             <h2 class="text-center">Update cash in hand</h2>
             
-            <form action="/expenses/updatecredittotalcash/<%=bank[0].month%>/<%=bank[0].year%>" method="post">
+            <form action="/expenses/updatecredittotalcash/<%=recipt[0].month%>/<%=recipt[0].year%>" method="post">
            
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">amount</label>
@@ -156,7 +158,11 @@
 </div>
 </div>
 </div>
-        
+<% }else{ %>
+<div class="container">
+<h1>recive cash from salesman first</h1>
+</div>
+<% } %>        
 <% } %>        
         
 <%- include ('../partials/footer')%>

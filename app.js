@@ -16,7 +16,7 @@ var user=require("./models/user");
 
 
 
-mongoose.connect('mongodb+srv://osamaiqbal786:osama786@cluster0-2683c.mongodb.net/office_record?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://osamaiqbal888208:iqbal786@cluster0-9uczn.mongodb.net/office_record?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true

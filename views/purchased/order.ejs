@@ -79,7 +79,7 @@ Please arrange to deliver the following items to Al Jeneede Trading Establishmen
 <p>
 ==========================================================================================  <br> 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Total&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt%><br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@5%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt*(5/100)%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@5%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=(gt*(5/100)).toFixed(2)%><br>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND&nbsp;TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=gt+(gt*(5/100))%><br>
 	 			 
 We are arranging the payment for the above items through bank transfer. Once it is complete I will send you the bank slip.<br>
@@ -92,7 +92,9 @@ Khafji<br>
 <br>
 <br>
 <br>
-PS: If possible please send 20 empty cartons of 1.5Ltr<br>
+<%if(desc!="Ps:"){%>
+<P><%=desc%></P><br>
+<% } %>
 <br>
 <br>
 <br>
