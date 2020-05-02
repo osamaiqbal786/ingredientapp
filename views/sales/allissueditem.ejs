@@ -26,6 +26,7 @@
   
 </div>
 <div class="container">
+  <%if(credit.length>0){ %>
   <div class="row border justify-content-center text-white"style="background:blue;">
     <p><strong><%=item[0].name.toUpperCase()%></strong></p>
   </div>
@@ -127,7 +128,7 @@
     </div>
   </div>
 
-  <%if(credit.length>0){%>
+  
   <div class="row border">
   <div class="border" style="width:36.7%">
     <p class="text-left" style="padding:0 10px" class="text-right"><strong>Total items left on truck <%=credit[0].month%></strong></p>
@@ -281,17 +282,40 @@
   </div>
 
 
+<% }else{ %>
+<h1 class="text-center">update item left on truck for previous month!!!!</h1>
 <% } %>
-
     
 <div class="container">
     <div class="row">
         
         <div style="width:50%; margin:0 auto;">
             
-            <h2 class="text-center">update cartoons left on truck for this month</h2>
+            <h2 class="text-center">update cartoons left on truck</h2>
             
             <form action="/sales/updatecreditsale/<%=item[0].name%>/<%=item[0].month%>/<%=item[0].year%>" method="post">
+           
+           
+           <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="item[month]">
+                    <option selected>Select month</option>
+                    <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    <option>MARCH</option>
+                    <option>APRIL</option>
+                    <option>MAY</option>
+                    <option>JUNE</option>
+                    <option>JULY</option>
+                    <option>AUGUST</option>
+                    <option>SEPTEMBER</option>
+                    <option>OCTOBER</option>
+                    <option>NOVEMBER</option>
+                    <option>DECEMBER</option>
+                    </select>
+                    </div>
+                </div>
            
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>

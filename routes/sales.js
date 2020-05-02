@@ -302,7 +302,6 @@ router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isloggedin,f
           console.log(err)
       }else{
           credit.name=req.params.name;
-          credit.month=req.params.month;
           credit.year=req.params.year;
           credit.save()
           req.flash("success","credit for this month added");
@@ -319,7 +318,6 @@ router.post("/sales/updatecreditcash/:name/:month/:year",middleware.isloggedin,f
           console.log(err)
       }else{
           credit.name=req.params.name;
-          credit.month=req.params.month;
           credit.year=req.params.year;
           credit.save()
           req.flash("success","cash credit for this month added");

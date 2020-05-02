@@ -577,12 +577,11 @@ router.post("/expenses/updatecredittotalcash/:month/:year",middleware.isloggedin
         if(err){
             console.log(err)
         }else{
-            cash.month=req.params.month;
             cash.year=req.params.year;
             cash.date=today;
             cash.save();
             req.flash("success","cash left in hand updated");
-           res.redirect("/home"); 
+           res.redirect("/expenses/allcashflow/"+req.params.month+"/"+req.params.year); 
         }
     })
    
