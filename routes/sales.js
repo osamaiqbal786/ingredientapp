@@ -443,4 +443,43 @@ router.post("/inventory/update",middleware.isloggedin,function(req, res) {
 
 });
 
+
+router.get("/sales/:id/edit",middleware.isloggedin,function(req, res) {
+    sale.findById(req.params.id,function(err,updatesale){
+        if(err){
+            console.log(err)
+        }else{
+            price.find({},function(err, price) {
+                if(err){
+                    console.log(err)
+                }else{
+                    employee.find({},function(err, employee) {
+                        if(err){
+                            console.log(err)
+                        }else{
+                            res.render("sales/editsales",{sales:updatesale,price:price,employee:employee})
+                        }
+                    })
+                     
+                }
+            })
+            
+        }
+    })
+   
+});
+
+router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
+    sale.findByIdAndUpdate(req.params.id,req.body.sales, function(err, updated){
+      if(err){
+       res.redirect("/home")
+        }else{
+            req.flash("success","sales edited successfully")
+            res.redirect("/sales/allsales/"+ req.params.name+"/"+req.params.month+"/"+req.params.year)
+        }  
+    });
+   
+});
+
+
 module.exports= router;
