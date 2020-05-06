@@ -70,7 +70,7 @@ router.post("/sales/addsales",middleware.isloggedin,function(req, res){
          sale.total=total.toFixed(2);
                 sale.save();
                 req.flash("success","sales successfully added");
-                res.redirect("/home");
+                res.redirect("/sales/addsales");
       }
     });
 });
@@ -144,7 +144,7 @@ router.post("/sales/addsalerecipt",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","sale recipt successfully added");
-          res.redirect("/home");
+          res.redirect("/sales/salerecipt");
       }
     });
 });
