@@ -47,6 +47,28 @@ router.get("/sales/addsales",middleware.isloggedin,function(req,res){
 });
 
 
+router.get("/sales/addsales/:name/:voucher",middleware.isloggedin,function(req,res){
+   employee.find({},function(err, employee) {
+       if(err){
+           console.log(err)
+       }else{
+          
+          price.find({},function(err, price) {
+        if(err){
+            console.log(err)
+        }else{
+           res.render("sales/repeatsales",{price:price,employee:employee,name:req.params.name,voucher:req.params.voucher}) 
+        }
+        
+        }) 
+       }
+   }) 
+    
+    
+});
+
+
+
 router.post("/sales/addsales",middleware.isloggedin,function(req, res){
     
     var pm2=parseFloat(req.body.sales.peice200ml);
@@ -70,7 +92,7 @@ router.post("/sales/addsales",middleware.isloggedin,function(req, res){
          sale.total=total.toFixed(2);
                 sale.save();
                 req.flash("success","sales successfully added");
-                res.redirect("/sales/addsales");
+                res.redirect("/sales/addsales/"+req.body.sales.name+"/"+req.body.sales.voucher);
       }
     });
 });
@@ -189,6 +211,7 @@ router.get("/sales/issueitem",middleware.isloggedin,function(req, res) {
     
 });
 
+
 router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
    var pm2=parseFloat(req.body.item.peice200ml);
     var pm3=parseFloat(req.body.item.peice330ml);
@@ -225,7 +248,7 @@ router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
                  invto.name="Issued to-"+req.body.item.name;
                  invto.save();
                  req.flash("success","Item successfully issued");
-                 res.redirect("/home")
+                 res.redirect("/sales/issueitem")
              } 
           });
             

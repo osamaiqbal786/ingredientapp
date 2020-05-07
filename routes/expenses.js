@@ -32,7 +32,7 @@ router.post("/expenses/addsalary",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","salary successfully added");
-          res.redirect("/home");
+          res.redirect("/expenses/addsalary");
       }
     });
 });
@@ -87,7 +87,7 @@ router.post("/expenses/addcaranddeisel",middleware.isloggedin,function(req, res)
           console.log(err);
       } else{
           req.flash("success","expenses successfully added");
-          res.redirect("/home");
+          res.redirect("/expenses/addcaranddeisel");
       }
     });
 });
@@ -134,7 +134,7 @@ router.post("/expenses/addgovtfees",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","expenses successfully added");
-          res.redirect("/home");
+          res.redirect("/expenses/addgovtfees");
       }
     });
 });
@@ -181,7 +181,7 @@ router.post("/expenses/addtrailorrent",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","expenses successfully added");
-          res.redirect("/home");
+          res.redirect("/expenses/addtrailorrent");
       }
     });
 });
@@ -226,7 +226,7 @@ router.post("/expenses/addextra",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","expenses successfully added");
-          res.redirect("/home");
+          res.redirect("/expenses/addextra");
       }
     });
 });
@@ -271,7 +271,7 @@ router.post("/expenses/addtobank",middleware.isloggedin,function(req, res){
           console.log(err);
       } else{
           req.flash("success","successfully added to bank");
-          res.redirect("/home");
+          res.redirect("/expenses/addtobank");
       }
     });
 });
