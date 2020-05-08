@@ -190,7 +190,7 @@ router.post("/sales/allsales",middleware.isloggedin,function(req,res){
 });
 
 router.post("/sales/setprice",middleware.isloggedin,function(req,res){
-    price.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
+    price.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
        if(err){
            console.log(err)
        }else{
@@ -202,8 +202,8 @@ router.post("/sales/setprice",middleware.isloggedin,function(req,res){
 
 
 router.post("/sales/sethomeprice",middleware.isloggedin,function(req,res){
-    // price.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
-       homeprice.create(req.body.price,function(err, price) {
+    homeprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml},function(err,price){
+       
        if(err){
            console.log(err)
        }else{
@@ -214,7 +214,7 @@ router.post("/sales/sethomeprice",middleware.isloggedin,function(req,res){
 });
 
 router.post("/sales/setctcprice",middleware.isloggedin,function(req,res){
-    ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
+    ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
        if(err){
            console.log(err)
        }else{
