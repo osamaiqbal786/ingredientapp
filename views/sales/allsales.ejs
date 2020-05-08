@@ -138,12 +138,13 @@
     </div>
     
     
-   <% if(sales.shop!="home"){ %>
+   <% if(sales.shop ==="home"||sales.shop ==="Home"||sales.shop ==="HOME"){ %>
+   <%free2=0;%>
+  <% free3=0;%>
+  <% }else{ %>
+ 
   <% free2=parseInt(parseInt(sales.peice200ml)/20);%>
   <% free3=parseInt(parseInt(sales.peice330ml)/20);%>
-  <% }else{ %>
-  <%free2=0;%>
-  <% free3=0;%>
   <% } %>
   
     <div class="column6 border">
@@ -187,40 +188,40 @@
     </div>
   </div>
   
-  <div class="row border">
+  <div class="row border text-primary">
   <div class="border" style="width:13%;float:right;">
-    <p class="text-right"><strong>Grand total</strong></p>
+    <p class="text-center"><strong>Grand total</strong></p>
   </div>
  
     <div class="border"style="width:6.3%;float:right;">
     <p><%=tot2%></p>
     </div>
     <div class="border"style="width:7%;float:right;">
-    <p><%=pr2%></p>
+    <p><%=pr2.toFixed(2)%></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
     <p><%=tot3%></p>
     </div>
   <div class="border"style="width:6.9%;float:right;">
-    <p><%=pr3%></p>
+    <p><%=pr3.toFixed(2)%></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
     <p><%=tot6%></p>
     </div>
   <div class="border"style="width:6.8%;float:right;">
-    <p><%=pr6%></p>
+    <p><%=pr6.toFixed(2)%></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
     <p><%=tot15%></p>
     </div>
   <div class="border"style="width:6.7%;float:right;">
-    <p><%=pr15%></p>
+    <p><%=pr15.toFixed(2)%></p>
     </div>
     <div class="border"style="width:6.3%;float:right;">
     <p><%=tot50%></p>
     </div>
   <div class="border"style="width:6.6%;float:right;">
-    <p><%=pr50%></p>
+    <p><%=pr50.toFixed(2)%></p>
     </div>
         <div class="border"style="width:2.5%;float:right;">
     <p><%=totfr2%></p>
@@ -230,9 +231,9 @@
     </div>
   </div>
   
-  <div class="row border">
+  <div class="row border text-warning">
   <div class="border" style="width:13%;float:right;">
-    <p class="text-right"><strong>Grand total with free </strong></p>
+    <p class="text-center"><strong>Grand total with free </strong></p>
   </div>
  
     <div class="border"style="width:6.3%;float:right;">
@@ -280,22 +281,22 @@
   </div>
 
 
-  <div class="row border">
+  <div class="row border text-danger">
   <div class="border" style="width:25%;float:right;">
-    <p class="text-right"><strong>Total carton sold</strong></p>
+    <p class="text-center"><strong>Total carton sold</strong></p>
   </div>
  
     <div class="border"style="width:6%;float:right;">
     <p><%=tot2+tot3+tot6+tot15+tot50%></p>
     </div>
     <div class="border"style="width:25%;float:right;">
-    <p><strong>Total free cartoon</strong></p>
+    <p class="text-center"><strong>Total free cartoon</strong></p>
     </div>
   <div class="border"style="width:6%;float:right;">
     <p><%=totfr2+totfr3%></p>
     </div>
   <div class="border"style="width:25%;float:right;">
-    <p><strong>Total carton solld with free</strong></p>
+    <p class="text-center"><strong>Total carton solld with free</strong></p>
     </div>
   <div class="border"style="width:6%;float:right;">
     <p><%=tot2+tot3+tot6+tot15+tot50+totfr2+totfr3%></p>

@@ -134,7 +134,22 @@
 </div>
  </li>             
  
- 
+                 <li class="list-group-item"> 
+                <div class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    Set home sale price
+  </a>
+  <div class="dropdown-menu">
+      <form action="/sales/sethomeprice" method="post">
+        <input class="form-control dropdown-item" type="text" name="price[price200ml]" placeholder="200ml price" required>
+        <input class="form-control dropdown-item" type="text" name="price[price330ml]" placeholder="330ml price" required>
+     <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Update</button>
+            </div>
+    </form>
+  </div>
+</div>
+ </li> 
  
  <li class="list-group-item"> 
                 <div class="dropdown">
