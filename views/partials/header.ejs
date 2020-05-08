@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>abar hail</title>
+        
+    
        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
        <link rel="stylesheet" href="/stylesheets/main.css">
        <!--<link rel="stylesheet" href="/stylesheets/landing.css">-->
+       <title>abar hail</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,7 +29,7 @@
             
             <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         welcome-<%=currentuser.username%>
+         <%=currentuser.firstname%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="/addemployee">Add new employee</a>
@@ -38,23 +40,7 @@
             
             <% }%>
             </div>
-<!--                <div class="form-inline">-->
-                    
-<!--                    <li class="nav-item">-->
-<!--                 <a class="nav-link text-warning" href="/login">Login</a>-->
-<!--            </li>-->
-<!--            <li class="nav-item">-->
-<!--                 <a class="nav-link text-danger" href="/register">Signup</a>-->
-<!--            </li>-->
-            
-       
-<!--<li class="nav-item">-->
-<!--          <a class="dropdown-item text-success" href="/logout">Logout</a>-->
-<!--      </li>-->
-            
-          
-<!--            </div>-->
-<!--            </ul>-->
+
             </div>
             </div>
             </nav>
