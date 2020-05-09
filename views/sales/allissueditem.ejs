@@ -66,7 +66,7 @@
     <% item.forEach(function(item){ %>
      <div class="row border"> 
      <div class="column7 border">
-      <P><%=item.voucher%></P>
+      <P><a href="/sales/issueditem/<%=item._id%>/edit"><%=item.voucher%></a></P>
     </div>
     <div class="column5 border">
       <P><%=item.date%></P>
@@ -233,7 +233,7 @@
   
   <div class="row border">
   <div class="border" style="width:36.7%">
-    <p class="text-left" style="padding:0 10px" class="text-right"><strong>Grand total carton sold in-<%=item[0].month%></strong></p>
+    <p class="text-left" style="padding:0 10px" class="text-right"><strong>Grand total carton sold in <%=item[0].month%></strong></p>
   </div>
   <div class="border column4">
     <p><strong><%=free2+tot2%></strong></p>
@@ -283,8 +283,8 @@
 
 
 <% }else{ %>
-<h1 class="text-center">update item left on truck for previous month!!!!</h1>
-<% } %>
+<h1 class="text-center text-danger">update item left on truck for previous month!!!!</h1>
+
     
 <div class="container">
     <div class="row">
@@ -360,7 +360,7 @@
 </div>
 </div>
 </div>
-    
+ <% } %>   
 
 
 

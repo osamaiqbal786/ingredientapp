@@ -11,11 +11,13 @@
             
             <h2 class="text-center">Issue Item</h2>
             
-            <form action="/sales/issueitem" method="post">
+            <form action="/sales/editissue/<%=item._id%>/<%=item.name%>/<%=item.month%>/<%=item.year%>/<%=item.voucher%>?_method=PUT" method="post">
+                 
+                
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
-                    <input class="form-control" type="text" name="item[date]" value="<%=today%>" required>
+                    <input class="form-control" type="text" name="item[date]" value="<%=item.date%>" required>
                     </div>
             </div>
             
@@ -24,7 +26,7 @@
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                     <select id="inputState" class="form-control" name="item[name]" required>
-                    <option><%=name%></option>
+                    <option><%=item.name%></option>
                     <%employee.forEach(function(employee){%>
                         <option><%=employee.name%></option>
                   <%  }) %>
@@ -36,7 +38,7 @@
             <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
                     <div class="col-sm-10">
-                    <input class="form-control" type="text" name="item[voucher]" value="<%=parseInt(voucher)+1%>" required>
+                    <input class="form-control" type="text" name="item[voucher]" value="<%=item.voucher%>" required>
                     </div>
             </div>
             
@@ -45,42 +47,48 @@
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="item[peice200ml]" placeholder="200ml peices" required>
+             <input class="form-control" type="text" name="item[peice200ml]" value="<%=item.peice200ml%>" required>
              </div>
              </div>
+             
+             <input class="form-control" type="hidden" name="item[oldpeice200ml]" value="<%=item.peice200ml%>" readonly>
+
               
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">330ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="item[peice330ml]" placeholder="330ml peices" required>
+             <input class="form-control" type="text" name="item[peice330ml]" value="<%=item.peice330ml%>" required>
              </div>
              </div>
+             <input class="form-control" type="hidden" name="item[oldpeice330ml]" value="<%=item.peice330ml%>" readonly>
 
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">600ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="item[peice600ml]" placeholder="600ml peices" required>
+             <input class="form-control" type="text" name="item[peice600ml]" value="<%=item.peice600ml%>" required>
              </div>
              </div>
-                           
+                <input class="form-control" type="hidden" name="item[oldpeice600ml]" value="<%=item.peice600ml%>" readonly> 
+                
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">1.5L</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="item[peice1500ml]" placeholder="1.5L peices" required>
+             <input class="form-control" type="text" name="item[peice1500ml]" value="<%=item.peice1500ml%>" required>
              </div>
              </div>
-                           
+                <input class="form-control" type="hidden" name="item[oldpeice1500ml]" value="<%=item.peice1500ml%>" readonly>           
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">5l</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="item[peice5000ml]" placeholder="5L peices" required>
+             <input class="form-control" type="text" name="item[peice5000ml]" value="<%=item.peice5000ml%>" required>
              </div>
              </div>
+             <input class="form-control" type="hidden" name="item[oldpeice5000ml]" value="<%=item.peice5000ml%>" readonly>
              <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
                     <div class="col-sm-10">
                     <select id="inputState" class="form-control" name="item[month]">
-                    <option selected><%=month.toUpperCase()%></option>
+                    <option selected><%=item.month%></option>
                     <option>JANUARY</option>
                     <option>FEBRUARY</option>
                     <option>MARCH</option>
@@ -100,7 +108,7 @@
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
                     <div class="col-sm-10">
                     <select id="inputState" class="form-control" name="item[year]">
-                    <option selected><%=year%></option>
+                    <option selected><%=item.year%></option>
                     <option>2020</option>
                     <option>2021</option>
                     </select>

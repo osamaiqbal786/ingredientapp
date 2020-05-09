@@ -5,6 +5,7 @@ var updateinventoryschema = new mongoose.Schema({
     date:String,
     month:String,
     year:String,
+    voucher:String,
     peice200ml:String,
     
     peice330ml:String,

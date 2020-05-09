@@ -7,7 +7,7 @@
   <% }else{ %>
   <%var gd=0;var sal=0;%>
 </div>
-
+<%if(credit.length>0){%>
 <div class="container">
   <div class="row border justify-content-center text-white"style="background:blue;">
     <p><strong><%=sales[0].name.toUpperCase()%></strong></p>
@@ -34,7 +34,7 @@
     
     <% }) %>
     <% sal=(sal+(sal*sales[0].vat/100)).toFixed(2)%>
-    <%if(credit.length>0){%>
+    
     <div class="row border">
       <div class="col-8 border">
         <p class="text-center"><strong>Total credit-<%=credit[0].month%> <%=credit[0].year%></strong></p>
@@ -77,13 +77,14 @@
       </div>
     </div>
   
-  <% } %>
+  <% }else{ %>
   
   <div class="container">
+    <h1 class="text-center text-danger">update previous month credit first!!!</h1>
     <div class="row">
-        
+                    
         <div style="width:50%; margin:0 auto;">
-            
+
             <h2 class="text-center">update credit amount</h2>
             
             <form action="/sales/updatecreditcash/<%=sales[0].name%>/<%=sales[0].month%>/<%=sales[0].year%>" method="post">
@@ -125,6 +126,7 @@
 </div>
 </div>
 </div>
+<% } %>
   
     
 </div>

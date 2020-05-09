@@ -287,6 +287,21 @@ router.get("/sales/issueitem",middleware.isloggedin,function(req, res) {
     
 });
 
+router.get("/sales/issueitem/:name/:voucher",middleware.isloggedin,function(req,res){
+   employee.find({},function(err, employee) {
+       if(err){
+           console.log(err)
+       }else{
+          
+         
+           res.render("sales/repeatissue",{employee:employee,name:req.params.name,voucher:req.params.voucher})
+       }
+   }) 
+    
+    
+});
+
+
 
 router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
    var pm2=parseFloat(req.body.item.peice200ml);
@@ -295,7 +310,14 @@ router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
     var pm15=parseFloat(req.body.item.peice1500ml);
     var pm50=parseFloat(req.body.item.peice5000ml);
     var total= (pm2)+(pm3)+(pm6)+(pm15)+(pm50); 
-    issueditem.create(req.body.item,function(err,item){
+    
+    issueditem.find({voucher:req.body.item.voucher},function(err, issued) {
+        if(err){
+            console.log(err)
+        }else{
+            if(issued.length<1){
+              
+               issueditem.create(req.body.item,function(err,item){
         if(err){
             console.log(err)
         }else{
@@ -324,13 +346,24 @@ router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
                  invto.name="Issued to-"+req.body.item.name;
                  invto.save();
                  req.flash("success","Item successfully issued");
-                 res.redirect("/sales/issueitem")
+                 res.redirect("/sales/issueitem/"+req.body.item.name+"/"+req.body.item.voucher)
              } 
           });
             
            
         }
     });
+              
+                
+            }else{
+                req.flash("error","Voucher number already used please fill again");
+              res.redirect('back')
+            }
+        }
+    })
+    
+    
+   
 });
 
 router.get("/sales/viewissued",middleware.isloggedin,function(req,res){
@@ -403,7 +436,7 @@ router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isloggedin,f
           credit.name=req.params.name;
           credit.year=req.params.year;
           credit.save()
-          req.flash("success","credit for this month added");
+          req.flash("success","Item on truck for "+req.params.month+" added successfully");
           res.redirect("/sales/viewallissueditem/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
        
       } 
@@ -419,7 +452,7 @@ router.post("/sales/updatecreditcash/:name/:month/:year",middleware.isloggedin,f
           credit.name=req.params.name;
           credit.year=req.params.year;
           credit.save()
-          req.flash("success","cash credit for this month added");
+          req.flash("success","cash credit for "+req.params.month+" added successfully");
           res.redirect("/sales/allcreditcash/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
        
       } 
@@ -593,5 +626,81 @@ router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
    
 });
 
+
+router.get("/sales/issueditem/:id/edit",middleware.isloggedin,function(req, res) {
+    issueditem.findById(req.params.id,function(err,updateitem){
+        if(err){
+            console.log(err)
+        }else{
+            
+                    employee.find({},function(err, employee) {
+                        if(err){
+                            console.log(err)
+                        }else{
+                            res.render("sales/editissue",{item:updateitem,employee:employee})
+                        }
+                    })
+            
+        }
+    })
+   
+});
+
+router.put("/sales/editissue/:id/:name/:month/:year/:voch",function(req, res){
+   
+    var pm2=parseFloat(req.body.item.peice200ml);
+    var pm3=parseFloat(req.body.item.peice330ml);
+    var pm6=parseFloat(req.body.item.peice600ml);
+    var pm15=parseFloat(req.body.item.peice1500ml);
+    var pm50=parseFloat(req.body.item.peice5000ml);
+    var total= (pm2)+(pm3)+(pm6)+(pm15)+(pm50); 
+    
+    issueditem.findByIdAndUpdate(req.params.id,req.body.item, function(err,updated){
+        if(err){
+          console.log(err) 
+        }else{
+          inventory.find({},function(err, invt) {
+            if(err){
+                console.log(err)
+            }  else{
+                invt[0].peice200ml=(parseInt(invt[0].peice200ml)+(parseInt(req.body.item.oldpeice200ml)-parseInt(req.body.item.peice200ml))).toString();
+                invt[0].peice330ml=(parseInt(invt[0].peice330ml)+(parseInt(req.body.item.oldpeice330ml)-parseInt(req.body.item.peice330ml))).toString();
+                invt[0].peice600ml=(parseInt(invt[0].peice600ml)+(parseInt(req.body.item.oldpeice600ml)-parseInt(req.body.item.peice600ml))).toString();
+                invt[0].peice1500ml=(parseInt(invt[0].peice1500ml)+(parseInt(req.body.item.oldpeice1500ml)-parseInt(req.body.item.peice1500ml))).toString();
+                invt[0].peice5000ml=(parseInt(invt[0].peice5000ml)+(parseInt(req.body.item.oldpeice5000ml)-parseInt(req.body.item.peice5000ml))).toString();
+                invt[0].dateupdated=req.body.item.date;
+                invt[0].save();
+                updated.total=total;
+                updated.save()
+                
+            }
+          });
+        }
+    })
+    
+  updateinventory.find({voucher:req.params.voch},function(err, uinvt) {
+      if(err){
+          console.log(err)
+      }else{
+          uinvt[0].type="ISSUED"
+                 uinvt[0].name="Issued to-"+req.body.item.name;
+                 uinvt[0].date=req.body.item.date;
+                 uinvt[0].month=req.body.item.month;
+                 uinvt[0].year=req.body.item.year;
+                 uinvt[0].voucher=req.body.item.voucher;
+                 uinvt[0].peice200ml=req.body.item.peice200ml;
+                 uinvt[0].peice330ml=req.body.item.peice330ml;
+                 uinvt[0].peice600ml=req.body.item.peice600ml;
+                 uinvt[0].peice1500ml=req.body.item.peice1500ml;
+                 uinvt[0].peice5000ml=req.body.item.peice5000ml;
+                 uinvt[0].save();
+                 req.flash("success","updated successfully");
+                 res.redirect("/sales/viewallissueditem/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
+           
+      }
+  }) 
+    
+    
+})
 
 module.exports= router;
