@@ -28,15 +28,16 @@
             <% }else{%>
             
             <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"style="margin-right:10px;">
          <%=currentuser.firstname%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="/addemployee">Add new employee</a>
-        <a class="dropdown-item" href="/register">Add new admin</a>
+        <a class="dropdown-item" href="/addemployee">Add employee</a>
+        <a class="dropdown-item" href="/register">Add admin</a>
         <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>
+     
             
             <% }%>
             </div>

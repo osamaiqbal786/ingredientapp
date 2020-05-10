@@ -236,15 +236,27 @@ router.get("/sales/salerecipt",middleware.isloggedin,function(req,res){
 });
 
 router.post("/sales/addsalerecipt",middleware.isloggedin,function(req, res){
-    
-    salerecipt.create(req.body.salerecipt, function(err,salerecpt){
+    salerecipt.find({voucher:req.body.salerecipt.voucher},function(err, sold) {
+       if (err){
+           console.log(err)
+       }else{
+           if(sold.length<1){
+               salerecipt.create(req.body.salerecipt, function(err,salerecpt){
       if(err){
           console.log(err);
       } else{
           req.flash("success","sale recipt successfully added");
           res.redirect("/sales/salerecipt");
       }
-    });
+    }); 
+           }else{
+                req.flash("error","Voucher number already used please fill again");
+              res.redirect('back')
+           }
+       } 
+    })
+    
+   
 });
 
 router.get("/sales/viewallrecipt",middleware.isloggedin,function(req,res){
