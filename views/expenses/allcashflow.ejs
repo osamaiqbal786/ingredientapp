@@ -1,7 +1,7 @@
 <%- include ('../partials/header')%>
 
 <div class="container">
-  <%if(salary.length<1){%>
+  <%if(recipt.length<1){%>
   <h1> No record found</h1>
   
   <% }else{ %>
@@ -63,7 +63,8 @@
         <P><%=credit[0].amount%></P>
       </div>
     </div>
-    
+     <%console.log(employee)%>
+    <%console.log(recipt)%>
         <% employee.forEach(function(employee){ %>
     
       <% recipt.forEach(function(recipt){ %>
@@ -75,6 +76,7 @@
       
     <% }) %>
     <%grt=grt+tt%>
+   
     <div class="row border">
       <div class="col-7 border">
         <p class="text-left"><strong>total cash received from-<%=employee.name%></strong></p>
@@ -133,7 +135,7 @@
 </div>
 <% }else{ %>
 <h1 class="text-center">update previous month cash in hand first!!!</h1>
-<% } %>
+
 <%if(recipt.length>0){%>
 <div class="container">
     <div class="row">
@@ -183,7 +185,8 @@
 <div class="container">
 <h1>recive cash from salesman first</h1>
 </div>
-<% } %>        
+<% } %>  
+<% } %>
 <% } %>        
         
 <%- include ('../partials/footer')%>

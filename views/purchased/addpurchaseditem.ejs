@@ -91,42 +91,19 @@
              
              
              
-                           <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 200ml</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[price200ml]" value="<%=price[0].price200ml%>" required>
-             </div>
-             </div>
-                                        <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 330ml</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[price330ml]" value="<%=price[0].price330ml%>" required>
-             </div>
-             </div>
-                                        <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 600ml</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[price600ml]" value="<%=price[0].price600ml%>" required>
-             </div>
-             </div>
-                                        <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 1.5l</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[price1500ml]" value="<%=price[0].price1500ml%>" required>
-             </div>
-             </div>
-                           <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 5l</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[price5000ml]" value="<%=price[0].price5000ml%>" required>
-             </div>
-             </div>
-             <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">VAT</label>
-                    <div class="col-sm-10">
-             <input class="form-control" type="text" name="pitem[vat]" value="5" required>
-             </div>
-             </div>
+                         
+             <input class="form-control" type="hidden" name="pitem[price200ml]" value="<%=price[0].price200ml%>" readonly>
+           
+             <input class="form-control" type="hidden" name="pitem[price330ml]" value="<%=price[0].price330ml%>" readonly>
+          
+             <input class="form-control" type="hidden" name="pitem[price600ml]" value="<%=price[0].price600ml%>" readonly>
+            
+             <input class="form-control" type="hidden" name="pitem[price1500ml]" value="<%=price[0].price1500ml%>" readonly>
+             
+             <input class="form-control" type="hidden" name="pitem[price5000ml]" value="<%=price[0].price5000ml%>" readonly>
+             
+             <input class="form-control" type="hidden" name="pitem[vat]" value="5" readonly>
+             
              
              <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block">Submit</button>

@@ -710,8 +710,45 @@ router.put("/sales/editissue/:id/:name/:month/:year/:voch",function(req, res){
                  res.redirect("/sales/viewallissueditem/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
            
       }
-  }) 
+  }) ;
     
+    
+});
+
+
+
+
+router.get("/sales/recipt/:id/edit",middleware.isloggedin,function(req, res) {
+    salerecipt.findById(req.params.id,function(err,recipt){
+        if(err){
+            console.log(err)
+        }else{
+            
+                    employee.find({},function(err, employee) {
+                        if(err){
+                            console.log(err)
+                        }else{
+                            res.render("sales/editrecipt",{recipt:recipt,employee:employee})
+                        }
+                    })
+            
+        }
+    })
+   
+});
+
+
+
+router.put("/sales/editrecipt/:id/:name/:month/:year",function(req, res){
+  salerecipt.findByIdAndUpdate(req.params.id,req.body.salerecipt, function(err,updated){
+        if(err){
+          console.log(err) 
+        }else{
+            req.flash("success","updated successfully");
+                 res.redirect("/sales/viewallsalerecipt/"+req.params.name+"/"+req.params.month+"/"+req.params.year)
+            
+        }
+  })
     
 })
 

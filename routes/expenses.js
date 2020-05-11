@@ -527,7 +527,7 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                                         if(err){
                                                             console.log(err)
                                                         }else{
-                                                          employee.find({designation:"salesman"},function(err, employee) {
+                                                          employee.find({},function(err, employee) {
                                                               if(err){
                                                                   console.log(err)
                                                               }else{

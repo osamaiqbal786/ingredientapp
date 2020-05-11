@@ -13,14 +13,9 @@
             
             <form action="/inventory/update" method="post">
                 
-                 <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Type</label>
-                    <div class="col-sm-10">
-                    <input class="form-control" type="text" name="sales[type]" value="ADDED" required>
-                    </div>
-            </div>
-                
-                
+                 
+                    <input class="form-control" type="hidden" name="sales[type]" value="ADDED" readonly>
+            
             <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
                     <div class="col-sm-10">
