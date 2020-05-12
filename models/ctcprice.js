@@ -11,6 +11,7 @@ var ctcpriceschema = new mongoose.Schema({
    
     price5000ml:String,
     
+    vat:String
 });
 
 module.exports=mongoose.model("ctcprice", ctcpriceschema);

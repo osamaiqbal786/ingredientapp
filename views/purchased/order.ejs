@@ -5,7 +5,7 @@
 <%var tot6=parseFloat(p600)*parseFloat(price[0].price600ml)%>
 <%var tot15=parseFloat(p1500)*parseFloat(price[0].price1500ml)%>
 <%var tot50=parseFloat(p5000)*parseFloat(price[0].price5000ml)%>
-<%var gt=tot2+tot3+tot6+tot15+tot50%>
+<%var gt=(tot2+tot3+tot6+tot15+tot50)%>
 <%var plt2=parseInt(parseInt(p200)/108) %>
 <%var plt3=parseInt(parseInt(p330)/81) %>
 <%var plt6=parseInt(parseInt(p600)/63) %>
@@ -78,9 +78,9 @@ Please arrange to deliver the following items to Al Jeneede Trading Establishmen
 
 <p>
 ==========================================================================================  <br> 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Total&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Total&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt.toFixed(2)%><br>
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@5%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=(gt*(5/100)).toFixed(2)%><br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND&nbsp;TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=gt+(gt*(5/100))%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND&nbsp;TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=(gt+(gt*(5/100))).toFixed(2)%><br>
 	 			 
 We are arranging the payment for the above items through bank transfer. Once it is complete I will send you the bank slip.<br>
 Yours truly<br>

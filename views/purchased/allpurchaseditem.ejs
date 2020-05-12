@@ -70,13 +70,16 @@
      <div class="column4 border">
       <P><strong>Grand Total</strong></P>
     </div>
+    <div class="column2 border">
+     <P><strong>letter<br>head</strong></P>
+    </div>
   </div>
   
     <% pitem.forEach(function(pitem){ %>
      <div class="row border"> 
      
     <div class="column4 border">
-      <P><%=pitem.date%></P>
+      <P><a href="/expenses/order/<%=pitem._id%>/edit"><%=pitem.date%></a></P>
     </div>
     <div class="column border">
       <P><%=pitem.peice200ml%></P>
@@ -85,7 +88,7 @@
       <P><%=pitem.price200ml%></P>
     </div>
     <div class="column2 border">
-      <P><%=parseFloat(pitem.peice200ml)*parseFloat(pitem.price200ml)%></P>
+      <P><%=(parseFloat(pitem.peice200ml)*parseFloat(pitem.price200ml)).toFixed(2)%></P>
     </div>
     <div class="column border">
       <P><%=pitem.peice330ml%></P>
@@ -94,7 +97,7 @@
       <P><%=pitem.price330ml%></P>
     </div>
     <div class="column2 border">
-      <P><%=parseFloat(pitem.peice330ml)*parseFloat(pitem.price330ml)%></P>
+      <P><%=(parseFloat(pitem.peice330ml)*parseFloat(pitem.price330ml)).toFixed(2)%></P>
     </div>
     <div class="column border">
       <P><%=pitem.peice600ml%></P>
@@ -103,7 +106,7 @@
       <P><%=pitem.price600ml%></P>
     </div>
     <div class="column2 border">
-      <P><%=parseFloat(pitem.peice600ml)*parseFloat(pitem.price600ml)%></P>
+      <P><%=(parseFloat(pitem.peice600ml)*parseFloat(pitem.price600ml)).toFixed(2)%></P>
     </div>
     <div class="column border">
       <P><%=pitem.peice1500ml%></P>
@@ -112,7 +115,7 @@
       <P><%=pitem.price1500ml%></P>
     </div>
     <div class="column2 border">
-      <P><%=parseFloat(pitem.peice1500ml)*parseFloat(pitem.price1500ml)%></P>
+      <P><%=(parseFloat(pitem.peice1500ml)*parseFloat(pitem.price1500ml)).toFixed(2)%></P>
     </div>
     <div class="column border">
       <P><%=pitem.peice5000ml%></P>
@@ -121,7 +124,7 @@
       <P><%=pitem.price5000ml%></P>
     </div>
     <div class="column2 border">
-      <P><%=parseFloat(pitem.peice5000ml)*parseFloat(pitem.price5000ml)%></P>
+      <P><%=(parseFloat(pitem.peice5000ml)*parseFloat(pitem.price5000ml)).toFixed(2)%></P>
     </div>
     
 
@@ -134,6 +137,9 @@
     </div>
     <div class="column4 border">
       <P><%=(parseFloat(pitem.total)+(parseFloat(pitem.total)*(parseFloat(pitem.vat)/100))).toFixed(2)%></P>
+    </div>
+     <div class="column2 border">
+      <a class="btn btn-sm btn-danger" href="/order/<%=pitem.peice200ml%>/<%=pitem.peice330ml%>/<%=pitem.peice600ml%>/<%=pitem.peice1500ml%>/<%=pitem.peice5000ml%>/<%=pitem.desc%>">view</a>
     </div>
     </div>
 <%gd=gd+parseFloat(pitem.total)+(parseFloat(pitem.total)*(parseFloat(pitem.vat)/100))%>

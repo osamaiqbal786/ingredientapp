@@ -385,31 +385,6 @@ router.get("/order/:p200/:p330/:p600/:p1500/:p5000/:desc",middleware.isloggedin,
     
 });
 
-
-router.post("/expenses/addpurchaseditem",middleware.isloggedin,function(req, res){
-    var pm2=parseFloat(req.body.pitem.peice200ml);
-    var pm3=parseFloat(req.body.pitem.peice330ml);
-    var pm6=parseFloat(req.body.pitem.peice600ml);
-    var pm15=parseFloat(req.body.pitem.peice1500ml);
-    var pm50=parseFloat(req.body.pitem.peice5000ml);
-    var rm2=parseFloat(req.body.pitem.price200ml);
-    var rm3=parseFloat(req.body.pitem.price330ml);
-    var rm6=parseFloat(req.body.pitem.price600ml);
-    var rm15=parseFloat(req.body.pitem.price1500ml);
-    var rm50=parseFloat(req.body.pitem.price5000ml);
-    var total= (pm2*rm2)+(pm3*rm3)+(pm6*rm6)+(pm15*rm15)+(pm50*rm50);
-    
-    purchased.create(req.body.pitem, function(err,pitem){
-      if(err){
-          console.log(err);
-      } else{
-          pitem.total=total.toFixed(2);
-          pitem.save();
-          res.redirect("/order/"+req.body.pitem.peice200ml+"/"+req.body.pitem.peice330ml+"/"+req.body.pitem.peice600ml+"/"+req.body.pitem.peice1500ml+"/"+req.body.pitem.peice5000ml+"/"+req.body.pitem.desc);
-      }
-    });
-});
-
 router.get("/expenses/viewpurchaseditem",middleware.isloggedin,function(req,res){
     res.render("purchased/viewpurchaseditem")
 });
@@ -430,6 +405,33 @@ router.post("/expenses/allpurchaseditem",middleware.isloggedin,function(req,res)
    res.redirect("/expenses/allpurchaseditem/"+req.body.pitem.month+"/"+req.body.pitem.year);
     
 });
+
+
+router.post("/expenses/addpurchaseditem",middleware.isloggedin,function(req, res){
+    var pm2=parseFloat(req.body.pitem.peice200ml);
+    var pm3=parseFloat(req.body.pitem.peice330ml);
+    var pm6=parseFloat(req.body.pitem.peice600ml);
+    var pm15=parseFloat(req.body.pitem.peice1500ml);
+    var pm50=parseFloat(req.body.pitem.peice5000ml);
+    var rm2=parseFloat(req.body.pitem.price200ml);
+    var rm3=parseFloat(req.body.pitem.price330ml);
+    var rm6=parseFloat(req.body.pitem.price600ml);
+    var rm15=parseFloat(req.body.pitem.price1500ml);
+    var rm50=parseFloat(req.body.pitem.price5000ml);
+    var total= (pm2*rm2)+(pm3*rm3)+(pm6*rm6)+(pm15*rm15)+(pm50*rm50);
+    
+    purchased.create(req.body.pitem, function(err,pitem){
+      if(err){
+          console.log(err);
+      } else{
+          pitem.total=total.toFixed(2);
+          pitem.save();
+          res.redirect("/expenses/allpurchaseditem/"+pitem.month+"/"+pitem.year);
+      }
+    });
+});
+
+
 
 
 router.get("/expenses/salaryslip",middleware.isloggedin,function(req,res){
@@ -669,6 +671,48 @@ router.post("/viewbalancesheet",middleware.isloggedin,function(req,res){
 });
 
 
+
+
+router.get("/expenses/order/:id/edit",middleware.isloggedin,function(req, res) {
+    purchased.findById(req.params.id,function(err,order){
+        if(err){
+            console.log(err)
+        }else{
+            
+                    employee.find({},function(err, employee) {
+                        if(err){
+                            console.log(err)
+                        }else{
+                            ctcprice.find({},function(err, price) {
+                                if(err){
+                                    console.log(err)
+                                }else{
+                                    res.render("purchased/editorder",{order:order,employee:employee,price:price})
+                                }
+                            })
+                            
+                        }
+                    })
+            
+        }
+    })
+   
+});
+
+
+
+router.put("/expenses/editorder/:id/:month/:year",function(req, res){
+  purchased.findByIdAndUpdate(req.params.id,req.body.pitem, function(err,updated){
+        if(err){
+          console.log(err) 
+        }else{
+            req.flash("success","updated successfully");
+                 res.redirect("/expenses/allpurchaseditem/"+req.params.month+"/"+req.params.year)
+            
+        }
+  })
+    
+})
 
 
 module.exports= router;

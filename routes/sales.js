@@ -214,7 +214,7 @@ router.post("/sales/sethomeprice",middleware.isloggedin,function(req,res){
 });
 
 router.post("/sales/setctcprice",middleware.isloggedin,function(req,res){
-    ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
+    ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
        if(err){
            console.log(err)
        }else{
@@ -235,18 +235,33 @@ router.get("/sales/salerecipt",middleware.isloggedin,function(req,res){
     
 });
 
+router.get("/sales/salerecipt/:name/:voucher",middleware.isloggedin,function(req,res){
+   employee.find({},function(err, employee) {
+       if(err){
+           console.log(err)
+       }else{
+          
+         
+           res.render("sales/repeatrecipt",{employee:employee,name:req.params.name,voucher:req.params.voucher}) 
+
+       }
+   }) 
+    
+    
+});
+
 router.post("/sales/addsalerecipt",middleware.isloggedin,function(req, res){
     salerecipt.find({voucher:req.body.salerecipt.voucher},function(err, sold) {
        if (err){
            console.log(err)
        }else{
            if(sold.length<1){
-               salerecipt.create(req.body.salerecipt, function(err,salerecpt){
+               salerecipt.create(req.body.salerecipt, function(err,salerecipt){
       if(err){
           console.log(err);
       } else{
           req.flash("success","sale recipt successfully added");
-          res.redirect("/sales/salerecipt");
+          res.redirect("/sales/salerecipt/"+salerecipt.name+"/"+salerecipt.voucher);
       }
     }); 
            }else{

@@ -13,6 +13,7 @@ var purchasedschema = new mongoose.Schema({
     price1500ml:String,
     peice5000ml:String,
     price5000ml:String,
+    desc:String,
     vat:String,
     total:String
    
