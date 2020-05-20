@@ -7,9 +7,11 @@
   <% }else{ %>
 
 </div>
-  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var tt=0;var grt=0;var x=0;%>
+  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var tt=0;var grt=0;var x=0; var p2=0,p3=0,p6=0,p15=0,p50=0;var len=0;var fe=0;%>
  
-
+<% fexpenses.forEach(function(fexpenses){ %>
+    <%fe=fe+parseFloat(fexpenses.amount)%>
+    <% }) %>
 <% salary.forEach(function(salary){ %>
     <%st=st+parseFloat(salary.amount)%>
     <% }) %>
@@ -32,19 +34,24 @@
     
     <% sale.forEach(function(sale){ %>
     <%rt=rt+parseFloat(sale.total)%>
+    <%p2=p2+parseInt(sale.peice200ml)%>
+        <%p3=p3+parseInt(sale.peice330ml)%>
+            <%p6=p6+parseInt(sale.peice600ml)%>
+                <%p15=p15+parseInt(sale.peice1500ml)%>
+                    <%p50=p50+parseInt(sale.peice5000ml)%>
     <% }) %>
     <% grt=(rt+(rt*parseFloat(sale[0].vat)/100)).toFixed(2)%>
-    <% item.forEach(function(item){ %>
-    <%bt=bt+parseFloat(item.total)%>
-    <% }) %>
-     <% x=(bt+(bt*5/100)).toFixed(2) %>
+    <%len=item.length%>
+    <%bt=(p2*parseFloat(item[len-1].price200ml))+(p3*parseFloat(item[len-1].price330ml))+(p6*parseFloat(item[len-1].price600ml))+(p15*parseFloat(item[len-1].price1500ml))+(p50*parseFloat(item[len-1].price5000ml))%>
+  
+     <% x=(bt+(bt*parseFloat(item[len-1].vat)/100)).toFixed(2) %>
 
 
 
 
 <div class="container">
   <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>All cash flow</strong></p>
+    <p><strong>Balance Sheet of Month <%=sale[0].month%> <%=sale[0].year%></strong></p>
   </div>
       <div class="row border">
     
@@ -58,7 +65,7 @@
     
      <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total money spend in purchasing in -<%=sale[0].month%></strong></p>
+        <p class="text-left"><strong>Total money spend in purchasing in <%=sale[0].month%> <%=sale[0].year%></strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=x%></strong></P>
@@ -87,7 +94,7 @@
     
     <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total expenses</strong></p>
+        <p class="text-left"><strong>Total expenses-1</strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=(st+ct+gt+trt+et).toFixed(2)%></strong></P>
@@ -95,10 +102,18 @@
     </div>
     <div class="row border">
       <div class="col-7 border">
+        <p class="text-left"><strong>Total expenses-2</strong></p>
+      </div>
+      <div class="col-5 border">
+        <P><strong><%=(fe).toFixed(2)%></strong></P>
+      </div>
+    </div>
+    <div class="row border">
+      <div class="col-7 border">
         <p class="text-left"><strong>Net amount (balance-totalexpense)</strong></p>
       </div>
       <div class="col-5 border">
-        <P><strong><%=((grt-x)-((st+ct+gt+trt+et).toFixed(2))).toFixed(2)%></strong></P>
+        <P><strong><%=((grt-x)-(((st+ct+gt+trt+et)+fe).toFixed(2))).toFixed(2)%></strong></P>
       </div>
     </div>
         <div class="row border">

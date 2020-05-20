@@ -2,12 +2,12 @@
 
 <div class="container">
   <%if(salary.length<1){%>
-  <h1> No record found</h1>
+  <h1> To View All Expenses First Give Salary</h1>
   
   <% }else{ %>
 
 </div>
-  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;%>
+  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var fe=0;%>
 
 <% salary.forEach(function(salary){ %>
     <%st=st+parseFloat(salary.amount)%>
@@ -34,7 +34,7 @@
 
 <div class="container">
   <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>All expenses</strong></p>
+    <p><strong>All expenses-1</strong></p>
   </div>
       <div class="row border">
     
@@ -105,6 +105,47 @@
       </div>
     </div>
 </div>
+
+<div class="container">
+  <div class="row border justify-content-center text-white"style="background:blue;">
+    <p><strong>All expenses-2</strong></p>
+  </div>
+  
+  <div class="row border">
+    
+    <div class="col-9 border">
+      <P class="text-center"><strong>Description</strong></P>
+    </div>
+    <div class="col-3 border">
+      <P><strong>Amount</strong></P>
+    </div>
+        
+    </div>
+  
+  
+  <% fexpenses.forEach(function(fexpenses){%>
+    
+   <div class="row border">
+     <div class="col-9 border">
+      <P><%=fexpenses.name%></P>
+    </div>
+    <div class="col-3 border">
+      <P><%=fexpenses.amount%></P>
+    </div>
+    </div>
+      <%fe= fe+parseFloat(fexpenses.amount).toFixed(2)%>
+    <% }) %>
+
+    <div class="row border">
+      <div class="col-9 border">
+        <p class="text-right"><strong>Grand Total</strong></p>
+      </div>
+      <div class="col-3 border">
+        <P><strong><%=fe%></strong></P>
+      </div>
+    </div>
+</div>
+
         
 <% } %>        
         

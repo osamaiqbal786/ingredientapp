@@ -1,0 +1,101 @@
+<%- include ('../partials/header')%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <% var d=new Date()%>
+    <%let today = new Date().toLocaleDateString()%>
+    <%var month= d.toLocaleString('default', { month: 'long' })%>
+    <% var year=new Date().getFullYear()%>
+<div class="container">
+    
+     <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">Add Fixed Expenses</h2>
+            
+            <form action="/expenses/addfixedexpenses" method="post">
+               <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Date</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" name="fexpenses[date]" value="<%=today%>" required>
+                    </div>
+            </div>
+                <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="fexpenses[name]" required>
+                    <option value="">Select Expense</option>
+                    
+                        <option>Depreciation 4(Dianna125000/4=1042)</option>
+                        <option>Depreciation for piego van GJB3002 (87963/120=733)</option>
+                        <option>Depreciation for Forklift(102550/120=855)</option>
+                        <option>warehouse life 18yrs construction cost (360000/216=1667)</option>
+                        <option>VAT</option>
+                        <option>SFDA</option>
+                        <option>RUKSHA BALADIA</option>
+                    </select>
+                    </div>
+                </div>
+                
+                
+                 
+                
+                
+            
+            
+           
+                
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Amount</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" name="fexpenses[amount]" placeholder="amount" required>
+                    </div>
+            </div>
+            
+            
+          
+               <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Month</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="fexpenses[month]">
+                    <option selected><%=month.toUpperCase()%></option>
+                   <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    <option>MARCH</option>
+                    <option>APRIL</option>
+                    <option>MAY</option>
+                    <option>JUNE</option>
+                    <option>JULY</option>
+                    <option>AUGUST</option>
+                    <option>SEPTEMBER</option>
+                    <option>OCTOBER</option>
+                    <option>NOVEMBER</option>
+                    <option>DECEMBER</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Year</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="fexpenses[year]">
+                    <option selected><%=year%></option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    </select>
+                    </div>
+                </div>
+               
+             <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+             <p><a href="/home">Go Back</a></p>
+                </form>
+                </div>
+                </div>
+                </div>
+    
+    
+    
+    
+    
+    
+<%- include ('../partials/footer')%>    

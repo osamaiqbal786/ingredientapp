@@ -63,15 +63,14 @@
         <P><%=credit[0].amount%></P>
       </div>
     </div>
-     <%console.log(employee)%>
-    <%console.log(recipt)%>
+  
         <% employee.forEach(function(employee){ %>
     
       <% recipt.forEach(function(recipt){ %>
        <%if (employee.name===recipt.name){ %>
        <% tt=tt+parseFloat(recipt.amount)%>
        <% }else{ %>
-       <% tt=0;%>
+       <% tt=tt+0;%>
       <% } %>
       
     <% }) %>
@@ -85,7 +84,7 @@
         <P><%=tt%></P>
       </div>
     </div>
-    
+    <%tt=0%>
     <% }) %>
      <div class="row border">
       <div class="col-7 border">

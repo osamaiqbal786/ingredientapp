@@ -564,7 +564,14 @@ router.get("/inventory/view/:month/:year",middleware.isloggedin,function(req, re
                 if(err){
                     console.log(err)
                 }else{
-                    res.render("inventory/view",{invt:invt,uinvt:uinvt})
+                    employee.find({},function(err,employee) {
+                       if(err){
+                           console.log(err)
+                       }else{
+                            res.render("inventory/view",{invt:invt,uinvt:uinvt,employee:employee})
+                       } 
+                    })
+                   
                 }
             })
         }
@@ -710,7 +717,7 @@ router.put("/sales/editissue/:id/:name/:month/:year/:voch",function(req, res){
           console.log(err)
       }else{
           uinvt[0].type="ISSUED"
-                 uinvt[0].name="Issued to-"+req.body.item.name;
+                 uinvt[0].name=req.body.item.name;
                  uinvt[0].date=req.body.item.date;
                  uinvt[0].month=req.body.item.month;
                  uinvt[0].year=req.body.item.year;

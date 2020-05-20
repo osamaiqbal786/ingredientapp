@@ -11,6 +11,7 @@ var purchased=require("../models/purchased");
 var ctcprice=require("../models/ctcprice");
 var salerecipt= require("../models/salerecipt");
 var credittotalcash= require("../models/credittotalcash");
+var fixedexpenses= require("../models/fixedexpenses");
 var sale= require("../models/sale");
 var middleware= require("../middleware");
 
@@ -329,8 +330,14 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                 if(err){
                                     console.log(err)
                                 }else{
+                                    fixedexpenses.find({month:req.params.month,year:req.params.year},function(err, fexpenses) {
+                                      if(err){
+                                          console.log(err)
+                                      }else{
+                                           res.render("expenses/allexpenses",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,fexpenses:fexpenses})
+                                      }  
+                                    })
                                     
-                                    res.render("expenses/allexpenses",{salary:salary,car:car,govt:govt,rent:rent,extra:extra}) 
                                 } 
                              })
                              
@@ -630,17 +637,17 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                                 if(err){
                                                     console.log(err)
                                                 }else{
-                                                          employee.find({designation:"salesman"},function(err, employee) {
-                                                              if(err){
-                                                                  console.log(err)
-                                                              }else{
+                                                         fixedexpenses.find({month:req.params.month,year:req.params.year},function(err, fexpenses) {
+                                                             if(err){
+                                                                 console.log(err)
+                                                             }else{
+                                                                       res.render("expenses/allbalancesheet",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,sale:sale,item:item,employee:employee,fexpenses:fexpenses})
                                                                   
-                                                                  res.render("expenses/allbalancesheet",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,sale:sale,item:item,employee:employee})
-                                                                  
-                                                                   
-                                                              }
-                                                          }) 
-                                                            
+                                                              
+                                                             }
+                                                             
+                                                         })         
+                                                          
                                                     }  
                                             })
                                         }
@@ -710,9 +717,29 @@ router.put("/expenses/editorder/:id/:month/:year",function(req, res){
                  res.redirect("/expenses/allpurchaseditem/"+req.params.month+"/"+req.params.year)
             
         }
-  })
+  });
     
-})
+});
+
+router.get("/expenses/addfixedexpenses",middleware.isloggedin,function(req,res){
+           res.render("expenses/fixedexpenses",{employee:employee}) 
+});
+
+router.post("/expenses/addfixedexpenses",middleware.isloggedin,function(req, res){
+    
+    fixedexpenses.create(req.body.fexpenses, function(err,fexpenses){
+      if(err){
+          console.log(err);
+      } else{
+          req.flash("success","Expense successfully added");
+          res.redirect("/expenses/addfixedexpenses");
+      }
+    });
+});
+
+
+
+
 
 
 module.exports= router;
