@@ -9,7 +9,9 @@
   <% tot6=tot6+parseInt(sales.peice600ml)%>
   <% tot15=tot15+parseInt(sales.peice1500ml)%>
   <% tot50=tot50+parseInt(sales.peice5000ml)%>
-  <% if(sales.shop!="home"){ %>
+  <% if(sales.shop==="home"||sales.shop==="Home"||sales.shop==="HOME"){ %>
+  <%free2=free2+0,free3=free3+0%>
+  <% }else{ %>
   <% free2=free2+parseInt(parseInt(sales.peice200ml)/20);%>
   <% free3=free3+parseInt(parseInt(sales.peice330ml)/20);%>
   <% } %>
@@ -27,8 +29,11 @@
 </div>
 <div class="container">
   <%if(credit.length>0){ %>
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong><%=item[0].name.toUpperCase()%></strong></p>
+  <div class="row border text-white"style="background:blue;">
+    <div class="border" style="width:100%;padding:5px 10px;height:45px">
+    <p class="text-left" id="inline"><strong>SALESMAN'S NAME - <%=item[0].name.toUpperCase()%></strong></p>
+    <p class="float-right" id="inline"><strong><%=item[0].month%> <%=item[0].year%></strong></p>
+    </div>
   </div>
     <div class="row border">
   
@@ -102,7 +107,9 @@
     <% totl15=totl15+parseInt(item.peice1500ml)%>
     <% totl50=totl50+parseInt(item.peice5000ml)%>
 <% }) %>
-
+<div class="row border" style="background:grey;">
+  <p></p>
+</div>
 
 <div class="row border">
   <div class="border" style="width:36.7%">
@@ -207,7 +214,7 @@
   
   <div class="row border">
   <div class="border" style="width:36.7%">
-    <p class="text-left" style="padding:0 10px" class="text-right"><strong>Total carton given free in  <%=item[0].month%></strong></p>
+    <p class="text-left" style="padding:0 10px" class="text-right"><strong>Total free carton given in  <%=item[0].month%></strong></p>
   </div>
   <div class="border column4">
     <p><strong><%=free2%></strong></p>

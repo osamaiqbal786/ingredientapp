@@ -56,20 +56,20 @@
             <div class="form-group row">
                     <label for="d" class="col-sm-3 col-form-label">Basic salary</label>
                     <div class="col-sm-9">
-                    <input id="d" class="form-control" type="text" name="salary[bsalary]" placeholder="basic salary">
+                    <input class="form-control" id="bsalary" type="text" name="salary[bsalary]" placeholder="basic salary" onkeyup="totalsalary()">
                     </div>
             </div>
             <div class="form-group row">
                     <label for="d" class="col-sm-3 col-form-label">food allownce</label>
                     <div class="col-sm-9">
-                    <input id="d" class="form-control" type="text" name="salary[food]" placeholder="food allownce">
+                    <input class="form-control"id="food" type="text" name="salary[food]" placeholder="food allownce" onkeyup="totalsalary()">
                     </div>
             </div>
                 
             <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-3 col-form-label">Total salary</label>
                     <div class="col-sm-9">
-                    <input class="form-control" type="text" name="salary[amount]" placeholder="amount" required>
+                    <input class="form-control" type="text" id="tsalary" name="salary[amount]" placeholder="amount" required>
                     </div>
             </div>
             
@@ -116,7 +116,28 @@
                 </div>
     
     
-    
+ <script>
+     
+     function totalsalary(){
+         var bsalary=document.getElementById("bsalary"); 
+         var food=document.getElementById("food"); 
+         var tsalary=document.getElementById("tsalary");
+         var b,f;
+         if(bsalary.value===""){
+            b=0; 
+         }else{
+             b=parseFloat(bsalary.value);
+         }
+         if(food.value===""){
+             f=0
+         }else{
+             f=parseFloat(food.value);
+         }
+         tsalary.value=(b+f).toString();
+     }
+     
+     
+ </script>   
     
     
     

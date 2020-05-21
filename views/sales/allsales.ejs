@@ -9,8 +9,11 @@
   <%var gd=0%>
 </div>
 <div style="padding:0 15px">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong><%=sales[0].name.toUpperCase()%></strong></p>
+   <div class="row border text-white"style="background:blue;">
+    <div class="border" style="width:100%;padding:5px 10px;height:45px">
+    <p class="text-left" id="inline"><strong>SALESMAN'S NAME - <%=sales[0].name.toUpperCase()%></strong></p>
+    <p class="float-right" id="inline"><strong><%=sales[0].month%> <%=sales[0].year%></strong></p>
+    </div>
   </div>
     <div class="row border">
   
@@ -194,40 +197,40 @@
   </div>
  
     <div class="border"style="width:6.3%;float:right;">
-    <p>200ml</p>
+    <p><strong>200ml</strong></p>
     </div>
     <div class="border"style="width:9%;float:right;">
-    <p>Amount</p>
+    <p><strong>Amount</strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p>330ml</p>
+    <p><strong>330ml</strong></p>
     </div>
   <div class="border"style="width:8.9%;float:right;">
-    <p>Amount</p>
+    <p><strong>Amount</strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p>600ml</p>
+    <p><strong>600ml</strong></p>
     </div>
   <div class="border"style="width:8.8%;float:right;">
-    <p>Amount</p>
+    <p><strong>Amount</strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p>1.5L</p>
+    <p><strong>1.5L</strong></p>
     </div>
   <div class="border"style="width:8.7%;float:right;">
-    <p>Amount</p>
+    <p><strong>Amount</strong></p>
     </div>
     <div class="border"style="width:6.3%;float:right;">
-    <p>5L</p>
+    <p><strong>5L</strong></p>
     </div>
   <div class="border"style="width:8.6%;float:right;">
-    <p>Amount</p>
+    <p><strong>Amount</strong></p>
     </div>
         <div class="border"style="width:3%;float:right;">
-    <p>Tfr</p>
+    <p><strong>Tfr</strong></p>
     </div>
   <div class="border"style="width:3%;float:right;">
-    <p>Tfr</p>
+    <p><strong>Tfr</strong></p>
     </div>
   </div>
   
@@ -239,74 +242,74 @@
   </div>
  
     <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot2%></p>
+    <p><strong><%=tot2%></strong></strong></p>
     </div>
     <div class="border"style="width:9%;float:right;">
-    <p><%=pr2.toFixed(2)%></p>
+    <p><strong><%=pr2.toFixed(2)%></strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot3%></p>
+    <p><strong><%=tot3%></strong></p>
     </div>
   <div class="border"style="width:8.9%;float:right;">
-    <p><%=pr3.toFixed(2)%></p>
+    <p><strong><%=pr3.toFixed(2)%></strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot6%></p>
+    <p><strong><%=tot6%></strong></p>
     </div>
   <div class="border"style="width:8.8%;float:right;">
-    <p><%=pr6.toFixed(2)%></p>
+    <p><strong><%=pr6.toFixed(2)%></strong></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot15%></p>
+    <p><strong><%=tot15%></strong></p>
     </div>
   <div class="border"style="width:8.7%;float:right;">
-    <p><%=pr15.toFixed(2)%></p>
+    <p><strong><%=pr15.toFixed(2)%></strong></p>
     </div>
     <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot50%></p>
+    <p><strong><%=tot50%></strong></p>
     </div>
   <div class="border"style="width:8.6%;float:right;">
-    <p><%=pr50.toFixed(2)%></p>
+    <p><strong><%=pr50.toFixed(2)%></strong></p>
     </div>
         <div class="border"style="width:3%;float:right;">
-    <p><%=totfr2%></p>
+    <p><strong><%=totfr2%></strong></p>
     </div>
   <div class="border"style="width:3%;float:right;">
-    <p><%=totfr3%></p>
+    <p><strong><%=totfr3%></strong></p>
     </div>
   </div>
   
-  <div class="row border text-warning">
+  <div class="row border text-info">
   <div class="border" style="width:13%;float:right;">
     <p class="text-center"><strong>Grand total with free </strong></p>
   </div>
  
     <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot2+totfr2%></p>
+    <p><strong><%=tot2+totfr2%></strong></p>
     </div>
     <div class="border"style="width:9%;float:right;">
     <p></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot3+totfr3%></p>
+    <p><strong><%=tot3+totfr3%></strong></p>
     </div>
   <div class="border"style="width:8.9%;float:right;">
     <p></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot6%></p>
+    <p><strong><%=tot6%></strong></p>
     </div>
   <div class="border"style="width:8.8%;float:right;">
     <p></p>
     </div>
   <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot15%></p>
+    <p><strong><%=tot15%></strong></p>
     </div>
   <div class="border"style="width:8.7%;float:right;">
     <p></p>
     </div>
     <div class="border"style="width:6.3%;float:right;">
-    <p><%=tot50%></p>
+    <p><strong><%=tot50%></strong></p>
     </div>
   <div class="border"style="width:8.6%;float:right;">
     <p></p>
@@ -332,19 +335,19 @@
   </div>
  
     <div class="border"style="width:6%;float:right;">
-    <p><%=tot2+tot3+tot6+tot15+tot50%></p>
+    <p><strong><%=tot2+tot3+tot6+tot15+tot50%></strong></p>
     </div>
     <div class="border"style="width:25%;float:right;">
     <p class="text-center"><strong>Total free cartoon</strong></p>
     </div>
   <div class="border"style="width:6%;float:right;">
-    <p><%=totfr2+totfr3%></p>
+    <p><strong><%=totfr2+totfr3%></strong></p>
     </div>
   <div class="border"style="width:25%;float:right;">
     <p class="text-center"><strong>Total carton sold with free</strong></p>
     </div>
   <div class="border"style="width:6%;float:right;">
-    <p><%=tot2+tot3+tot6+tot15+tot50+totfr2+totfr3%></p>
+    <p><strong><%=tot2+tot3+tot6+tot15+tot50+totfr2+totfr3%></strong></p>
     </div>
   
 

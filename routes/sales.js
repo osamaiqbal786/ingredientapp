@@ -93,39 +93,7 @@ router.post("/sales/addsales",middleware.isloggedin,function(req, res){
           console.log(err)
       }else{
           if(saless.length<1){
-             
-                 if(req.body.sales.shop==="home"||req.body.sales.shop==="Home"||req.body.sales.shop==="HOME"){
-        homeprice.find({},function(err,home){
-            if(err){
-                console.log(err)
-            }else{
-                req.body.sales.price200ml=home[0].price200ml;
-                req.body.sales.price330ml=home[0].price330ml;
-                var pm2=parseFloat(req.body.sales.peice200ml);
-                var pm3=parseFloat(req.body.sales.peice330ml);
-                var pm6=parseFloat(req.body.sales.peice600ml);
-                var pm15=parseFloat(req.body.sales.peice1500ml);
-                var pm50=parseFloat(req.body.sales.peice5000ml);
-                var rm2=parseFloat(req.body.sales.price200ml);
-                var rm3=parseFloat(req.body.sales.price330ml);
-                var rm6=parseFloat(req.body.sales.price600ml);
-                var rm15=parseFloat(req.body.sales.price1500ml);
-                var rm50=parseFloat(req.body.sales.price5000ml);
-                var total= (pm2*rm2)+(pm3*rm3)+(pm6*rm6)+(pm15*rm15)+(pm50*rm50);
-    
-                    sale.create(req.body.sales, function(err,sale){
-                    if(err){
-                    console.log(err);
-                     } else{
-                    sale.total=total.toFixed(2);
-                    sale.save();
-                    req.flash("success","sales successfully added");
-                    res.redirect("/sales/addsales/"+req.body.sales.name+"/"+req.body.sales.voucher);
-                    }
-                });
-            }
-        })
-    }else{
+
     var pm2=parseFloat(req.body.sales.peice200ml);
     var pm3=parseFloat(req.body.sales.peice330ml);
     var pm6=parseFloat(req.body.sales.peice600ml);
@@ -149,7 +117,6 @@ router.post("/sales/addsales",middleware.isloggedin,function(req, res){
                 res.redirect("/sales/addsales/"+req.body.sales.name+"/"+req.body.sales.voucher);
       }
     });
-    }
              
               
           }else{
@@ -636,6 +603,7 @@ router.get("/sales/:id/edit",middleware.isloggedin,function(req, res) {
 });
 
 router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
+
     var pm2=parseFloat(req.body.sales.peice200ml);
     var pm3=parseFloat(req.body.sales.peice330ml);
     var pm6=parseFloat(req.body.sales.peice600ml);
@@ -647,17 +615,19 @@ router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
     var rm15=parseFloat(req.body.sales.price1500ml);
     var rm50=parseFloat(req.body.sales.price5000ml);
     var total= (pm2*rm2)+(pm3*rm3)+(pm6*rm6)+(pm15*rm15)+(pm50*rm50);
-    sale.findByIdAndUpdate(req.params.id,req.body.sales, function(err, updated){
+    sale.findByIdAndUpdate(req.params.id,req.body.sales, function(err,sale){
       if(err){
-       res.redirect("/home")
-        }else{
-            updated.total=total.toFixed(2);
-            updated.save();
-            req.flash("success","sales edited successfully")
-            res.redirect("/sales/allsales/"+ req.params.name+"/"+req.params.month+"/"+req.params.year)
-        }  
+          console.log(err);
+      } else{
+          
+
+         sale.total=total.toFixed(2);
+                sale.save();
+                req.flash("success","sales edited added");
+               res.redirect("/sales/allsales/"+ req.params.name+"/"+req.params.month+"/"+req.params.year)
+      }
     });
-   
+            
 });
 
 
