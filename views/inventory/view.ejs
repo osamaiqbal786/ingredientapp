@@ -1,10 +1,10 @@
 <%- include ('../partials/header')%>
 <% var tot2=0;var tot3=0;var tot6=0;var tot15=0;var tot50=0;%>
 <% var totl2=0;var totl3=0;var totl6=0;var totl15=0;var totl50=0;%>
-<%var p2=0,p3=0,p6=0,p15=0,p50=0;%>
+<%var p2=0,p3=0,p6=0,p15=0,p50=0,dat;%>
 <div class="container" style="margin-bottom:40px;">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>Inventory stock till date <%=invt[0].dateupdated%></strong></p>
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
+    <p style="margin:8px;"><strong>INVENTORY STOCK TILL DATE <%=invt[0].dateupdated%></strong></p>
   </div>
     <div class="row border">
     
@@ -62,8 +62,8 @@
 
 
 <div class="container" style="margin-bottom:40px;">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>Stocks added to inventory</strong></p>
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
+    <p style="margin:8px;"><strong>STOCKS ADDED TO INVENTORY</strong></p>
   </div>
     <div class="row border">
     
@@ -153,15 +153,12 @@
       
       
       <div class="container" style="margin-bottom:40px;">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>Stocks issued from inventory</strong></p>
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
+    <p style="margin:8px;"><strong>STOCKS ISSUED FROM INVENTORY</strong></p>
   </div>
     <div class="row border">
     
-    <div class="col-1 border">
-      <P><strong>voucher<br>no</strong></P>
-    </div>
-    <div class="col-4 border">
+    <div class="col-5 border">
       <P><strong>Name</strong></P>
     </div>
     <div class="col-2 border">
@@ -194,6 +191,7 @@
   <%p6=p6+parseInt(uinvt.peice600ml)%>
   <%p15=p15+parseInt(uinvt.peice1500ml)%>
   <%p50=p50+parseInt(uinvt.peice5000ml)%>
+  <%dat=uinvt.date%>
   
     <% totl2=totl2+parseInt(uinvt.peice200ml)%>
     <% totl3=totl3+parseInt(uinvt.peice330ml)%>
@@ -204,8 +202,11 @@
    <% }) %>
    <%if(p2>0||p3>0||p15>0||p50>0){%>
     <div class="row border">
-     <div class="col-7 border">
+     <div class="col-5 border">
       <P>Issued to <%=employee.name%></P>
+    </div>
+    <div class="col-2 border">
+      <P><%=dat%></P>
     </div>
     <div class="col-1 border">
       <P><%=p2%></P>

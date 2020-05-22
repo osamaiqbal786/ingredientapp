@@ -16,8 +16,8 @@
                            <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="sales[name]" required>
-                    <option value="">Select salesman</option>
+                    <select id="givento" class="form-control" name="sales[name]" onchange="ischangedemployee()"required>
+                    <option  value="">Select salesman</option>
                     <%employee.forEach(function(employee){%>
                         <option><%=employee.name%></option>
                   <%  }) %>
@@ -78,13 +78,14 @@
              </div>
                            
              <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">5l</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">5L</label>
                     <div class="col-sm-10">
              <input class="form-control" type="text" name="sales[peice5000ml]" placeholder="5L peices">
              </div>
              </div>
+             <div id="sdiv">
              <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Shop name</label>
+                    <label for="sname" class="col-sm-3 col-form-label">Shop name</label>
                     <div class="col-sm-9">
                     <input class="form-control" id="sname" type="text" name="sales[shop]" placeholder="shop name(optional)" onkeyup="ischangedshop()">
                     </div>
@@ -122,7 +123,8 @@
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">VAT%</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[vat]" value="<%=price[0].vat%>" required>
+             <input class="form-control" type="text" id="vat" name="sales[vat]" value="<%=price[0].vat%>" required>
+             </div>
              </div>
              </div>
               <div class="form-group row">
@@ -205,10 +207,39 @@ function ischangedshop(){
     price200ml.value="14.28"
     price330ml.value="13.33"
     }else{
-        price200ml.value="14.00"
-    price330ml.value="13.10" 
+        price200ml.value=price200ml.defaultValue;
+    price330ml.value=price330ml.defaultValue; 
     }
-}
+};
+function ischangedemployee(){
+  var givento = document.getElementById("givento"); 
+  var price200ml=document.getElementById("price200ml");
+  var price330ml=document.getElementById("price330ml");
+  var price600ml = document.getElementById("price600ml");
+  var price1500ml = document.getElementById("price1500ml");
+  var price5000ml = document.getElementById("price5000ml");
+  var vat = document.getElementById("vat");
+  var sdiv=document.getElementById("sdiv");
+  if(givento.value==="Mr. Farhad AL Jeneede House"||givento.value==="Gift/Promotion to individual/Co."||givento.value==="Carton Damaged in Handling"){
+    price200ml.value="0.00";
+    price330ml.value="0.00";
+    price600ml.value="0.00";
+    price1500ml.value="0.00";
+    price5000ml.value="0.00";
+    vat.value="0.00";
+    sdiv.style="display:none;"
+    
+  }else{
+      price200ml.value=price200ml.defaultValue;
+    price330ml.value=price330ml.defaultValue;
+    price600ml.value=price600ml.defaultValue;
+    price1500ml.value=price1500ml.defaultValue;
+    price5000ml.value=price5000ml.defaultValue;
+    vat.value=vat.defaultValue;
+    sdiv.style=""
+  }
+  
+};
 </script>
     
 <%- include ('../partials/footer')%>

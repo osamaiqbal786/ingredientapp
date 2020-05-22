@@ -42,8 +42,8 @@
 
 <%if(credit.length>0){%>
 <div class="container">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong>All cash flow</strong></p>
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
+    <p style="margin:8px;"><strong>ALL CASH FLOW OF <%=recipt[0].month%> <%=recipt[0].year%></strong></p>
   </div>
       <div class="row border">
     
@@ -75,7 +75,7 @@
       
     <% }) %>
     <%grt=grt+tt%>
-   
+   <%if(tt>0){%>
     <div class="row border">
       <div class="col-7 border">
         <p class="text-left"><strong>total cash received from-<%=employee.name%></strong></p>
@@ -84,6 +84,7 @@
         <P><%=tt%></P>
       </div>
     </div>
+    <% } %>
     <%tt=0%>
     <% }) %>
      <div class="row border">

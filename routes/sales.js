@@ -337,7 +337,7 @@ router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
                  console.log(err)
              }else{
                  invto.type="ISSUED"
-                 invto.name="Issued to-"+req.body.item.name;
+                 invto.name=req.body.item.name;
                  invto.save();
                  req.flash("success","Item successfully issued");
                  res.redirect("/sales/issueitem/"+req.body.item.name+"/"+req.body.item.voucher)

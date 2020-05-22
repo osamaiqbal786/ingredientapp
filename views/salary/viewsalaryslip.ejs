@@ -1,5 +1,6 @@
 <%- include ('../partials/header')%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<%let today = new Date().toLocaleDateString()%>
 <% var tot=0;var com=0;%>
 <div class="container">
   <%if(slip.length<1){%>
@@ -9,12 +10,12 @@
 </div>
 
 <div class="container">
-  <div class="row border justify-content-center text-white"style="background:blue;">
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
     <div class="col-6 border">
-        <p><strong>Salary of-<%=slip[0].month%> </strong></p>
+        <p style="margin:8px;"><strong>SALARY OF-<%=slip[0].month%> <%=slip[0].year%></strong></p>
     </div>
     <div class="col-6 border">
-        <p><strong>Salary of-<%=slip[0].date%> </strong></p>
+        <p style="margin:8px;"><strong>DATE-<%=today%> </strong></p>
     </div>
   </div>
 
@@ -78,7 +79,7 @@
       <P><strong>Total salary</strong></P>
     </div>
     <div class="col-6 border">
-      <P><%=parseFloat(tot)+parseFloat(com)%></P>
+      <P><%=(parseFloat(tot)+parseFloat(com))%></P>
     </div>
     </div>
  

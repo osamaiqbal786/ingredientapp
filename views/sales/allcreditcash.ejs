@@ -9,13 +9,16 @@
 </div>
 <%if(credit.length>0){%>
 <div class="container">
-  <div class="row border justify-content-center text-white"style="background:blue;">
-    <p><strong><%=sales[0].name.toUpperCase()%></strong></p>
+  <div class="row border justify-content-center text-black"style="background:#07b0f2;">
+   <div class="border" style="width:100%;padding:8px 10px;height:45px">
+    <p class="text-left" id="inline"><strong>SALESMAN'S NAME - <%=recipt[0].name.toUpperCase()%></strong></p>
+    <p class="float-right" id="inline"><strong><%=recipt[0].month%> <%=recipt[0].year%></strong></p>
+    </div>
   </div>
     <div class="row border">
     
     <div class="col-8 border">
-      <P><strong>Description</strong></P>
+      <P class="text-center"><strong>Description</strong></P>
     </div>
     <div class="col-4 border">
       <P><strong>Amount</strong></P>
@@ -70,10 +73,10 @@
     </div>
     <div class="row border">
       <div class="col-8 border">
-        <p class="text-center"><strong>total credit amount-<%=recipt[0].month%> <%=recipt[0].year%></strong></p>
+        <p class="text-center"><strong>Total credit amount-<%=recipt[0].month%> <%=recipt[0].year%></strong></p>
       </div>
       <div class="col-4 border">
-        <P><strong><%=(parseFloat(sal)+parseFloat(credit[0].amount))-gd%></strong></P>
+        <P><strong><%=((parseFloat(sal)+parseFloat(credit[0].amount))-gd).toFixed(2)%></strong></P>
       </div>
     </div>
   
