@@ -16,7 +16,7 @@
                            <div class="form-group row">
                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
-                    <select id="inputState" class="form-control" name="sales[name]" required>
+                    <select id="givento" class="form-control" name="sales[name]" onchange="ischangedemployee()"required>
                     <option><%=name%></option>
                     <%employee.forEach(function(employee){%>
                         <option><%=employee.name%></option>
@@ -50,80 +50,82 @@
                     <input class="form-control" type="text" name="sales[voucher]" value="<%=parseInt(voucher)+1%>" required>
                     </div>
             </div>
-            <div class="form-group row">
+             <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[peice200ml]" placeholder="200ml peices" required>
+             <input class="form-control" type="text" name="sales[peice200ml]" placeholder="200ml peices">
              </div>
              </div>
               
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">330ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[peice330ml]" placeholder="330ml peices" required>
+             <input class="form-control" type="text" name="sales[peice330ml]" placeholder="330ml peices">
              </div>
              </div>
              
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">600ML</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[peice600ml]" placeholder="600ml peices" required>
+             <input class="form-control" type="text" name="sales[peice600ml]" placeholder="600ml peices">
              </div>
              </div>
             
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">1.5L</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[peice1500ml]" placeholder="1.5L peices" required>
+             <input class="form-control" type="text" name="sales[peice1500ml]" placeholder="1.5L peices">
              </div>
              </div>
                            
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">5L</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[peice5000ml]" placeholder="5L peices" required>
+             <input class="form-control" type="text" name="sales[peice5000ml]" placeholder="5L peices">
              </div>
              </div>
+             <div id="sdiv">
              <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Shop name</label>
+                    <label for="sname" class="col-sm-3 col-form-label">Shop name</label>
                     <div class="col-sm-9">
-                    <input class="form-control" type="text" name="sales[shop]" placeholder="shop name(optional)">
+                    <input class="form-control" id="sname" type="text" name="sales[shop]" placeholder="shop name(optional)" onkeyup="ischangedshop()">
                     </div>
             </div>
              <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 200ml</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" id="price200ml" name="sales[price200ml]" value="<%=price[0].price200ml%>" required>
+             <input class="form-control" type="text" id="price200ml" name="sales[price200ml]" value="<%=price[0].price200ml%>" onkeyup="ischanged2()" required>
              </div>
              </div>
                            <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 330ml</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" id="price330ml" name="sales[price330ml]" value="<%=price[0].price330ml%>" required>
+             <input class="form-control" type="text" id="price330ml" name="sales[price330ml]" value="<%=price[0].price330ml%>" onkeyup="ischanged3()" required>
              </div>
              </div>
                             <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 600ml</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" id="price600ml" name="sales[price600ml]" value="<%=price[0].price600ml%>" required>
+             <input class="form-control" type="text" id="price600ml" name="sales[price600ml]" value="<%=price[0].price600ml%>" onkeyup="ischanged6()" required>
              </div>
              </div>
              <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 1.5L</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" id="price1500ml" name="sales[price1500ml]" value="<%=price[0].price1500ml%>" required>
+             <input class="form-control" type="text" id="price1500ml" name="sales[price1500ml]" value="<%=price[0].price1500ml%>" onkeyup="ischanged15()"  required>
              </div>
              </div>
                            <div class="form-group row">
-                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE</label>
+                 <label for="inputEmail3" class="col-sm-2 col-form-label">PRICE 5L</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" id="price5000ml" name="sales[price5000ml]" value="<%=price[0].price5000ml%>" required>
+             <input class="form-control" type="text" id="price5000ml" name="sales[price5000ml]" value="<%=price[0].price5000ml%>" onkeyup="ischanged50()" required>
              </div>
              </div>
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">VAT%</label>
                     <div class="col-sm-10">
-             <input class="form-control" type="text" name="sales[vat]" value="<%=price[0].vat%>" required>
+             <input class="form-control" type="text" id="vat" name="sales[vat]" value="<%=price[0].vat%>" required>
+             </div>
              </div>
              </div>
               <div class="form-group row">
@@ -158,7 +160,7 @@
                 </div>
              
              <div class="form-group">
-            <button onclick="ischanged()"class="btn btn-lg btn-primary btn-block">Submit</button>
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
             </div>
             <p><a href="/home">Go Back</a></p>
         </form>
@@ -168,27 +170,76 @@
 
 
 <script>
-function ischanged(){
+function ischanged2(){
 var price200ml = document.getElementById("price200ml");
-var price330ml = document.getElementById("price330ml");
-var price600ml = document.getElementById("price600ml");
-var price1500ml = document.getElementById("price1500ml");
-var price5000ml = document.getElementById("price5000ml");
 if (price200ml.value != price200ml.defaultValue){
 alert("#price200ml has changed");
 }
-if (price330ml.value != price330ml.defaultValue){
+};
+function ischanged3(){
+var price330ml = document.getElementById("price330ml");
+ if (price330ml.value != price330ml.defaultValue){
 alert("#price330ml has changed"); 
-}
-if (price600ml.value != price600ml.defaultValue){
+}   
+};
+function ischanged6(){
+  var price600ml = document.getElementById("price600ml"); 
+  if (price600ml.value != price600ml.defaultValue){
 alert("#price600ml has changed"); 
 }
-if (price1500ml.value != price1500ml.defaultValue){
+};
+function ischanged15(){
+ var price1500ml = document.getElementById("price1500ml"); 
+ if (price1500ml.value != price1500ml.defaultValue){
 alert("#price1500ml has changed"); 
 }
-if (price5000ml.value != price5000ml.defaultValue){
+};
+function ischanged50(){
+  var price5000ml = document.getElementById("price5000ml"); 
+  if (price5000ml.value != price5000ml.defaultValue){
 alert("#price5000ml has changed"); 
 }
+};
+function ischangedshop(){
+    var sname = document.getElementById("sname"); 
+    var price200ml=document.getElementById("price200ml");
+    var price330ml=document.getElementById("price330ml");
+    if(sname.value==="home"||sname.value==="Home"||sname.value==="HOME"){
+    price200ml.value="14.28"
+    price330ml.value="13.33"
+    }else{
+        price200ml.value=price200ml.defaultValue;
+    price330ml.value=price330ml.defaultValue; 
+    }
+};
+function ischangedemployee(){
+  var givento = document.getElementById("givento"); 
+  var price200ml=document.getElementById("price200ml");
+  var price330ml=document.getElementById("price330ml");
+  var price600ml = document.getElementById("price600ml");
+  var price1500ml = document.getElementById("price1500ml");
+  var price5000ml = document.getElementById("price5000ml");
+  var vat = document.getElementById("vat");
+  var sdiv=document.getElementById("sdiv");
+  if(givento.value==="Mr. Farhad AL Jeneede House"||givento.value==="Gift/Promotion to individual/Co."||givento.value==="Carton Damaged in Handling"){
+    price200ml.value="0.00";
+    price330ml.value="0.00";
+    price600ml.value="0.00";
+    price1500ml.value="0.00";
+    price5000ml.value="0.00";
+    vat.value="0.00";
+    sdiv.style="display:none;"
+    
+  }else{
+      price200ml.value=price200ml.defaultValue;
+    price330ml.value=price330ml.defaultValue;
+    price600ml.value=price600ml.defaultValue;
+    price1500ml.value=price1500ml.defaultValue;
+    price5000ml.value=price5000ml.defaultValue;
+    vat.value=vat.defaultValue;
+    sdiv.style=""
+  }
+  
 };
 </script>
     
