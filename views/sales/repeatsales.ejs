@@ -9,7 +9,7 @@
         
         <div style="width:50%; margin:0 auto;">
             
-            <h2 class="text-center">Add your sales</h2>
+            <h2 class="text-center">Add Your Sales</h2>
             
             <form action="/sales/addsales" method="post">
             
@@ -26,17 +26,8 @@
                     </select>
                     </div>
                 </div>
+          
             
-            
-            
-            
-            
-            <!--<div class="form-group row">-->
-            <!--        <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>-->
-            <!--        <div class="col-sm-10">-->
-            <!--        <input class="form-control" type="text" name="sales[name]" placeholder="sales man name" required>-->
-            <!--        </div>-->
-            <!--</div>-->
              <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
                     <div class="col-sm-10">
@@ -44,11 +35,13 @@
                     </div>
             </div>
                
+               <div id="vdiv">
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">Voucher No</label>
                     <div class="col-sm-10">
-                    <input class="form-control" type="text" name="sales[voucher]" value="<%=parseInt(voucher)+1%>" required>
+                    <input class="form-control" type="text" id="voch"  name="sales[voucher]" value="<%=parseInt(voucher)+1%>" required>
                     </div>
+            </div>
             </div>
              <div class="form-group row">
                  <label for="inputEmail3" class="col-sm-2 col-form-label">200ML</label>
@@ -221,6 +214,8 @@ function ischangedemployee(){
   var price5000ml = document.getElementById("price5000ml");
   var vat = document.getElementById("vat");
   var sdiv=document.getElementById("sdiv");
+  var vdiv=document.getElementById("vdiv");
+  var voch=document.getElementById("voch");
   if(givento.value==="Mr. Farhad AL Jeneede House"||givento.value==="Gift/Promotion to individual/Co."||givento.value==="Carton Damaged in Handling"){
     price200ml.value="0.00";
     price330ml.value="0.00";
@@ -228,7 +223,9 @@ function ischangedemployee(){
     price1500ml.value="0.00";
     price5000ml.value="0.00";
     vat.value="0.00";
+    voch.value="0"
     sdiv.style="display:none;"
+    vdiv.style="display:none;"
     
   }else{
       price200ml.value=price200ml.defaultValue;
@@ -237,7 +234,9 @@ function ischangedemployee(){
     price1500ml.value=price1500ml.defaultValue;
     price5000ml.value=price5000ml.defaultValue;
     vat.value=vat.defaultValue;
+    voch.value=voch.defaultValue;
     sdiv.style=""
+    vdiv.style=""
   }
   
 };
