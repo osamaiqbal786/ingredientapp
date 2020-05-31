@@ -7,7 +7,7 @@
   <% }else{ %>
 
 </div>
-  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var tt=0;var grt=0;var x=0; var p2=0,p3=0,p6=0,p15=0,p50=0;var len=0;var fe=0;%>
+  <%var st=0;var ct=0;var gt=0; var trt=0; var et=0;var rt=0;var bt=0;var tt=0;var grt=0;var x=0; var p2=0,p3=0,p6=0,p15=0,p50=0;var len=0;var fe=0,fr2=0,fr3=0;%>
  
 <% fexpenses.forEach(function(fexpenses){ %>
     <%fe=fe+parseFloat(fexpenses.amount)%>
@@ -31,20 +31,29 @@
     <% extra.forEach(function(extra){ %>
     <%et=et+parseFloat(extra.amount)%>
     <% }) %>
+     <% recipt.forEach(function(recipt){ %>
+    <%rt=rt+parseFloat(recipt.amount)%>
+    <% }) %>
     
     <% sale.forEach(function(sale){ %>
-    <%rt=rt+parseFloat(sale.total)%>
     <%p2=p2+parseInt(sale.peice200ml)%>
         <%p3=p3+parseInt(sale.peice330ml)%>
             <%p6=p6+parseInt(sale.peice600ml)%>
                 <%p15=p15+parseInt(sale.peice1500ml)%>
                     <%p50=p50+parseInt(sale.peice5000ml)%>
+                    <%if(sale.shop==="home"||sale.shop==="Home"||sale.shop==="HOME"||sale.name ==="Mr. Farhad AL Jeneede House"||sale.name ==="Gift\Promotion to individual\Co."||sale.name ==="Carton Damaged in Handling"){ %>
+                    <% fr2=fr2+0%>
+                    <%fr3=fr3+0%>
+                    <% }else{ %>
+                     <% fr2=fr2+parseInt((parseInt(sale.peice200ml)/20))%>
+                    <%fr3=fr3+parseInt((parseInt(sale.peice330ml)/20))%>
+                    <% } %>
     <% }) %>
-    <% grt=(rt+(rt*parseFloat(sale[0].vat)/100)).toFixed(2)%>
+    <% grt=(rt).toFixed(2)%>
     <%len=item.length%>
-    <%bt=(p2*parseFloat(item[len-1].price200ml))+(p3*parseFloat(item[len-1].price330ml))+(p6*parseFloat(item[len-1].price600ml))+(p15*parseFloat(item[len-1].price1500ml))+(p50*parseFloat(item[len-1].price5000ml))%>
+    <%bt=((p2+fr2)*parseFloat(item[len-1].price200ml))+((p3+fr3)*parseFloat(item[len-1].price330ml))+(p6*parseFloat(item[len-1].price600ml))+(p15*parseFloat(item[len-1].price1500ml))+(p50*parseFloat(item[len-1].price5000ml))%>
   
-     <% x=(bt+(bt*parseFloat(item[len-1].vat)/100)).toFixed(2) %>
+     <% x=(bt).toFixed(2) %>
 
 
 
@@ -59,7 +68,7 @@
       <P class="text-center"><strong>Description</strong></P>
     </div>
     <div class="col-5 border">
-      <P><strong>Amount</strong></P>
+      <P><strong>Amount<br>SR</strong></P>
     </div>
     </div>
     
@@ -75,7 +84,7 @@
 
      <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total sale amount</strong></p>
+        <p class="text-left"><strong>Total sale amount Recieved</strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=grt%></strong></P>

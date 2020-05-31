@@ -81,7 +81,7 @@
       <P><strong>Vat-<%=sales[0].vat%>%</strong></P>
     </div>
      <div class="column3 border">
-      <P><strong>Grand Total</strong></P>
+      <P><strong>Grand Total<br>SR</strong></P>
     </div>
   </div>
   
@@ -141,7 +141,7 @@
     </div>
     
     
-   <% if(sales.shop ==="home"||sales.shop ==="Home"||sales.shop ==="HOME"){ %>
+   <% if(sales.shop ==="home"||sales.shop ==="Home"||sales.shop ==="HOME"||sales.name ==="Mr. Farhad AL Jeneede House"||sales.name ==="Gift\Promotion to individual\Co."||sales.name ==="Carton Damaged in Handling"){ %>
    <%free2=0;%>
   <% free3=0;%>
   <% }else{ %>
@@ -187,7 +187,7 @@
     <p class="text-right"><strong>Grand total</strong></p>
   </div>
   <div class="col-2 border"style="width:15%">
-    <p><strong><%=gd.toFixed(2)%></strong></p>
+    <p><strong><%=gd.toFixed(2)%> SR</strong></p>
     </div>
   </div>
   

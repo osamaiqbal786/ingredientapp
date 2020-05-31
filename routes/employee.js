@@ -1,6 +1,7 @@
 var express= require("express");
 var router= express.Router();
 var employee= require("../models/employee");
+var middleware= require("../middleware");
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -24,12 +25,12 @@ cloudinary.config({
   api_secret: 'LE20IJzelodOHiKR092XiQmCBNw'
 });
 
-router.get("/addemployee",function(req,res){
+router.get("/addemployee",middleware.isloggedin,function(req,res){
     res.render("employee/addemployee")
 });
 
 
-router.post("/addemployee", upload.single('image'), function(req, res) {
+router.post("/addemployee", upload.single('image'),middleware.isloggedin, function(req, res) {
    
    cloudinary.uploader.upload(req.file.path, function(result) {
   req.body.employee.image = result.secure_url;
@@ -43,7 +44,7 @@ router.post("/addemployee", upload.single('image'), function(req, res) {
    });
    });
 });
-router.delete("/employee/:id", function(req, res){
+router.delete("/employee/:id",middleware.isloggedin, function(req, res){
    employee.findByIdAndRemove(req.params.id, function(err){
       if(err){
           res.redirect("/home");
@@ -52,6 +53,16 @@ router.delete("/employee/:id", function(req, res){
          res.redirect("/home"); 
       }
    }); 
+});
+router.get("/viewemployee",middleware.isloggedin,function(req,res){
+    employee.find({},function(err, employee){
+       if(err){
+           console.log(err)
+       }else{
+           res.render("home/homeextra",{employee:employee})
+       } 
+    });
+    
 });
 
 

@@ -24,7 +24,7 @@
       <P><strong>Designation</strong></P>
     </div>
     <div class="col-2 border">
-      <P><strong>Amount</strong></P>
+      <P><strong>Amount<br>SR</strong></P>
     </div>
         
     </div>
@@ -32,7 +32,7 @@
     <div class="row border">
         
         <div class="col-6 border">
-      <P><%=salary.name%>-<%=salary.type%></P>
+      <P><a href="/expenses/editsalary/<%=salary._id%>/edit"><%=salary.name%>-<%=salary.type%></a></P>
     </div>
     <div class="col-2 border">
       <P><%=salary.date%></P>
@@ -52,7 +52,7 @@
         <p class="text-right"><strong>Grand Total</strong></p>
       </div>
       <div class="col-2 border">
-        <P><strong><%=gd.toFixed(2)%></strong></P>
+        <P><strong><%=gd.toFixed(2)%> SR</strong></P>
       </div>
     </div>
 </div>

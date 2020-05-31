@@ -1,0 +1,154 @@
+<%- include ('../partials/header')%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <% var d=new Date()%>
+    <%let today = new Date().toLocaleDateString()%>
+    <%var month= d.toLocaleString('default', { month: 'long' })%>
+    <% var year=new Date().getFullYear()%>
+<div class="container">
+    
+     <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">Add Salary And Commision</h2>
+            
+            <form action="/expenses/editsalary/<%=salary._id%>/<%=salary.month%>/<%=salary.year%>?_method=PUT" method="post">
+               <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Date</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" name="salary[date]" value="<%=salary.date%>" required>
+                    </div>
+            </div>
+                <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="salary[name]" required>
+                    <option selected><%=salary.name%></option>
+                    <%employee.forEach(function(employee){%>
+                        <option><%=employee.name%></option>
+                  <%  }) %>
+                    
+                    
+                    </select>
+                    </div>
+                </div>
+                
+                
+                 <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Type</label>
+                    <div class="col-sm-9">
+                    <select id="type" class="form-control" name="salary[type]" onchange="istotal()"required>
+                    <option selected><%=salary.type%></option>
+                    <option>Salary</option>
+                    <option>Commision</option>
+                    <option>Bonus</option>
+                    <option>Gift</option>
+                    </select>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label for="d" class="col-sm-3 col-form-label">Designation</label>
+                    <div class="col-sm-9">
+                    <input id="d" class="form-control" type="text" name="salary[designation]" value="<%=salary.designation%>" required>
+                    </div>
+            </div>
+            <div id="saldiv">
+            <div class="form-group row">
+                    <label for="d" class="col-sm-3 col-form-label">Basic salary</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" id="bsalary" type="text" name="salary[bsalary]" value="<%=salary.bsalary%>" onkeyup="totalsalary()">
+                    </div>
+            </div>
+            <div class="form-group row">
+                    <label for="d" class="col-sm-3 col-form-label">food allownce</label>
+                    <div class="col-sm-9">
+                    <input class="form-control"id="food" type="text" name="salary[food]" value="<%=salary.food%>" onkeyup="totalsalary()">
+                    </div>
+            </div>
+              </div>  
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Total salary</label>
+                    <div class="col-sm-9">
+                    <input class="form-control" type="text" id="tsalary" name="salary[amount]" value="<%=salary.amount%>" required>
+                    </div>
+            </div>
+            
+            
+          
+               <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-3 col-form-label">Month</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="salary[month]">
+                    <option selected><%=salary.month%></option>
+                   <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    <option>MARCH</option>
+                    <option>APRIL</option>
+                    <option>MAY</option>
+                    <option>JUNE</option>
+                    <option>JULY</option>
+                    <option>AUGUST</option>
+                    <option>SEPTEMBER</option>
+                    <option>OCTOBER</option>
+                    <option>NOVEMBER</option>
+                    <option>DECEMBER</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Year</label>
+                    <div class="col-sm-9">
+                    <select id="inputState" class="form-control" name="salary[year]">
+                    <option selected><%=salary.year%></option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    </select>
+                    </div>
+                </div>
+               
+             <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+             <p><a href="/home">Go Back</a></p>
+                </form>
+                </div>
+                </div>
+                </div>
+    
+    
+ <script>
+     
+     function totalsalary(){
+         var bsalary=document.getElementById("bsalary"); 
+         var food=document.getElementById("food"); 
+         var tsalary=document.getElementById("tsalary");
+         var b,f;
+         if(bsalary.value===""){
+            b=0; 
+         }else{
+             b=parseFloat(bsalary.value);
+         }
+         if(food.value===""){
+             f=0
+         }else{
+             f=parseFloat(food.value);
+         }
+         tsalary.value=(b+f).toString();
+     };
+     function istotal(){
+         var type=document.getElementById("type"); 
+         var saldiv=document.getElementById("saldiv");
+         if(type.value==="Commision"||type.value==="Bonus"||type.value==="Gift"){
+             saldiv.style="display:none";
+         }else{
+             saldiv.style=""
+         }
+     }
+     
+     
+ </script>   
+    
+    
+    
+<%- include ('../partials/footer')%>    

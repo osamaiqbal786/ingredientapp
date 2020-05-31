@@ -59,8 +59,32 @@ router.post("/expenses/allsalary",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allsalary/"+req.body.salary.month+"/"+req.body.salary.year);
     
 });
+router.get("/expenses/editsalary/:id/edit",middleware.isloggedin,function(req,res){
+   salary.findById(req.params.id,function(err, salary) {
+       if(err){
+           console.log(err)
+       }else{
+           employee.find({},function(err, employee){
+            if(err){
+            console.log(err)
+            }else{
+           res.render("salary/editsalary",{employee:employee,salary:salary}) 
+            }
+         }); 
+       }
+   });
+   
+});
 
-
+router.put("/expenses/editsalary/:id/:month/:year",middleware.isloggedin,function(req,res){
+   salary.findByIdAndUpdate(req.params.id,req.body.salary,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/allsalary/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -114,7 +138,31 @@ router.post("/expenses/allcaranddeisel",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allcaranddeisel/"+req.body.deisel.plate+"/"+req.body.deisel.month+"/"+req.body.deisel.year);
     
 });
-
+router.get("/expenses/editcaranddeisel/:id/edit",middleware.isloggedin,function(req,res){
+       caranddeisel.findById(req.params.id,function(err, car) {
+           if(err){
+               console.log(err)
+           }else{
+              employee.find({},function(err, employee){
+                if(err){
+                console.log(err)
+                 }else{
+                    res.render("caranddeisel/editcar",{employee:employee,car:car}) 
+                    }
+                }); 
+           }
+       })
+        
+});
+router.put("/expenses/editcaranddeisel/:id/:plate/:month/:year",middleware.isloggedin,function(req,res){
+   caranddeisel.findByIdAndUpdate(req.params.id,req.body.car,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/allcaranddeisel/"+req.params.plate+"/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -641,9 +689,16 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                                              if(err){
                                                                  console.log(err)
                                                              }else{
-                                                                       res.render("expenses/allbalancesheet",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,sale:sale,item:item,employee:employee,fexpenses:fexpenses})
+                                                                 salerecipt.find({month:req.params.month,year:req.params.year},function(err, recipt) {
+                                                                     if(err){
+                                                                         console.log(err)
+                                                                     }else{
+                                                                          res.render("expenses/allbalancesheet",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,sale:sale,item:item,employee:employee,fexpenses:fexpenses,recipt:recipt})
                                                                   
                                                               
+                                                                     }
+                                                                 })
+                                                                      
                                                              }
                                                              
                                                          })         
@@ -708,7 +763,7 @@ router.get("/expenses/order/:id/edit",middleware.isloggedin,function(req, res) {
 
 
 
-router.put("/expenses/editorder/:id/:month/:year",function(req, res){
+router.put("/expenses/editorder/:id/:month/:year",middleware.isloggedin,function(req, res){
   purchased.findByIdAndUpdate(req.params.id,req.body.pitem, function(err,updated){
         if(err){
           console.log(err) 

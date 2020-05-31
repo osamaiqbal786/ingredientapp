@@ -9,7 +9,7 @@
   <% tot6=tot6+parseInt(sales.peice600ml)%>
   <% tot15=tot15+parseInt(sales.peice1500ml)%>
   <% tot50=tot50+parseInt(sales.peice5000ml)%>
-  <% if(sales.shop==="home"||sales.shop==="Home"||sales.shop==="HOME"){ %>
+  <% if(sales.shop==="home"||sales.shop==="Home"||sales.shop==="HOME"||sales.name ==="Mr. Farhad AL Jeneede House"||sales.name ==="Gift\Promotion to individual\Co."||sales.name ==="Carton Damaged in Handling"){ %>
   <%free2=free2+0,free3=free3+0%>
   <% }else{ %>
   <% free2=free2+parseInt(parseInt(sales.peice200ml)/20);%>

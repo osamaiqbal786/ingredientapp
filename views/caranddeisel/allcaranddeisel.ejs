@@ -29,14 +29,14 @@
       <P><strong>Description</strong></P>
     </div>
     <div class="col-1 border">
-      <P><strong>Amount</strong></P>
+      <P><strong>Amount<br>SR</strong></P>
     </div>
         
     </div>
     <% car.forEach(function(car){ %>
     <div class="row border">
          <div class="col-1 border">
-      <P><%=car.voucherno%></P>
+      <P><a href="/expenses/editcaranddeisel/<%=car.id%>/edit"><%=car.voucherno%></a></P>
     </div>
         <div class="col-2 border">
       <P><%=car.name%></P>
@@ -62,7 +62,7 @@
         <p class="text-right"><strong>Grand Total</strong></p>
       </div>
       <div class="col-2 border">
-        <P><strong><%=gd.toFixed(2)%></strong></P>
+        <P><strong><%=gd.toFixed(2)%> SR</strong></P>
       </div>
     </div>
 </div>
