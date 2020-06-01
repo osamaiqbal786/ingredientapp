@@ -2,6 +2,9 @@
 <% var tot2=0;var tot3=0;var tot6=0;var tot15=0;var tot50=0;%>
 <% var totl2=0;var totl3=0;var totl6=0;var totl15=0;var totl50=0;%>
 <%var p2=0,p3=0,p6=0,p15=0,p50=0,dat;%>
+<section class="container-fluid px-0">
+<img  src="https://res.cloudinary.com/djweoyvdx/image/upload/v1588074420/CamScanner_04-28-2020_13.27.16_2-1_hzuuch.jpg"class="img-fluid" alt="">
+</section>
 <div class="container" style="margin-bottom:40px;">
   <div class="row border justify-content-center text-black"style="background:#07b0f2;">
     <p style="margin:8px;"><strong>INVENTORY STOCK TILL DATE <%=invt[0].dateupdated%></strong></p>
@@ -198,9 +201,9 @@
     <% totl6=totl6+parseInt(uinvt.peice600ml)%>
     <% totl15=totl15+parseInt(uinvt.peice1500ml)%>
     <% totl50=totl50+parseInt(uinvt.peice5000ml)%>
+    
     <% } %>
    <% }) %>
-   <%if(p2>0||p3>0||p15>0||p50>0){%>
     <div class="row border">
      <div class="col-5 border">
       <P>Issued to <%=employee.name%></P>
@@ -225,7 +228,7 @@
     </div>
         
     </div>
-    <% } %>
+   
    <%p2=0,p3=0,p6=0,p15=0,p50=0;%>
    
    
