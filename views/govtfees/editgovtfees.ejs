@@ -1,0 +1,90 @@
+<%- include ('../partials/header')%>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <% var d=new Date()%>
+    <%let today = new Date().toLocaleDateString()%>
+    <%var month= d.toLocaleString('default', { month: 'long' })%>
+    <% var year=new Date().getFullYear()%>
+<div class="container">
+    
+     <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">Edit Government Fees Expenses</h2>
+            
+            <form action="/expenses/editgovtfees/<%=fees._id%>/<%=fees.month%>/<%=fees.year%>?_method=PUT" method="post">
+            
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">voucher No</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="fees[voucherno]" value="<%=fees.voucherno%>" required>
+                    </div>
+            </div>
+                
+                <div class="form-group row">
+                    <label for="d" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                    <input id="d" class="form-control" type="text" name="fees[desc]" value="<%=fees.desc%>" required>
+                    </div>
+            </div>
+                
+            <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Amount</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="fees[amount]" value="<%=fees.amount%>" required>
+                    </div>
+            </div>
+            
+            
+             <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-10">
+                    <input class="form-control" type="text" name="fees[date]" value="<%=fees.date%>" required>
+                    </div>
+            </div>
+               <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="fees[month]">
+                    <option selected><%=fees.month%></option>
+                  <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    <option>MARCH</option>
+                    <option>APRIL</option>
+                    <option>MAY</option>
+                    <option>JUNE</option>
+                    <option>JULY</option>
+                    <option>AUGUST</option>
+                    <option>SEPTEMBER</option>
+                    <option>OCTOBER</option>
+                    <option>NOVEMBER</option>
+                    <option>DECEMBER</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="fees[year]">
+                    <option selected><%=fees.year%></option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    </select>
+                    </div>
+                </div>
+               
+             <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+             <p><a href="/home">Go Back</a></p>
+                </form>
+                </div>
+                </div>
+                </div>
+    
+    
+    
+    
+    
+    
+<%- include ('../partials/footer')%>    

@@ -1,0 +1,56 @@
+<%- include ('../partials/header')%>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <%let today = new Date().toLocaleDateString()%>
+     <% var d=new Date()%>
+    <%var month= d.toLocaleString('default', { month: 'long' })%>
+    <% var year=new Date().getFullYear()%>
+    
+<div class="container">
+    <div class="row">
+        
+        <div style="width:50%; margin:0 auto;">
+            
+            <h2 class="text-center">View Fixed Expenses</h2>
+            
+            <form action="/expenses/allfixedexpenses" method="post">
+               <div class="form-group row">
+                   <label for="inputEmail3" class="col-sm-2 col-form-label">Month</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="fexpense[month]">
+                     <option selected><%=month.toUpperCase()%></option>
+                    <option>JANUARY</option>
+                    <option>FEBRUARY</option>
+                    <option>MARCH</option>
+                    <option>APRIL</option>
+                    <option>MAY</option>
+                    <option>JUNE</option>
+                    <option>JULY</option>
+                    <option>AUGUST</option>
+                    <option>SEPTEMBER</option>
+                    <option>OCTOBER</option>
+                    <option>NOVEMBER</option>
+                    <option>DECEMBER</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Year</label>
+                    <div class="col-sm-10">
+                    <select id="inputState" class="form-control" name="fexpense[year]">
+                    <option selected><%=year%></option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    </select>
+                    </div>
+                </div>    
+       
+             <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+            </div>
+            <p><a href="/home">Go Back</a></p>
+        </form>
+</div>
+</div>
+</div>
+    
+<%- include ('../partials/footer')%>

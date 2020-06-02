@@ -209,7 +209,28 @@ router.post("/expenses/allgovtfees",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allgovtfees/"+req.body.fees.month+"/"+req.body.fees.year);
     
 });
+router.get("/expenses/editgovtfees/:id/edit",middleware.isloggedin,function(req,res){
+   govtfee.findById(req.params.id,function(err, fees) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("govtfees/editgovtfees",{fees:fees}) 
 
+       }
+   });
+   
+});
+
+router.put("/expenses/editgovtfees/:id/:month/:year",middleware.isloggedin,function(req,res){
+   govtfee.findByIdAndUpdate(req.params.id,req.body.fees,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/allgovtfees/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -256,7 +277,28 @@ router.post("/expenses/alltrailorrent",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/alltrailorrent/"+req.body.trailor.month+"/"+req.body.trailor.year);
     
 });
+router.get("/expenses/edittrailorrent/:id/edit",middleware.isloggedin,function(req,res){
+   trailorrent.findById(req.params.id,function(err, rent) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("trailorrent/edittrailorrent",{rent:rent}) 
 
+       }
+   });
+   
+});
+
+router.put("/expenses/edittrailorrent/:id/:month/:year",middleware.isloggedin,function(req,res){
+   trailorrent.findByIdAndUpdate(req.params.id,req.body.trailor,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/alltrailorrent/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -301,7 +343,28 @@ router.post("/expenses/allextra",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/allextra/"+req.body.extra.month+"/"+req.body.extra.year);
     
 });
+router.get("/expenses/editextra/:id/edit",middleware.isloggedin,function(req,res){
+   extraexpense.findById(req.params.id,function(err, extra) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("extraexpenses/editextra",{extra:extra}) 
 
+       }
+   });
+   
+});
+
+router.put("/expenses/editextra/:id/:month/:year",middleware.isloggedin,function(req,res){
+   extraexpense.findByIdAndUpdate(req.params.id,req.body.extra,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/allextra/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -346,7 +409,28 @@ router.post("/expenses/alltobank",middleware.isloggedin,function(req,res){
    res.redirect("/expenses/alltobank/"+req.body.bank.month+"/"+req.body.bank.year);
     
 });
+router.get("/expenses/edittobank/:id/edit",middleware.isloggedin,function(req,res){
+   bank.findById(req.params.id,function(err, bank) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("bank/edittobank",{bank:bank}) 
 
+       }
+   });
+   
+});
+
+router.put("/expenses/edittobank/:id/:month/:year",middleware.isloggedin,function(req,res){
+   bank.findByIdAndUpdate(req.params.id,req.body.bank,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/alltobank/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 
@@ -790,10 +874,49 @@ router.post("/expenses/addfixedexpenses",middleware.isloggedin,function(req, res
       }
     });
 });
+router.get("/expenses/viewfixedexpenses",middleware.isloggedin,function(req,res){
+    res.render("expenses/viewfixedexpenses")
+});
+
+router.get("/expenses/allfixedexpenses/:month/:year",middleware.isloggedin,function(req,res){
+fixedexpenses.find({month:req.params.month,year:req.params.year}, function(err, fexpense){
+    if(err){
+        console.log(err)
+    }else{
+       
+        res.render("expenses/allfixedexpenses",{fexpense:fexpense})
+    }
+});
+    // res.render("sales/viewsales")
+});
 
 
+router.post("/expenses/allfixedexpenses",middleware.isloggedin,function(req,res){
+   res.redirect("/expenses/allfixedexpenses/"+req.body.fexpense.month+"/"+req.body.fexpense.year);
 
+});
+router.get("/expenses/editfixedexpenses/:id/edit",middleware.isloggedin,function(req,res){
+   fixedexpenses.findById(req.params.id,function(err, fexpense) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("expenses/editfixedexpenses",{fexpense:fexpense}) 
 
+       }
+   });
+   
+});
+
+router.put("/expenses/editfixedexpenses/:id/:month/:year",middleware.isloggedin,function(req,res){
+   fixedexpenses.findByIdAndUpdate(req.params.id,req.body.fexpense,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/expenses/allfixedexpenses/"+req.params.month+"/"+req.params.year) 
+       }
+   }) 
+})
 
 
 module.exports= router;

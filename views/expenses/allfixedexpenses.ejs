@@ -1,7 +1,7 @@
 <%- include ('../partials/header')%>
 
 <div class="container">
-  <%if(bank.length<1){%>
+  <%if(fexpense.length<1){%>
   <h1> No record found</h1>
   
   <% }else{ %>
@@ -12,9 +12,9 @@
 </section>
 <div class="container">
   <div class="row border justify-content-center text-black"style="background:#07b0f2;">
-    <p style="margin:8px;"><strong>MONEY DEPOSITED TO BANK <%=bank[0].month%> <%=bank[0].year%></strong></p>
+    <p style="margin:8px;"><strong>FIXED EXPENSES <%=fexpense[0].month%> <%=fexpense[0].year%></strong></p>
   </div>
-      <div class="row border">
+    <div class="row border">
     <div class="col-2 border">
       <P><strong>Date</strong></P>
     </div>
@@ -26,19 +26,19 @@
     </div>
         
     </div>
-    <% bank.forEach(function(bank){ %>
+    <% fexpense.forEach(function(fexpense){ %>
     <div class="row border">
-    <div class="col-2 border">
-      <P><a href="/expenses/edittobank/<%=bank._id%>/edit"><%=bank.date%></a></P>
+         <div class="col-2 border">
+      <P><a href="/expenses/editfixedexpenses/<%=fexpense._id%>/edit"><%=fexpense.date%></a></P>
     </div>
      <div class="col-8 border">
-      <P><%=bank.desc%></P>
+      <P><%=fexpense.name%></P>
     </div>
     <div class="col-2 border">
-      <P><%=bank.amount%></P>
+      <P><%=fexpense.amount%></P>
     </div>
     </div>
-    <%gd=gd+parseFloat(bank.amount)%>
+    <%gd=gd+parseFloat(fexpense.amount)%>
     
     <% }) %>
     <div class="row border">
