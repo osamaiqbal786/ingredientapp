@@ -1,6 +1,7 @@
 var mongoose= require("mongoose");
 var caranddeiselschema = new mongoose.Schema({
     voucherno:String,
+    type:String,
     plate: String,
     name: String,
     desc:String,

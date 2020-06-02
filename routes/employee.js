@@ -66,4 +66,27 @@ router.get("/viewemployee",middleware.isloggedin,function(req,res){
 });
 
 
+router.get("/editemployee/:id/edit",middleware.isloggedin,function(req,res){
+  
+           employee.findById(req.params.id,function(err, employee){
+            if(err){
+            console.log(err)
+            }else{
+           res.render("employee/editemployee",{employee:employee}) 
+            }
+         }); 
+    
+});
+
+router.put("/employee/:id/edit",middleware.isloggedin,function(req,res){
+   employee.findByIdAndUpdate(req.params.id,req.body.employee,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+          res.redirect("/viewemployee") 
+       }
+   }) 
+})
+
+
 module.exports= router;

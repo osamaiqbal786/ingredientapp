@@ -42,7 +42,6 @@
 
 
 
-
 <%if(credit.length>0){%>
 <div class="container">
   <div class="row border justify-content-center text-black"style="background:#07b0f2;">
@@ -63,7 +62,7 @@
         <p class="text-left"><strong>Total money in hand of-<%=credit[0].month%></strong></p>
       </div>
       <div class="col-5 border">
-        <P><%=credit[0].amount%></P>
+        <P><strong><%=credit[0].amount%></strong></P>
       </div>
     </div>
   
@@ -84,7 +83,7 @@
         <p class="text-left"><strong>total cash received from-<%=employee.name%></strong></p>
       </div>
       <div class="col-5 border">
-        <P><%=tt%></P>
+        <P><strong><%=tt%></strong></P>
       </div>
     </div>
     <% } %>
@@ -102,7 +101,7 @@
     
     <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total expenses</strong></p>
+        <p class="text-left"><strong>Total expenses 1</strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=st+ct+gt+trt+et%></strong></P>

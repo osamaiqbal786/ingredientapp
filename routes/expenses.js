@@ -588,10 +588,9 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                                               if(err){
                                                                   console.log(err)
                                                               }else{
-                                                                  
-                                                                  res.render("expenses/allcashflow",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,recipt:recipt,bank:bank,credit:credit,employee:employee})
-                                                                  
-                                                                   
+                                                              
+                                                                         res.render("expenses/allcashflow",{salary:salary,car:car,govt:govt,rent:rent,extra:extra,recipt:recipt,bank:bank,credit:credit,employee:employee})
+                                                            
                                                               }
                                                           }) 
                                                             
