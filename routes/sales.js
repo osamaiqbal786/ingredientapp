@@ -743,5 +743,42 @@ router.put("/sales/editrecipt/:id/:name/:month/:year",function(req, res){
   })
     
 })
+router.get("/inventory/viewinventory/:id/edit",middleware.isloggedin,function(req,res){
+   updateinventory.findById(req.params.id,function(err, uinvt) {
+       if(err){
+           console.log(err)
+       }else{
+          
+           res.render("inventory/editadded",{uinvt:uinvt}) 
+
+       }
+   });
+   
+});
+
+router.put("/inventory/update/edit/:id/:month/:year",middleware.isloggedin,function(req,res){
+   updateinventory.findByIdAndUpdate(req.params.id,req.body.sales,function(err,updated){
+       if(err){
+           console.log(err)
+       }else{
+           inventory.find({},function(err, invt) {
+            if(err){
+                console.log(err)
+            }  else{
+                invt[0].peice200ml=(parseInt(invt[0].peice200ml)-(parseInt(req.body.sales.oldpeice200ml)-parseInt(req.body.sales.peice200ml))).toString();
+                invt[0].peice330ml=(parseInt(invt[0].peice330ml)-(parseInt(req.body.sales.oldpeice330ml)-parseInt(req.body.sales.peice330ml))).toString();
+                invt[0].peice600ml=(parseInt(invt[0].peice600ml)-(parseInt(req.body.sales.oldpeice600ml)-parseInt(req.body.sales.peice600ml))).toString();
+                invt[0].peice1500ml=(parseInt(invt[0].peice1500ml)-(parseInt(req.body.sales.oldpeice1500ml)-parseInt(req.body.sales.peice1500ml))).toString();
+                invt[0].peice5000ml=(parseInt(invt[0].peice5000ml)-(parseInt(req.body.sales.oldpeice5000ml)-parseInt(req.body.sales.peice5000ml))).toString();
+                invt[0].dateupdated=req.body.sales.date;
+                invt[0].save();
+               res.redirect("/inventory/view/"+req.params.month+"/"+req.params.year) 
+                
+            }
+          });
+         
+       }
+   }) 
+})
 
 module.exports= router;
