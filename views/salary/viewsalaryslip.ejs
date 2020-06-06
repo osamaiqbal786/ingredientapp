@@ -6,7 +6,7 @@
     <% var year=new Date().getFullYear()%>
 <%var months=[{month:"JANUARY"},{month:"FEBRUARY"},{month:"MARCH"},{month:"APRIL"},{month:"MAY"},{month:"JUNE"},{month:"JULY"},{month:"AUGUST"},{month:"SEPTEMBER"},{month:"OCTOBER"},{month:"NOVEMBER"},{month:"DECEMBER"}]%>
 <%for( var i=0;i<months.length;i++){ %>
-      <% if(months[i].month===(month.toUpperCase())){ %>
+      <% if(months[i].month===slip[0].month){ %>
           <% month1=months[i-1].month;%>
        <% } %>
       
