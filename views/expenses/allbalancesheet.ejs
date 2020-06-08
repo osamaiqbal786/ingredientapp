@@ -77,7 +77,7 @@
     
      <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Total money spend in purchasing in <%=sale[0].month%> <%=sale[0].year%></strong></p>
+        <p class="text-left"><strong>Total money spend in purchasing of sold cartons in <%=sale[0].month%> <%=sale[0].year%></strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=x%></strong></P>
@@ -97,7 +97,7 @@
     
     <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Net balance (sale-purchased)</strong></p>
+        <p class="text-left"><strong>Net saving (sale-purchased)</strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=(grt-x).toFixed(2)%></strong></P>
@@ -122,7 +122,7 @@
     </div>
     <div class="row border">
       <div class="col-7 border">
-        <p class="text-left"><strong>Net amount (balance-totalexpense)</strong></p>
+        <p class="text-left"><strong>Net amount (saving-totalexpense)</strong></p>
       </div>
       <div class="col-5 border">
         <P><strong><%=((grt-x)-(((st+ct+gt+trt+et)+fe).toFixed(2))).toFixed(2)%></strong></P>
@@ -133,7 +133,7 @@
         <p class="text-left"><strong>Net Profit/Loss</strong></p>
       </div>
       <div class="col-5 border">
-        <P><strong><%=((grt-x)-(st+ct+gt+trt+et).toFixed(2)).toFixed(2)%></strong></P>
+        <P><strong><%=((grt-x)-(st+ct+gt+trt+et+fe).toFixed(2)).toFixed(2)%></strong></P>
       </div>
     </div>
     
