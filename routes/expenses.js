@@ -764,7 +764,7 @@ salary.find({month:req.params.month,year:req.params.year}, function(err, salary)
                                         if(err){
                                             console.log(err)
                                         }else{
-                                            purchased.find({month:req.params.month,year:req.params.year},function(err,item) {
+                                            ctcprice.find({},function(err,item) {
                                                 if(err){
                                                     console.log(err)
                                                 }else{
