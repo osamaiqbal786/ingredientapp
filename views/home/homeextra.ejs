@@ -19,7 +19,7 @@
             <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
             <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
             <h6><a href="#" class="text-muted">Salary=<%=employee.salary%></a></h6>
-            
+             <%if(currentuser && currentuser.isadmin.toString()==="true"){%>      
 <div class="row">
                <div class="col-6">
                     <a href="/editemployee/<%=employee._id%>/edit" class="btn btn-outline-warning btn-block" value="Edit">Edit</a>
@@ -30,6 +30,7 @@
                      </form>
                </div>
            </div>
+           <% } %>
             </div>
         </div>
         
@@ -54,7 +55,7 @@
             <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
             <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
             <h6><a href="#" class="text-muted">Salary=<%=employee.salary%></a></h6>
-            
+          <%if(currentuser && currentuser.isadmin.toString()==="true"){%>         
 <div class="row">
                <div class="col-6">
                     <a href="/editemployee/<%=employee._id%>/edit" class="btn btn-outline-warning btn-block" value="Edit">Edit</a>
@@ -65,6 +66,7 @@
                      </form>
                </div>
            </div>
+           <% } %>
             </div>
         </div>
         
@@ -92,6 +94,7 @@
             <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
             <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
             <h6><a href="#" class="text-muted">Salary=<%=employee.salary%></a></h6>
+                   <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
            <div class="row">
                <div class="col-6">
                     <a href="/editemployee/<%=employee._id%>/edit" class="btn btn-outline-warning btn-block" value="Edit">Edit</a>
@@ -102,7 +105,7 @@
                      </form>
                </div>
            </div>
-           
+           <% } %>
            
             
             </div>

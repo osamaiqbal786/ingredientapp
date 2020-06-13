@@ -32,7 +32,11 @@
     <% extra.forEach(function(extra){ %>
     <div class="row border">
          <div class="col-1 border">
-      <P><a href="/expenses/editextra/<%=extra._id%>/edit"><%=extra.voucherno%></a></P>
+          <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
+          <P><a href="/expenses/editextra/<%=extra._id%>/edit"><%=extra.voucherno%></a></P>
+      <% }else{ %>
+          <P><%=extra.voucherno%></P>
+      <% } %>
     </div>
     <div class="col-2 border">
       <P><%=extra.date%></P>

@@ -34,7 +34,12 @@
     <div class="row border">
         
         <div class="col-6 border">
+                         <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/expenses/editsalary/<%=salary._id%>/edit"><%=salary.name%>-<%=salary.type%></a></P>
+      <% }else{ %>
+                <P><%=salary.name%>-<%=salary.type%></P>
+      <% } %>
+      
     </div>
     <div class="col-2 border">
       <P><%=salary.date%></P>

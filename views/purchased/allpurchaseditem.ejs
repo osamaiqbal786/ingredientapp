@@ -82,7 +82,12 @@
      <div class="row border"> 
      
     <div class="column4 border">
+               <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/expenses/order/<%=pitem._id%>/edit"><%=pitem.date%></a></P>
+      <% }else{ %>
+                <P><%=pitem.date%></P>
+      <% } %>
+
     </div>
     <div class="column border">
       <P><%=pitem.peice200ml%></P>

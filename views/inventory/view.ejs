@@ -99,7 +99,11 @@
   
    <div class="row border">
      <div class="col-4 border">
-      <P><a href="/inventory/viewinventory/<%=uinvt._id%>/edit"><%=uinvt.name%></a></P>
+                  <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
+<P><a href="/inventory/viewinventory/<%=uinvt._id%>/edit"><%=uinvt.name%></a></P>
+      <% }else{ %>
+          <P><%=uinvt.name%></P>
+      <% } %>
     </div>
     <div class="col-3 border">
       <P><%=uinvt.date%></P>

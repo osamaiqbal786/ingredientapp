@@ -18,11 +18,17 @@
     Sales
   </a>
   <div class="dropdown-menu">
+                 <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/sales/addsales">Add Sale</a>
+    <% } %>
      <a class="dropdown-item" href="/sales/viewsales">View Sale</a>
+     <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/sales/salerecipt">Add Cash Received</a>
+        <% } %>
     <a class="dropdown-item" href="/sales/viewallrecipt">View Cash Received</a>
+    <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/sales/issueitem">Add Issued Item</a>
+        <% } %>
     <a class="dropdown-item" href="/sales/viewissued">View Issued Item</a>
     <a class="dropdown-item" href="/sales/creditcash">Credit/Cash Detail</a>
   </div>
@@ -35,17 +41,29 @@
     Expenses
   </a>
   <div class="dropdown-menu" style="margin-top:70px">
+          <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/expenses/addsalary">Add Salary And Commission</a>
+            <% } %>
     <a class="dropdown-item" href="/expenses/viewsalary">View Salary And Commission</a>
+        <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/expenses/addcaranddeisel">Add Car Maintenance And Diesel</a>
+            <% } %>
      <a class="dropdown-item" href="/expenses/viewcaranddeisel">View Car Maintenance And Diesel</a>
+         <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
         <a class="dropdown-item" href="/expenses/addgovtfees">Add Govt Fees</a>
+                <% } %>
         <a class="dropdown-item" href="/expenses/viewgovtfees">View Govt Fees</a>
+            <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
             <a class="dropdown-item" href="/expenses/addtrailorrent">Add Trailer Rent</a>
+                    <% } %>
             <a class="dropdown-item" href="/expenses/viewtrailorrent">View Trailer Rent</a>
+                <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
                 <a class="dropdown-item" href="/expenses/addextra">Add Office Miscellaneous Expenses</a>
+                        <% } %>
                 <a class="dropdown-item" href="/expenses/viewextra">View Office Miscellaneous Expenses</a>
+                <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
                 <a class="dropdown-item" href="/expenses/addfixedexpenses">Add Fixed Expenses</a>
+                    <% } %>
                 <a class="dropdown-item" href="/expenses/viewfixedexpenses">View Fixed Expenses</a>
                 <a class="dropdown-item" href="/expenses/viewexpenses">View All Expenses</a>
   </div>
@@ -58,7 +76,9 @@
     Inventory
   </a>
   <div class="dropdown-menu">
+      <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/inventory/update">Update Inventory</a>
+    <% } %>
     <a class="dropdown-item" href="/inventory/viewinventory">View Inventory</a>
   </div>
 </div>
@@ -71,7 +91,9 @@
     Money To Bank
   </a>
   <div class="dropdown-menu">
+      <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/expenses/addtobank">Add Deposited Money</a>
+    <% } %>
     <a class="dropdown-item" href="/expenses/viewtobank">View Deposited Money</a>
   </div>
 </div>
@@ -84,17 +106,21 @@
     Admin Work
   </a>
   <div class="dropdown-menu">
+      <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
        <a class="dropdown-item" href="/expenses/salaryslip">Generate Salary Slip</a>
+       <% } %>
        <a class="dropdown-item" href="/expenses/viewcashflow">View Cash Flow</a>
        <a class="dropdown-item" href="/balancesheet">Monthly Balancesheet</a>
+       <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
     <a class="dropdown-item" href="/expenses/addpurchaseditem">Place Purchase Order</a>
+    <% } %>
     <a class="dropdown-item" href="/expenses/viewpurchaseditem">View Purchase Order</a>
     <a class="dropdown-item" href="/viewemployee">View Employee</a>
   </div>
 </div>
  </li> 
 
- 
+        <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
  
                 <li class="list-group-item"> 
                 <div class="dropdown">
@@ -154,7 +180,7 @@
   </div>
 </div>
  </li>             
- 
+ <% } %>
  
             </div>
             

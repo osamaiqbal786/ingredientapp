@@ -32,8 +32,11 @@
          <%=currentuser.firstname%>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                   <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
         <a class="dropdown-item" href="/addemployee">Add employee</a>
-        <a class="dropdown-item" href="/register">Add admin</a>
+        <a class="dropdown-item" href="/register">Add User</a>
+        <a class="dropdown-item" href="/adminregister">Add admin</a>
+        <% } %>
         <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>

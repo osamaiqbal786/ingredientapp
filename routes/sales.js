@@ -27,7 +27,7 @@ router.get("/home",function(req,res){
     
 });
 
-router.get("/sales/addsales",middleware.isloggedin,function(req,res){
+router.get("/sales/addsales",middleware.isauthorised,function(req,res){
    employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -48,7 +48,7 @@ router.get("/sales/addsales",middleware.isloggedin,function(req,res){
 });
 
 
-router.get("/sales/addsales/:name/:voucher",middleware.isloggedin,function(req,res){
+router.get("/sales/addsales/:name/:voucher",middleware.isauthorised,function(req,res){
    employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -70,7 +70,7 @@ router.get("/sales/addsales/:name/:voucher",middleware.isloggedin,function(req,r
 
 
 
-router.post("/sales/addsales",middleware.isloggedin,function(req, res){
+router.post("/sales/addsales",middleware.isauthorised,function(req, res){
     
     if(req.body.sales.peice200ml===""){
         req.body.sales.peice200ml="0";
@@ -156,7 +156,7 @@ router.post("/sales/allsales",middleware.isloggedin,function(req,res){
     
 });
 
-router.post("/sales/setprice",middleware.isloggedin,function(req,res){
+router.post("/sales/setprice",middleware.isauthorised,function(req,res){
     price.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
        if(err){
            console.log(err)
@@ -168,7 +168,7 @@ router.post("/sales/setprice",middleware.isloggedin,function(req,res){
 });
 
 
-router.post("/sales/sethomeprice",middleware.isloggedin,function(req,res){
+router.post("/sales/sethomeprice",middleware.isauthorised,function(req,res){
     homeprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml},function(err,price){
        
        if(err){
@@ -180,7 +180,7 @@ router.post("/sales/sethomeprice",middleware.isloggedin,function(req,res){
     });
 });
 
-router.post("/sales/setctcprice",middleware.isloggedin,function(req,res){
+router.post("/sales/setctcprice",middleware.isauthorised,function(req,res){
     ctcprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml,vat:req.body.price.vat},function(err,price){
        if(err){
            console.log(err)
@@ -191,7 +191,7 @@ router.post("/sales/setctcprice",middleware.isloggedin,function(req,res){
     });
 });
 
-router.get("/sales/salerecipt",middleware.isloggedin,function(req,res){
+router.get("/sales/salerecipt",middleware.isauthorised,function(req,res){
     employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -202,7 +202,7 @@ router.get("/sales/salerecipt",middleware.isloggedin,function(req,res){
     
 });
 
-router.get("/sales/salerecipt/:name/:voucher",middleware.isloggedin,function(req,res){
+router.get("/sales/salerecipt/:name/:voucher",middleware.isauthorised,function(req,res){
    employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -217,7 +217,7 @@ router.get("/sales/salerecipt/:name/:voucher",middleware.isloggedin,function(req
     
 });
 
-router.post("/sales/addsalerecipt",middleware.isloggedin,function(req, res){
+router.post("/sales/addsalerecipt",middleware.isauthorised,function(req, res){
     salerecipt.find({voucher:req.body.salerecipt.voucher},function(err, sold) {
        if (err){
            console.log(err)
@@ -270,7 +270,7 @@ router.post("/sales/viewallsalerecipt",middleware.isloggedin,function(req,res){
     
 });
 
-router.get("/sales/issueitem",middleware.isloggedin,function(req, res) {
+router.get("/sales/issueitem",middleware.isauthorised,function(req, res) {
        employee.find({},function(err, employee) {
       if(err){
           console.log(err)
@@ -281,7 +281,7 @@ router.get("/sales/issueitem",middleware.isloggedin,function(req, res) {
     
 });
 
-router.get("/sales/issueitem/:name/:voucher",middleware.isloggedin,function(req,res){
+router.get("/sales/issueitem/:name/:voucher",middleware.isauthorised,function(req,res){
    employee.find({},function(err, employee) {
        if(err){
            console.log(err)
@@ -297,7 +297,7 @@ router.get("/sales/issueitem/:name/:voucher",middleware.isloggedin,function(req,
 
 
 
-router.post("/sales/issueitem",middleware.isloggedin,function(req, res) {
+router.post("/sales/issueitem",middleware.isauthorised,function(req, res) {
    var pm2=parseFloat(req.body.item.peice200ml);
     var pm3=parseFloat(req.body.item.peice330ml);
     var pm6=parseFloat(req.body.item.peice600ml);
@@ -421,7 +421,7 @@ router.post("/sales/viewallissueditem",middleware.isloggedin,function(req,res){
     
 });
 
-router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isloggedin,function(req, res) {
+router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isauthorised,function(req, res) {
  
    creditsale.create(req.body.item,function(err,credit){
       if(err){
@@ -437,7 +437,7 @@ router.post("/sales/updatecreditsale/:name/:month/:year",middleware.isloggedin,f
    }); 
 });
 
-router.post("/sales/updatecreditcash/:name/:month/:year",middleware.isloggedin,function(req, res) {
+router.post("/sales/updatecreditcash/:name/:month/:year",middleware.isauthorised,function(req, res) {
  
    creditcash.create(req.body.item,function(err,credit){
       if(err){
@@ -514,7 +514,7 @@ router.post("/sales/allcreditcash",middleware.isloggedin,function(req, res) {
    res.redirect("/sales/allcreditcash/"+req.body.item.name+"/"+req.body.item.month+"/"+req.body.item.year); 
 });
 
-router.get("/inventory/update",middleware.isloggedin,function(req, res) {
+router.get("/inventory/update",middleware.isauthorised,function(req, res) {
    res.render("inventory/inventory") 
 });
 
@@ -548,7 +548,7 @@ router.post("/inventory/viewinventory",middleware.isloggedin,function(req, res) 
    res.redirect("/inventory/view/"+req.body.invt.month+"/"+req.body.invt.year); 
 });
 
-router.post("/inventory/update",middleware.isloggedin,function(req, res) {
+router.post("/inventory/update",middleware.isauthorised,function(req, res) {
    updateinventory.create(req.body.sales,function(err,invt){
       if(err){
           console.log(err)
@@ -577,7 +577,7 @@ router.post("/inventory/update",middleware.isloggedin,function(req, res) {
 });
 
 
-router.get("/sales/:id/edit",middleware.isloggedin,function(req, res) {
+router.get("/sales/:id/edit",middleware.isauthorised,function(req, res) {
     sale.findById(req.params.id,function(err,updatesale){
         if(err){
             console.log(err)
@@ -602,7 +602,7 @@ router.get("/sales/:id/edit",middleware.isloggedin,function(req, res) {
    
 });
 
-router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
+router.put("/sales/edit/:id/:name/:month/:year",middleware.isauthorised,function(req, res){
 
     var pm2=parseFloat(req.body.sales.peice200ml);
     var pm3=parseFloat(req.body.sales.peice330ml);
@@ -631,7 +631,7 @@ router.put("/sales/edit/:id/:name/:month/:year",function(req, res){
 });
 
 
-router.get("/sales/issueditem/:id/edit",middleware.isloggedin,function(req, res) {
+router.get("/sales/issueditem/:id/edit",middleware.isauthorised,function(req, res) {
     issueditem.findById(req.params.id,function(err,updateitem){
         if(err){
             console.log(err)
@@ -650,7 +650,7 @@ router.get("/sales/issueditem/:id/edit",middleware.isloggedin,function(req, res)
    
 });
 
-router.put("/sales/editissue/:id/:name/:month/:year/:voch",function(req, res){
+router.put("/sales/editissue/:id/:name/:month/:year/:voch",middleware.isauthorised,function(req, res){
    
     var pm2=parseFloat(req.body.item.peice200ml);
     var pm3=parseFloat(req.body.item.peice330ml);
@@ -710,7 +710,7 @@ router.put("/sales/editissue/:id/:name/:month/:year/:voch",function(req, res){
 
 
 
-router.get("/sales/recipt/:id/edit",middleware.isloggedin,function(req, res) {
+router.get("/sales/recipt/:id/edit",middleware.isauthorised,function(req, res) {
     salerecipt.findById(req.params.id,function(err,recipt){
         if(err){
             console.log(err)
@@ -731,7 +731,7 @@ router.get("/sales/recipt/:id/edit",middleware.isloggedin,function(req, res) {
 
 
 
-router.put("/sales/editrecipt/:id/:name/:month/:year",function(req, res){
+router.put("/sales/editrecipt/:id/:name/:month/:year",middleware.isauthorised,function(req, res){
   salerecipt.findByIdAndUpdate(req.params.id,req.body.salerecipt, function(err,updated){
         if(err){
           console.log(err) 
@@ -743,7 +743,7 @@ router.put("/sales/editrecipt/:id/:name/:month/:year",function(req, res){
   })
     
 })
-router.get("/inventory/viewinventory/:id/edit",middleware.isloggedin,function(req,res){
+router.get("/inventory/viewinventory/:id/edit",middleware.isauthorised,function(req,res){
    updateinventory.findById(req.params.id,function(err, uinvt) {
        if(err){
            console.log(err)
@@ -756,7 +756,7 @@ router.get("/inventory/viewinventory/:id/edit",middleware.isloggedin,function(re
    
 });
 
-router.put("/inventory/update/edit/:id/:month/:year",middleware.isloggedin,function(req,res){
+router.put("/inventory/update/edit/:id/:month/:year",middleware.isauthorised,function(req,res){
    updateinventory.findByIdAndUpdate(req.params.id,req.body.sales,function(err,updated){
        if(err){
            console.log(err)

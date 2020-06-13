@@ -29,7 +29,11 @@
     <% fexpense.forEach(function(fexpense){ %>
     <div class="row border">
          <div class="col-2 border">
+           <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/expenses/editfixedexpenses/<%=fexpense._id%>/edit"><%=fexpense.date%></a></P>
+      <% }else{ %>
+      <P><%=fexpense.date%></P>
+      <% } %>
     </div>
      <div class="col-8 border">
       <P><%=fexpense.name%></P>

@@ -29,7 +29,11 @@
     <% bank.forEach(function(bank){ %>
     <div class="row border">
     <div class="col-2 border">
+      <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/expenses/edittobank/<%=bank._id%>/edit"><%=bank.date%></a></P>
+      <% }else{ %>
+      <P><%=bank.date%></P>
+      <% } %>
     </div>
      <div class="col-8 border">
       <P><%=bank.desc%></P>

@@ -41,7 +41,11 @@
     <% car.forEach(function(car){ %>
     <div class="row border">
          <div class="col-1 border">
+                 <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/expenses/editcaranddeisel/<%=car.id%>/edit"><%=car.voucherno%></a></P>
+      <% }else{ %>
+      <P><%=car.voucherno%></P>
+      <% } %>
     </div>
         <div class="col-2 border">
       <P><%=car.name%></P>

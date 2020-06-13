@@ -25,12 +25,12 @@ cloudinary.config({
   api_secret: 'LE20IJzelodOHiKR092XiQmCBNw'
 });
 
-router.get("/addemployee",middleware.isloggedin,function(req,res){
+router.get("/addemployee",middleware.isauthorised,function(req,res){
     res.render("employee/addemployee")
 });
 
 
-router.post("/addemployee", upload.single('image'),middleware.isloggedin, function(req, res) {
+router.post("/addemployee", upload.single('image'),middleware.isauthorised, function(req, res) {
    
    cloudinary.uploader.upload(req.file.path, function(result) {
   req.body.employee.image = result.secure_url;
@@ -44,7 +44,7 @@ router.post("/addemployee", upload.single('image'),middleware.isloggedin, functi
    });
    });
 });
-router.delete("/employee/:id",middleware.isloggedin, function(req, res){
+router.delete("/employee/:id",middleware.isauthorised, function(req, res){
    employee.findByIdAndRemove(req.params.id, function(err){
       if(err){
           res.redirect("/home");
@@ -66,7 +66,7 @@ router.get("/viewemployee",middleware.isloggedin,function(req,res){
 });
 
 
-router.get("/editemployee/:id/edit",middleware.isloggedin,function(req,res){
+router.get("/editemployee/:id/edit",middleware.isauthorised,function(req,res){
   
            employee.findById(req.params.id,function(err, employee){
             if(err){
@@ -78,7 +78,7 @@ router.get("/editemployee/:id/edit",middleware.isloggedin,function(req,res){
     
 });
 
-router.put("/employee/:id/edit",middleware.isloggedin,function(req,res){
+router.put("/employee/:id/edit",middleware.isauthorised,function(req,res){
    employee.findByIdAndUpdate(req.params.id,req.body.employee,function(err,updated){
        if(err){
            console.log(err)

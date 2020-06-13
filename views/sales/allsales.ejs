@@ -92,7 +92,11 @@
 
      <div class="row border"> 
      <div class="column2 border">
+       <%if(currentuser && currentuser.isadmin.toString()==="true"){%>
       <P><a href="/sales/<%=sales._id%>/edit"><%=sales.voucher%></a></P>
+      <% }else{ %>
+      <P><%=sales.voucher%></P>
+      <% } %>
     </div>
     <div class="column4 border">
       <P><%=sales.date%></P>
