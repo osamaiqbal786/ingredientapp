@@ -130,7 +130,11 @@
     
    <div class="row border">
      <div class="col-9 border">
+       <% if(fexpenses.name==="VAT 5%"){%>
+        <P><%=fexpenses.name%> for the month of <%=fexpenses.month%></P>
+       <% }else{ %>
       <P><%=fexpenses.name%></P>
+      <% } %>
     </div>
     <div class="col-3 border">
       <P><%=fexpenses.amount%></P>
