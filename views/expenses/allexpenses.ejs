@@ -90,7 +90,7 @@
     
                  <div class="row border">
      <div class="col-9 border">
-      <P>Total office and extra Expenses of-<%=salary[0].month%></P>
+      <P>Total office miscellaneous expenses of-<%=salary[0].month%></P>
     </div>
     <div class="col-3 border">
       <P><%=et%></P>
@@ -136,7 +136,7 @@
       <P><%=fexpenses.amount%></P>
     </div>
     </div>
-      <%fe= fe+parseFloat(fexpenses.amount).toFixed(2)%>
+      <%fe = (fe + parseFloat(fexpenses.amount))%>
     <% }) %>
 
     <div class="row border">
@@ -144,7 +144,7 @@
         <p class="text-right"><strong>Grand Total</strong></p>
       </div>
       <div class="col-3 border">
-        <P><strong><%=fe%> SR</strong></P>
+        <P><strong><%=fe.toFixed(2)%> SR</strong></P>
       </div>
     </div>
 </div>
