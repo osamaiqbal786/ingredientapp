@@ -5,6 +5,42 @@
     <h1 style="margin:8px;"><strong>EMPLOYEE</strong></h1>
   </div>
   </div>
+   <div class="container border" style="padding:0"> 
+     <h3 class="text-success border"style="margin:0">SECRETARY/MANAGER</h3>
+     </div>
+     <div class="container border">
+               <div class="row" style="display:flex; flex-wrap: wrap; padding:10px 0">
+   <% employee.forEach(function(employee){%>
+   <% if(employee.designation==="secretary"||employee.designation==="Secretary"||employee.designation==="SECRETARY"||employee.designation==="manager"||employee.designation==="Manager"||employee.designation==="MANAGER"){%>
+    <div class="col-md-3 col-sm-6">
+        <div class="img-fluid img-thumbnail">
+            <img  src="<%=employee.image%>"class="img-fluid" alt="Responsive image"style="height:200px;width:100%">
+            <div class="caption">
+            <h6><a href="#" class="text-muted"><%=employee.name%></a></h6>
+            <h6><a href="#" class="text-muted"><%=employee.designation%></a></h6>
+            <h6><a href="#" class="text-muted">Salary=<%=employee.salary%></a></h6>
+             <%if(currentuser && currentuser.isadmin.toString()==="true"){%>      
+<div class="row">
+               <div class="col-6">
+                    <a href="/editemployee/<%=employee._id%>/edit" class="btn btn-outline-warning btn-block" value="Edit">Edit</a>
+               </div>
+               <div class="col-6">
+                    <form id="deleteform" action="/employee/<%=employee._id%>?_method=DELETE" method="post">
+                         <button class="btn btn-outline-danger btn-block">Delete</button>
+                     </form>
+               </div>
+           </div>
+           <% } %>
+            </div>
+        </div>
+        
+        
+    </div>
+    <% } %>
+<% }); %>
+
+</div> 
+     </div>       
      <div class="container border" style="padding:0"> 
      <h3 class="text-success border"style="margin:0">SALESMAN</h3>
      </div>
@@ -86,7 +122,7 @@
      <div class="container border">
                <div class="row" style="display:flex; flex-wrap: wrap; padding:10px 0">
    <% employee.forEach(function(employee){%>
-   <% if(employee.salary==="NA"){%>
+   <% if(employee.designation!="salesman"&&employee.designation!="Salesman"&&employee.designation!="SALESMAN"&&employee.designation!="helper"&&employee.designation!="HELPER"&&employee.designation!="Helper"&&employee.designation!="cleaner"&&employee.designation!="Cleaner"&&employee.designation!="CLEANER"&&employee.designation!="secretary"&&employee.designation!="Secretary"&&employee.designation!="SECRETARY"){%>
     <div class="col-md-3 col-sm-6">
         <div class="img-fluid img-thumbnail">
             <img  src="<%=employee.image%>"class="img-fluid" alt="Responsive image"style="height:200px;width:100%">
