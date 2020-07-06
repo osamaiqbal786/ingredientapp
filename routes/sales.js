@@ -672,7 +672,7 @@ router.put("/sales/editissue/:id/:name/:month/:year/:voch",middleware.isauthoris
                 invt[0].peice600ml=(parseInt(invt[0].peice600ml)+(parseInt(req.body.item.oldpeice600ml)-parseInt(req.body.item.peice600ml))).toString();
                 invt[0].peice1500ml=(parseInt(invt[0].peice1500ml)+(parseInt(req.body.item.oldpeice1500ml)-parseInt(req.body.item.peice1500ml))).toString();
                 invt[0].peice5000ml=(parseInt(invt[0].peice5000ml)+(parseInt(req.body.item.oldpeice5000ml)-parseInt(req.body.item.peice5000ml))).toString();
-                invt[0].dateupdated=req.body.item.date;
+                // invt[0].dateupdated=req.body.item.date;
                 invt[0].save();
                 updated.total=total;
                 updated.save()
@@ -770,7 +770,7 @@ router.put("/inventory/update/edit/:id/:month/:year",middleware.isauthorised,fun
                 invt[0].peice600ml=(parseInt(invt[0].peice600ml)-(parseInt(req.body.sales.oldpeice600ml)-parseInt(req.body.sales.peice600ml))).toString();
                 invt[0].peice1500ml=(parseInt(invt[0].peice1500ml)-(parseInt(req.body.sales.oldpeice1500ml)-parseInt(req.body.sales.peice1500ml))).toString();
                 invt[0].peice5000ml=(parseInt(invt[0].peice5000ml)-(parseInt(req.body.sales.oldpeice5000ml)-parseInt(req.body.sales.peice5000ml))).toString();
-                invt[0].dateupdated=req.body.sales.date;
+                // invt[0].dateupdated=req.body.sales.date;
                 invt[0].save();
                res.redirect("/inventory/view/"+req.params.month+"/"+req.params.year) 
                 
