@@ -79,8 +79,8 @@ Please arrange to deliver the following items to Al Jeneede Trading Establishmen
 <p>
 ====================================================================================================<br> 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Total&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=gt.toFixed(2)%><br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@5%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=(gt*(5/100)).toFixed(2)%><br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND&nbsp;TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=(gt+(gt*(5/100))).toFixed(2)%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;VAT@<%=price[0].vat%>%&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SR <%=(gt*(price[0].vat/100)).toFixed(2)%><br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GRAND&nbsp;TOTAL&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;SR <%=(gt+(gt*(price[0].vat/100))).toFixed(2)%><br>
 	 			 
 We are arranging the payment for the above items through bank transfer. Once it is complete I will send you the bank slip.<br>
 Yours truly<br>
