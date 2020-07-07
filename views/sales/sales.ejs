@@ -204,12 +204,21 @@ function ischangedshop(){
     var sname = document.getElementById("sname"); 
     var price200ml=document.getElementById("price200ml");
     var price330ml=document.getElementById("price330ml");
+    var price600ml = document.getElementById("price600ml");
+    var price1500ml = document.getElementById("price1500ml");
+    var price5000ml = document.getElementById("price5000ml");
     if(sname.value==="home"||sname.value==="Home"||sname.value==="HOME"){
-    price200ml.value="14.28"
-    price330ml.value="13.33"
+    price200ml.value="<%=hprice[0].price200ml%>"
+    price330ml.value="<%=hprice[0].price330ml%>"
+    price600ml.value="<%=hprice[0].price600ml%>"
+    price1500ml.value="<%=hprice[0].price1500ml%>"
+    price5000ml.value="<%=hprice[0].price5000ml%>"
     }else{
         price200ml.value=price200ml.defaultValue;
     price330ml.value=price330ml.defaultValue; 
+    price600ml.value=price600ml.defaultValue;
+    price1500ml.value=price1500ml.defaultValue;
+    price5000ml.value=price5000ml.defaultValue;
     }
 };
 function ischangedemployee(){

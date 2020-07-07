@@ -37,7 +37,14 @@ router.get("/sales/addsales",middleware.isauthorised,function(req,res){
         if(err){
             console.log(err)
         }else{
-           res.render("sales/sales",{price:price,employee:employee}) 
+            homeprice.find({},function(err, hprice) {
+              if(err){
+                  console.log(err)
+              }  else{
+                   res.render("sales/sales",{price:price,employee:employee,hprice:hprice}) 
+              }
+            })
+          
         }
         
         }) 
@@ -58,7 +65,14 @@ router.get("/sales/addsales/:name/:voucher",middleware.isauthorised,function(req
         if(err){
             console.log(err)
         }else{
-           res.render("sales/repeatsales",{price:price,employee:employee,name:req.params.name,voucher:req.params.voucher}) 
+            homeprice.find({},function(err, hprice) {
+                if(err){
+                    console.log(err)
+                }else{
+                    res.render("sales/repeatsales",{price:price,employee:employee,name:req.params.name,voucher:req.params.voucher,hprice:hprice}) 
+                }
+            })
+           
         }
         
         }) 
@@ -169,7 +183,7 @@ router.post("/sales/setprice",middleware.isauthorised,function(req,res){
 
 
 router.post("/sales/sethomeprice",middleware.isauthorised,function(req,res){
-    homeprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml},function(err,price){
+    homeprice.findOneAndUpdate({},{price200ml:req.body.price.price200ml,price330ml:req.body.price.price330ml,price600ml:req.body.price.price600ml,price1500ml:req.body.price.price1500ml,price5000ml:req.body.price.price5000ml},function(err,price){
        
        if(err){
            console.log(err)
