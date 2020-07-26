@@ -604,7 +604,13 @@ router.get("/sales/:id/edit",middleware.isauthorised,function(req, res) {
                         if(err){
                             console.log(err)
                         }else{
-                            res.render("sales/editsales",{sales:updatesale,price:price,employee:employee})
+                            homeprice.find({},function(err, hprice) {
+              if(err){
+                  console.log(err)
+              }  else{
+                            res.render("sales/editsales",{sales:updatesale,price:price,employee:employee,hprice:hprice})
+              }
+                    })
                         }
                     })
                      
