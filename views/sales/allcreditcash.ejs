@@ -36,10 +36,10 @@
     
      
     <% sales.forEach(function(sales){ %>
-    <%sal=sal+parseFloat(sales.total)%>
+    <%sal=sal+parseFloat(sales.total)+(sales.total*(sales.vat/100))%>
+    
     
     <% }) %>
-    <% sal=(sal+(sal*sales[0].vat/100)).toFixed(2)%>
     
     <div class="row border">
       <div class="col-8 border">
@@ -55,7 +55,7 @@
         <p class="text-center"><strong> Total sale amount-<%=sales[0].month%> <%=sales[0].year%></strong></p>
       </div>
       <div class="col-4 border">
-        <P><strong><%=sal%></strong></P>
+        <P><strong><%=parseFloat(sal).toFixed(2)%></strong></P>
       </div>
     </div>
      <div class="row border">
@@ -63,7 +63,7 @@
         <p class="text-center"><strong>Grand total sale amount</strong></p>
       </div>
       <div class="col-4 border">
-        <P><strong><%=(parseFloat(sal)+parseFloat(credit[0].amount))%></strong></P>
+        <P><strong><%=((parseFloat(sal)+parseFloat(credit[0].amount))).toFixed(2)%></strong></P>
       </div>
     </div>
     <div class="row border">
