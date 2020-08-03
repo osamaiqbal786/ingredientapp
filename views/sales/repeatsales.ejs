@@ -225,16 +225,16 @@ function ischangedemployee(){
   var sdiv=document.getElementById("sdiv");
   var vdiv=document.getElementById("vdiv");
   var voch=document.getElementById("voch");
-  if(givento.value==="Mr. Farhad AL Jeneede House"||givento.value==="Gift/Promotion to individual/Co."||givento.value==="Carton Damaged in Handling"){
+  if(givento.value==="Mr. Farhad AL Jeneede House"||givento.value==="Gift\Promotion to individual\Co."||givento.value==="Carton Damaged in Handling"){
     price200ml.value="0.00";
     price330ml.value="0.00";
     price600ml.value="0.00";
     price1500ml.value="0.00";
     price5000ml.value="0.00";
     vat.value="0.00";
-    voch.value="0"
+    // voch.value="0"
     sdiv.style="display:none;"
-    vdiv.style="display:none;"
+    // vdiv.style="display:none;"
     
   }else{
       price200ml.value=price200ml.defaultValue;
